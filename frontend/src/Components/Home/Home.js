@@ -6,10 +6,16 @@ const Home = () => {
         textAlign: "center"
     }
 
-    const rowStyle ={
-        height: "40rem",
+    const rowStyleOne ={
+        height: "56rem",
         paddingTop: "1rem",
         paddingLeft: '0.5rem'
+
+    }
+
+    const rowStyleTwo ={
+        height: "56rem",
+        paddingTop: "1rem",
 
     }
 
@@ -19,14 +25,27 @@ const Home = () => {
     }
 
     const columnOneStyle = {
-        borderRight: '.08rem solid black'
+        borderRight: '.08rem solid black',
+        height: '56rem'
+
+    }
+
+    //styling for column 2 row 1
+    const rowStyleUsername = {
+        height: "5rem",
+        paddingTop: "1.5rem"
+    }
+
+    const rowStyleUserDetails = {
+        backgroundColor: 'green',
+        height: '30rem'
     }
 
    
     return(
         <div className = "ui two column grid">
-                    <div className="four wide column" style={columnOneStyle}>
-                    <div className="seven column row" style={rowStyle}>
+                    <div className="six wide column" style={columnOneStyle}>
+                    <div className="seven column row" style={rowStyleOne}>
                         
                         <div className="row" style={iconStyles}>
                         <div style={divStyle}>
@@ -81,14 +100,14 @@ const Home = () => {
                     </div>
                     
 
-                     <div className="column">
-                        <div className="two column row" style={rowStyle}>
+                     <div className="ten wide column">
+                        <div className="two column row" style={rowStyleTwo}>
                            
-                            <div className="row">
-                                Hello Generic User
+                            <div className="row" style={rowStyleUsername}>
+                                Hello, Generic User
                             </div>
                             
-                            <div className="row">
+                            <div className="row" style={rowStyleUserDetails}>
                                 User details
                             </div>
                         </div>
