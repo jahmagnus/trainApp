@@ -3,14 +3,12 @@ import Home from './Components/Home/Home'
 
 const App = () => {
 
-    const styles = {
-        backgroundColor: "green"
+    const appStyle ={
+        backgroundColor: "none"
     }
+
     return (
-
-
-
-        <div className="ui grid" style={styles}>
+        <div className="ui grid" style={appStyle}>
             <Home/>
         </div>
     )
