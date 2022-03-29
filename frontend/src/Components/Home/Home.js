@@ -7,17 +7,25 @@ const Home = () => {
     }
 
     const rowStyle ={
-        height: "40rem"
+        height: "40rem",
+        paddingTop: "1rem",
+        paddingLeft: '0.5rem'
+
     }
 
     const divStyle = {
-        height: "5rem"
+        height: "5rem",
+        width: "5rem"
+    }
+
+    const columnOneStyle = {
+        borderRight: '.08rem solid black'
     }
 
    
     return(
         <div className = "ui two column grid">
-                    <div className="four wide column">
+                    <div className="four wide column" style={columnOneStyle}>
                     <div className="seven column row" style={rowStyle}>
                         
                         <div className="row" style={iconStyles}>
@@ -74,10 +82,10 @@ const Home = () => {
                     
 
                      <div className="column">
-                        <div className="two column row">
+                        <div className="two column row" style={rowStyle}>
                            
                             <div className="row">
-                                User login info
+                                Hello Generic User
                             </div>
                             
                             <div className="row">
