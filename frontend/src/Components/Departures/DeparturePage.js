@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 
-import Dropdown from "./Dropdown";
 import TrainList from "./TrainList";
 
 const DeparturePage = () => {
@@ -19,6 +18,8 @@ const DeparturePage = () => {
   let [station, setStation] = useState("Select departure station")
 
  //this function will update the current state of station when selected from the dropdown
+ //I believe it will be here that I will need to take the value of the dropdown and send it out to 
+ //the server and have it sent away to transport API
   let handleStationChange = (e) => {
       setStation(e.target.value)
   }
@@ -28,7 +29,7 @@ const DeparturePage = () => {
   return (
     <div>
         <select onChange={handleStationChange}>
-            <option value="select fruit">Select departure station</option>
+            <option value="select station">Select departure station</option>
             {/*map through the stations array to populate the dropdown*/}
             {departureStations.map((station) => <option value={station.value}>{station.label}</option>)}
         </select>
