@@ -1,6 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "type": "module",
   "description": "Backend files for employee train application",
   "main": "index.js",
   "scripts": {
@@ -9,6 +10,8 @@
   "author": "Ingemar Magnusson",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "node-fetch": "^3.2.3"
   }
 }
