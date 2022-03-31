@@ -8,14 +8,16 @@ const Home = () => {
       };
     
       const rowStyleOne = {
-        height: "56rem",
-        paddingTop: "1rem",
-        paddingLeft: "0.5rem",
+        height: "60rem",
+        paddingTop: "1rem"
+        
       };
     
       const rowStyleTwo = {
-        height: "65rem",
+        height: "64rem",
         paddingTop: "1rem",
+        marginLeft:'auto',
+        marginRight: 'auto'
       };
     
       //navbar divs containg the icons and heading
@@ -25,14 +27,15 @@ const Home = () => {
         textAlign: "center",
         marginLeft: "auto",
         marginRight: "auto",
-        paddingTop: '25%',
-        paddingBottom: '25%',
+        paddingTop: '',
+        paddingBottom: '',
         color: "black"
       };
     
       const columnOneStyle = {
         borderRight: ".08rem solid black",
-        height: "65rem",
+        height: "64rem",
+        
       };
     
       //styling for column 2 row 1
@@ -49,13 +52,16 @@ const Home = () => {
       };
     
       const gridStyle = {
-        height: "61rem",
+        height: "65rem",
+        marginLeft: "auto",
+        marginRight: "auto"
       };
         
     
         const appStyle ={
             backgroundColor: "none",
-            height: '56rem'
+            height: '65rem',
+            
         }
 
         return(
@@ -125,6 +131,7 @@ const Home = () => {
         </div>
       </div>
 
+     {/*second column on homepage*/}
       <div className="ten wide column" style={rowStyleTwo}>
         <div className="two column row" style={rowStyleTwo}>
           <div className="row" style={rowStyleUsername}>
