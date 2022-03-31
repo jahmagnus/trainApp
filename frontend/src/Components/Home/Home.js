@@ -5,11 +5,13 @@ const Home = () => {
     const iconStyles = {
         textAlign: "center",
         fontSize: "large",
+        backgroundColor: "#C3073F",
+        border: "0.1rem solid #6f2232",
+        borderBottom: 'none'
       };
     
       const rowStyleOne = {
-        height: "60rem",
-        paddingTop: "1rem"
+        height: "60rem"
         
       };
     
@@ -27,9 +29,11 @@ const Home = () => {
         textAlign: "center",
         marginLeft: "auto",
         marginRight: "auto",
-        paddingTop: '',
+        paddingTop: '2.5rem',
         paddingBottom: '',
-        color: "black"
+        color: "black",
+        
+        
       };
     
       const columnOneStyle = {
@@ -37,6 +41,8 @@ const Home = () => {
         height: "64rem",
         
       };
+      
+     
     
       //styling for column 2 row 1
       const rowStyleUsername = {
