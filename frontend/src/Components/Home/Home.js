@@ -67,7 +67,8 @@ const Home = () => {
             <Link to='/'><div style={divStyle}>
               <i className="big home icon"></i>
               <br />
-              Home
+              Home  
+              
             </div>
             </Link>
           </div>
