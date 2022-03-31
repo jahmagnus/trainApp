@@ -5,8 +5,8 @@ const Home = () => {
     const iconStyles = {
         textAlign: "center",
         fontSize: "large",
-        backgroundColor: "#C3073F",
-        border: "0.1rem solid #6f2232",
+        backgroundColor: "#45a29e",
+        border: "0.1rem solid #0b0c10",
         borderBottom: 'none'
       };
     
@@ -38,7 +38,8 @@ const Home = () => {
     
       const columnOneStyle = {
         borderRight: ".08rem solid black",
-        height: "64rem",
+        height: "66rem",
+        backgroundColor: "#66fcf1"
         
       };
       
@@ -54,7 +55,8 @@ const Home = () => {
       const rowStyleUserDetails = {
         height: "56rem",
         border: ".08rem solid black",
-        paddingLeft: '0.5rem'
+        paddingLeft: '0.5rem',
+        backgroundColor: '#c5c6c7'
       };
     
       const gridStyle = {
