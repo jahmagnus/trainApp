@@ -147,7 +147,8 @@ const Home = () => {
           </div>
 
           <div className="row" style={rowStyleUserDetails}>
-            User details - Pay Number ID..
+            User details - Pay Number ID.. <br/>
+            <a href='#'> Sign out</a>
           </div>
         </div>
       </div>
