@@ -147,7 +147,7 @@ const Home = () => {
           </div>
 
           <div className="row" style={rowStyleUserDetails}>
-            User details
+            User details - Pay Number ID..
           </div>
         </div>
       </div>
