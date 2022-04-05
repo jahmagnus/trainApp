@@ -78,7 +78,7 @@ const Home = () => {
       <div className="six wide column" style={columnOneStyle}>
         <div className="seven column row" style={rowStyleOne}>
           <div className="row" style={iconStyles}>
-            <Link to='/'><div style={divStyle}>
+            <Link to='/home'><div style={divStyle}>
               <i className="big home icon"></i>
               <br />
               Home  
