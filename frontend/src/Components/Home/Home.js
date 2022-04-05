@@ -72,6 +72,8 @@ const Home = () => {
             
         }
 
+      
+
         return(
         <div className="ui grid" style={appStyle}>
         <div className="ui two column grid" style={gridStyle}>
