@@ -19,17 +19,29 @@ const Login = () => {
     height: "80vh",
     width: "20rem",
     paddingTop: "8rem",
-    backgroundColor: "#5df542",
+    backgroundColor: "black"
   };
 
   const fieldStyle = {
     opacity: "0.75",
-    borderBottom: "2px solid black",
+    borderBottom: "3px solid black",
   };
 
   const iconStyle = {
     marginBottom: "3rem",
+    color: "#5df542"
   };
+
+  const buttonStyle = {
+      backgroundColor: "#5df542",
+      color: "white",
+      width: "18rem"
+  }
+
+  const labelStyle = {
+      color: "#5df542",
+      letterSpacing: ".5rem"
+  }
 
   //set current state of username and password
   let [username, setUsername] = useState("");
@@ -37,10 +49,9 @@ const Login = () => {
 
   
     
-    
+    //
     useEffect(() => {
         const usernameInput = document.getElementById("username");
-        console.log(username.length, username)
         if(username.length>0 && username.length < 6){
         usernameInput.style.borderBottomColor = "red"
         }else if(username.length === 0){
@@ -51,9 +62,17 @@ const Login = () => {
         }
     }, [username])
 
-  
-
-  const handlePassword = (e) => {};
+  useEffect(()=> {
+    const passwordInput = document.getElementById("password");
+        if(password.length>0 && password.length < 8){
+        passwordInput.style.borderBottomColor = "red"
+        }else if(password.length === 0){
+            passwordInput.style.borderBottomColor = "black"
+        }
+         else {
+            passwordInput.style.borderBottomColor = "green"
+        }
+  }, [password])
 
   return (
     <div className="ui grid container" style={containerStyle}>
@@ -61,7 +80,7 @@ const Login = () => {
         <form className="ui form" style={formStyle}>
           <i className="user huge icon" style={iconStyle} />
           <div className="field">
-            <label>Username</label>
+            <label style={labelStyle}>Username</label>
             <input
               onChange={(e) => setUsername(e.target.value)}
               id="username"
@@ -72,9 +91,8 @@ const Login = () => {
             />
           </div>
           <div className="field">
-            <label>Password</label>
-            <input
-              onChange={handlePassword}
+            <label style={labelStyle}>Password</label>
+            <input onChange={(e) => {setPassword(e.target.value)}}
               id="password"
               type="password"
               name="pwd"
@@ -83,7 +101,7 @@ const Login = () => {
             />
           </div>
           <div className="field"></div>
-          <button className="ui button" type="submit">
+          <button style={buttonStyle} className="ui button" type="submit">
             Login
           </button>
         </form>

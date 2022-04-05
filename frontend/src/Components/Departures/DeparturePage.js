@@ -77,15 +77,13 @@ const DeparturePage = () => {
   //this function will update the current state of station when selected from the dropdown
   //I believe it will be here that I will need to take the value of the dropdown and send it out to
   //the server and have it sent away to transport API
-  let handleStationChange = (e) => {
-    setStation(e.target.value);
-  };
-
-  console.log(station);
+  useEffect(()=> {
+      console.log(station)
+  }, [station])
 
   return (
     <div>
-      <select onChange={handleStationChange}>
+      <select onChange={(e)=> {setStation(e.target.value)}}>
         <option value="select station">Select departure station</option>
         {/*map through the stations array to populate the dropdown*/}
         {departureStations.map((station) => (
