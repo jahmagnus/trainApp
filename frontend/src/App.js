@@ -1,15 +1,12 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Home from './Components/Home/Home'
-import DeparturePage from "./Components/Departures/DeparturePage"; //add a link to the departure page
+import Home from "./Components/Home/Home";
+import DeparturePage from "./Components/Departures/DeparturePage"; 
+import Login from "./Components/Login/Login"
 //import axios from "axios";
 
-
-
 const App = () => {
-
-   
   const iconStyles = {
     textAlign: "center",
     fontSize: "large",
@@ -33,9 +30,8 @@ const App = () => {
     textAlign: "center",
     marginLeft: "auto",
     marginRight: "auto",
-    paddingTop: '25%',
-    paddingBottom: '25%'
-
+    paddingTop: "25%",
+    paddingBottom: "25%",
   };
 
   const columnOneStyle = {
@@ -53,29 +49,27 @@ const App = () => {
   const rowStyleUserDetails = {
     height: "56rem",
     border: ".08rem solid black",
-    paddingLeft: '0.5rem'
+    paddingLeft: "0.5rem",
   };
 
   const gridStyle = {
     height: "61rem",
   };
-    
 
-    const appStyle ={
-        backgroundColor: "none",
-        height: '56rem'
-    }
+  const appStyle = {
+    backgroundColor: "none",
+    height: "56rem",
+  };
 
-    
-    return(
-        <Router>
-            <Routes>
-                <Route exact path='/home' element={<Home/>}/>
-                <Route exact path='/departures' element={<DeparturePage/>}/>
-            </Routes>
-        </Router>
-    )
-       
-    }
+  return (
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Login />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/departures" element={<DeparturePage />} />
+      </Routes>
+    </Router>
+  );
+};
 
-       export default App
+export default App;
