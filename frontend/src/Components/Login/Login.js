@@ -32,7 +32,20 @@ const Login = () => {
       marginBottom: "3rem"
   }
 
-  
+  //set current state of username and password
+  let [username, setUsername] = useState('')
+  let [password, setPassword] = useState('')
+
+  const handleUsername = (e) => {
+    setUsername(e.target.value)
+    if(username.length < 6){
+        console.log('username too short')
+    }
+  }
+
+  const handlePassword = (e) => {
+      
+  }
 
   return (
     <div className="ui grid container" style={containerStyle}>
@@ -43,11 +56,11 @@ const Login = () => {
           <div className="field">
           
             <label>Username</label>
-            <input type="text" name="Username" placeholder="Username" style={fieldStyle}/>
+            <input onChange={handleUsername} type="text" name="Username" placeholder="Username" style={fieldStyle}/>
           </div>
           <div className="field">
             <label>Password</label>
-            <input type="password" name="pwd" placeholder="Password" style={fieldStyle}/>
+            <input onChange={handlePassword} type="password" name="pwd" placeholder="Password" style={fieldStyle}/>
           </div>
           <div className="field"></div>
           <button className="ui button" type="submit">
