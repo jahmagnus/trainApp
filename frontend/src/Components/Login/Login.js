@@ -24,7 +24,8 @@ const Login = () => {
 
   const fieldStyle = {
     opacity: "0.75",
-    borderBottom: "3px solid black",
+    borderBottom: "4px solid black",
+    borderRadius: "8px"
   };
 
   const iconStyle = {
