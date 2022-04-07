@@ -14,7 +14,7 @@ const Login = () => {
   };
 
   const formStyle = {
-    border: "1px solid black",
+    border: "3px solid #5df542",
     borderRadius: "10px",
     height: "80vh",
     width: "20rem",
