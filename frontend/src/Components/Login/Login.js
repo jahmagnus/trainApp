@@ -88,6 +88,7 @@ const Login = () => {
               type="text"
               name="Username"
               placeholder="Username"
+              autoComplete="off"
               style={fieldStyle}
             />
           </div>
@@ -98,6 +99,7 @@ const Login = () => {
               type="password"
               name="pwd"
               placeholder="Password"
+              autoComplete="off"
               style={fieldStyle}
             />
           </div>
