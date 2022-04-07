@@ -59,7 +59,7 @@ const Login = () => {
             usernameInput.style.borderBottomColor = "black"
         }
          else {
-            usernameInput.style.borderBottomColor = "green"
+            usernameInput.style.borderBottomColor = "#5df542"
         }
     }, [username])
 
@@ -71,7 +71,7 @@ const Login = () => {
             passwordInput.style.borderBottomColor = "black"
         }
          else {
-            passwordInput.style.borderBottomColor = "green"
+            passwordInput.style.borderBottomColor = "#5df542"
         }
   }, [password])
 
