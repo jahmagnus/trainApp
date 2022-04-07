@@ -26,7 +26,7 @@ const Login = () => {
     opacity: "0.75",
     borderBottom: "4px solid black",
     borderRadius: "8px"
-  };
+  }; 
 
   const iconStyle = {
     marginBottom: "3rem",
