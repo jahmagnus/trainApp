@@ -75,10 +75,14 @@ const Login = () => {
         }
   }, [password])
 
+  const handleSubmit = async (e) =>{
+    e.preventDefault()
+  }
+
   return (
     <div className="ui grid container" style={containerStyle}>
       <div className="ui centered grid" style={gridStyle}>
-        <form className="ui form" style={formStyle}>
+        <form onSubmit={handleSubmit} className="ui form" style={formStyle}>
           <i className="user huge icon" style={iconStyle} />
           <div className="field">
             <label style={labelStyle}>Username</label>
@@ -89,6 +93,7 @@ const Login = () => {
               name="Username"
               placeholder="Username"
               autoComplete="off"
+              value={username}
               style={fieldStyle}
             />
           </div>
@@ -99,8 +104,9 @@ const Login = () => {
               type="password"
               name="pwd"
               placeholder="Password"
-              autoComplete="off"
+              value={password}
               style={fieldStyle}
+              
             />
           </div>
           <div className="field"></div>
