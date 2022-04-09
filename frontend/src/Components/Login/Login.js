@@ -19,74 +19,107 @@ const Login = () => {
     height: "80vh",
     width: "20rem",
     paddingTop: "8rem",
-    backgroundColor: "black"
+    backgroundColor: "black",
   };
 
-  const fieldStyle = {
+  const inputStyle = {
     opacity: "0.75",
     borderBottom: "4px solid black",
-    borderRadius: "8px"
-  }; 
+    borderRadius: "8px",
+  };
 
   const iconStyle = {
     marginBottom: "3rem",
-    color: "#5df542"
+    color: "#5df542",
   };
 
   const buttonStyle = {
-      backgroundColor: "#5df542",
-      color: "white",
-      width: "18rem"
-  }
+    backgroundColor: "#5df542",
+    color: "white",
+    width: "18rem",
+  };
 
   const labelStyle = {
-      color: "#5df542",
-      letterSpacing: ".5rem"
-  }
+    color: "#5df542",
+    letterSpacing: ".5rem",
+  };
 
   const resetDiv = {
-    textAlign: 'left',
-    paddingTop: "0.5rem"
-  }
+    textAlign: "left",
+    paddingTop: "0.5rem",
+  };
   const resetStyle = {
     color: "white",
-    
-    
-  }
+  };
 
   //set current state of username and password
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
 
-  
-    
-    //
-    useEffect(() => {
-        const usernameInput = document.getElementById("username");
-        if(username.length>0 && username.length < 6){
-        usernameInput.style.borderBottomColor = "red"
-        }else if(username.length === 0){
-            usernameInput.style.borderBottomColor = "black"
-        }
-         else {
-            usernameInput.style.borderBottomColor = "#5df542"
-        }
-    }, [username])
+  //
+  useEffect(() => {
+    const usernameInput = document.getElementById("username");
+    if (username.length > 0 && username.length < 6) {
+      usernameInput.style.borderBottomColor = "red";
+    } else if (username.length === 0) {
+      usernameInput.style.borderBottomColor = "black";
+    } else {
+      usernameInput.style.borderBottomColor = "#5df542";
+    }
+  }, [username]);
 
-  useEffect(()=> {
+  useEffect(() => {
     const passwordInput = document.getElementById("password");
-        if(password.length>0 && password.length < 8){
-        passwordInput.style.borderBottomColor = "red"
-        }else if(password.length === 0){
-            passwordInput.style.borderBottomColor = "black"
-        }
-         else {
-            passwordInput.style.borderBottomColor = "#5df542"
-        }
-  }, [password])
+    if (password.length > 0 && password.length < 8) {
+      passwordInput.style.borderBottomColor = "red";
+    } else if (password.length === 0) {
+      passwordInput.style.borderBottomColor = "black";
+    } else {
+      passwordInput.style.borderBottomColor = "#5df542";
+    }
+  }, [password]);
 
-  const handleSubmit = async (e) =>{
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  };
+
+
+  const capsDetection = (e) => {
+    //get the div by its ID
+    const inputBox = document.getElementById('warningAttach')
+
+    //create a paragraph element
+    const warningDiv = document.createElement('div')
+    
+    //assign an ID to the element
+    warningDiv.setAttribute('id', 'warning')
+
+    //text for the paragraph 
+    const text = document.createTextNode('Caps lock is on')
+    
+    //add text as child
+    warningDiv.appendChild(text)
+    warningDiv.style.color = 'red'
+    
+    if(e.getModifierState('CapsLock')){
+      inputBox.appendChild(warningDiv)
+    } else if (e.getModifierState('CapsLock') === false && document.body.contains(document.getElementById('warning'))){
+      warningDiv.remove()
+    }
+  
+    // if(e.getModifierState('CapsLock') === true && document.body.contains(document.getElementById('warning')) === false){
+    //   inputBox.append(warningDiv)
+    //   console.log(document.body.contains(warningDiv))
+    // } else if(e.getModifierState('CapsLock') === false && document.body.contains(document.getElementById('warning')) === true){
+    //   warningDiv.remove()
+    //   console.log('remove')
+    //   console.log(document.body.contains(warningDiv))
+    // } else {
+    //   console.log('aye')
+    // }
+    
+    
+
   }
 
   return (
@@ -104,23 +137,31 @@ const Login = () => {
               placeholder="Username"
               autoComplete="off"
               value={username}
-              style={fieldStyle}
+              style={inputStyle}
             />
           </div>
-          <div className="field">
+          <div className="field" id = "passwordField">
             <label style={labelStyle}>Password</label>
-            <input onChange={(e) => {setPassword(e.target.value)}}
+            <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              
+              onKeyUp={capsDetection}
+              
               id="password"
               type="password"
               name="pwd"
               placeholder="Password"
               value={password}
-              style={fieldStyle}
-              
+              style={inputStyle}
             />
-          <div className="resetDiv" style={resetDiv}>
-          <a href='#' style={resetStyle}>Reset password</a>
-          </div>
+            <div id="warningAttach"></div>
+            <div className="resetDiv" style={resetDiv}>
+              <a href="#" style={resetStyle}>
+                Reset password
+              </a>
+            </div>
           </div>
           <div className="field"></div>
           <button style={buttonStyle} className="ui button" type="submit">
