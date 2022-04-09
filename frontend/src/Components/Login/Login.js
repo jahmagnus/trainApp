@@ -101,11 +101,6 @@ const Login = () => {
     warningDiv.appendChild(text)
     warningDiv.style.color = 'red'
     
-    if(e.getModifierState('CapsLock')){
-      inputBox.appendChild(warningDiv)
-    } else if (e.getModifierState('CapsLock') === false && document.body.contains(document.getElementById('warning'))){
-      warningDiv.remove()
-    }
   
     // if(e.getModifierState('CapsLock') === true && document.body.contains(document.getElementById('warning')) === false){
     //   inputBox.append(warningDiv)
