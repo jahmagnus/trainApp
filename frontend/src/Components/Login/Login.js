@@ -44,6 +44,16 @@ const Login = () => {
       letterSpacing: ".5rem"
   }
 
+  const resetDiv = {
+    textAlign: 'left',
+    paddingTop: "0.5rem"
+  }
+  const resetStyle = {
+    color: "white",
+    
+    
+  }
+
   //set current state of username and password
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
@@ -108,6 +118,9 @@ const Login = () => {
               style={fieldStyle}
               
             />
+          <div className="resetDiv" style={resetDiv}>
+          <a href='#' style={resetStyle}>Reset password</a>
+          </div>
           </div>
           <div className="field"></div>
           <button style={buttonStyle} className="ui button" type="submit">
