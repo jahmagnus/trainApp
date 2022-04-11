@@ -94,24 +94,20 @@ const Login = () => {
     //assign an ID to the element
     warningDiv.setAttribute('id', 'warning')
 
-    //text for the paragraph 
-    const text = document.createTextNode('Caps lock is on')
-    
-    //add text as child
-    warningDiv.appendChild(text)
+    warningDiv.innerHTML = "Caps lock on"
     warningDiv.style.color = 'red'
     
-  
-    // if(e.getModifierState('CapsLock') === true && document.body.contains(document.getElementById('warning')) === false){
-    //   inputBox.append(warningDiv)
-    //   console.log(document.body.contains(warningDiv))
-    // } else if(e.getModifierState('CapsLock') === false && document.body.contains(document.getElementById('warning')) === true){
-    //   warningDiv.remove()
-    //   console.log('remove')
-    //   console.log(document.body.contains(warningDiv))
-    // } else {
-    //   console.log('aye')
-    // }
+    console.log(e)
+    if(e.getModifierState('CapsLock') === true && document.body.contains(document.getElementById('warning')) === false){
+      inputBox.append(warningDiv)
+      console.log('IF', document.body.contains(warningDiv))
+    } else if(e.getModifierState('CapsLock') === false && document.body.contains(document.getElementById('warning')) === true){
+      inputBox.removeChild(inputBox.firstChild)
+      console.log('ELSE IF remove')
+      console.log(document.body.contains(warningDiv))
+    } else {
+      console.log('aye')
+    }
     
     
 
@@ -135,14 +131,14 @@ const Login = () => {
               style={inputStyle}
             />
           </div>
-          <div className="field" id = "passwordField">
+          <div className="field" id = "passwordField" onKeyUp={capsDetection}>
             <label style={labelStyle}>Password</label>
             <input
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
               
-              onKeyUp={capsDetection}
+              
               
               id="password"
               type="password"
