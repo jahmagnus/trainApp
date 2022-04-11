@@ -55,6 +55,7 @@ const Login = () => {
   //set current state of username and password
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
+  let [isCapsMessage, setCapsMessage] = useState(false)
 
   //
   useEffect(() => {
@@ -85,6 +86,9 @@ const Login = () => {
 
 
   const capsDetection = (e) => {
+    
+
+
     //get the div by its ID
     const inputBox = document.getElementById('warningAttach')
 
@@ -96,20 +100,17 @@ const Login = () => {
 
     warningDiv.innerHTML = "Caps lock on"
     warningDiv.style.color = 'red'
+  
     
-    console.log(e)
     if(e.getModifierState('CapsLock') === true && document.body.contains(document.getElementById('warning')) === false){
       inputBox.append(warningDiv)
-      console.log('IF', document.body.contains(warningDiv))
+      console.log(document.body.contains(warningDiv))
+      setCapsMessage(true)
     } else if(e.getModifierState('CapsLock') === false && document.body.contains(document.getElementById('warning')) === true){
       inputBox.removeChild(inputBox.firstChild)
+      setCapsMessage(false)
       console.log(document.body.contains(warningDiv))
-    } else {
-      console.log('error')
-    }
-    
-    
-
+    } 
   }
 
   return (
@@ -117,7 +118,7 @@ const Login = () => {
       <div className="ui centered grid" style={gridStyle}>
         <form onSubmit={handleSubmit} className="ui form" style={formStyle}>
           <i className="user huge icon" style={iconStyle} />
-          <div className="field">
+          <div className="field" id="usernameID">
             <label style={labelStyle}>Username</label>
             <input
               onChange={(e) => setUsername(e.target.value)}
