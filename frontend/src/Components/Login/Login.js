@@ -103,10 +103,9 @@ const Login = () => {
       console.log('IF', document.body.contains(warningDiv))
     } else if(e.getModifierState('CapsLock') === false && document.body.contains(document.getElementById('warning')) === true){
       inputBox.removeChild(inputBox.firstChild)
-      console.log('ELSE IF remove')
       console.log(document.body.contains(warningDiv))
     } else {
-      console.log('aye')
+      console.log('error')
     }
     
     
