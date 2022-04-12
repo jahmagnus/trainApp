@@ -113,12 +113,21 @@ const Login = () => {
     } 
   }
 
+  //function will clear caps warning message if focus is put on the username field
+  const clearWarnings = () => {
+    const inputBox = document.getElementById('warningAttach')
+    if(isCapsMessage){
+      inputBox.removeChild(inputBox.firstChild)
+      setCapsMessage(false)
+    }
+  }
+
   return (
     <div className="ui grid container" style={containerStyle}>
       <div className="ui centered grid" style={gridStyle}>
         <form onSubmit={handleSubmit} className="ui form" style={formStyle}>
           <i className="user huge icon" style={iconStyle} />
-          <div className="field" id="usernameID">
+          <div className="field" id="usernameID" onFocus={clearWarnings}>
             <label style={labelStyle}>Username</label>
             <input
               onChange={(e) => setUsername(e.target.value)}
