@@ -113,7 +113,7 @@ const Login = () => {
     } 
   }
 
-  //function will clear caps warning message if focus is put on the username field
+  //function to clear caps lock warning if onfocus event handler is fired on username field
   const clearWarnings = () => {
     const inputBox = document.getElementById('warningAttach')
     if(isCapsMessage){
