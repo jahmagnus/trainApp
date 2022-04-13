@@ -84,7 +84,7 @@ const Login = () => {
     e.preventDefault();
   };
 
-
+//function to detect whether caps lock is on
   const capsDetection = (e) => {
     
 
