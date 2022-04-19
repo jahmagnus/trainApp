@@ -148,7 +148,7 @@ const Login = () => {
               }}
               
               
-              
+              //do I need the placeholders for username and password?
               id="password"
               type="password"
               name="pwd"
