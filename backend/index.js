@@ -48,29 +48,29 @@ app.get('/trains', async (request, response) => {
 
 
 
+//example code for connecting to mongoDB on Atlas
 
+// const getDatabaseCluster = async () => {
+//     const pwd = process.env.DB_PWD
+//     const username = process.env.DB_USERNAME
+//     const uri = `mongodb+srv://${username}:${pwd}@train-data.jizrg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+//     const client = new MongoClient(uri)
 
-const getDatabaseCluster = async () => {
-    const pwd = process.env.DB_PWD
-    const username = process.env.DB_USERNAME
-    const uri = `mongodb+srv://${username}:${pwd}@train-data.jizrg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-    const client = new MongoClient(uri)
+//     try {
+//         //connect to database
+//         await client.connect()
 
-    try {
-        //connect to database
-        await client.connect()
+//         await listDatabases(client)
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
 
-        await listDatabases(client)
-    } catch (error) {
-        console.log(error)
-    }
-}
+// const listDatabases = async(client) => {
+//     const databaseList = await client.db().admin().listDatabases()
 
-const listDatabases = async(client) => {
-    const databaseList = await client.db().admin().listDatabases()
+//     console.log('Databases')
+//     databaseList.databases.forEach(db => console.log(` -${db.name}`))
+// }
 
-    console.log('Databases')
-    databaseList.databases.forEach(db => console.log(` -${db.name}`))
-}
-
-getDatabaseCluster()
+// getDatabaseCluster()
