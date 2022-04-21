@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {Link} from 'react-router-dom'
 
 const Login = () => {
   const containerStyle = {
@@ -57,7 +58,7 @@ const Login = () => {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
   let [isCapsMessage, setCapsMessage] = useState(false)
-  let [isAuthenticated, setAuthentication] = useState(false)
+  
 
   //
   useEffect(() => {
@@ -124,9 +125,7 @@ const Login = () => {
     }
   }
 
-  useEffect(() => {
-    console.log(isAuthenticated)
-  },[isAuthenticated]);
+  
 
   const login = async () => {
     axios({
@@ -138,8 +137,7 @@ const Login = () => {
       withCredentials: true,
       url: "http://localhost:3000/userlogin"
     }).then((res) => {
-    
-      setAuthentication(res.data.authenticated)
+      console.log(res)
     })
   }
 
