@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const Login = () => {
   const containerStyle = {
@@ -56,6 +57,7 @@ const Login = () => {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
   let [isCapsMessage, setCapsMessage] = useState(false)
+  let [isAuthenticated, setAuthentication] = useState(false)
 
   //
   useEffect(() => {
@@ -122,6 +124,26 @@ const Login = () => {
     }
   }
 
+  useEffect(() => {
+    console.log(isAuthenticated)
+  },[isAuthenticated]);
+
+  const login = async () => {
+    axios({
+      method: "POST",
+      data: {
+        username: username,
+        password: password
+      },
+      withCredentials: true,
+      url: "http://localhost:3000/userlogin"
+    }).then((res) => {
+    
+      setAuthentication(res.data.authenticated)
+    })
+  }
+
+
   return (
     <div className="ui grid container" style={containerStyle}>
       <div className="ui centered grid" style={gridStyle}>
@@ -148,7 +170,7 @@ const Login = () => {
               }}
               
               
-              //do I need the placeholders for username and password?
+              
               id="password"
               type="password"
               name="pwd"
@@ -164,7 +186,7 @@ const Login = () => {
             </div>
           </div>
           <div className="field"></div>
-          <button style={buttonStyle} className="ui button" type="submit">
+          <button style={buttonStyle} className="ui button" type="submit" onClick={login}>
             Login
           </button>
         </form>

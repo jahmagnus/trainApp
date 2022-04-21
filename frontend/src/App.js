@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import DeparturePage from "./Components/Departures/DeparturePage"; 
 import Login from "./Components/Login/Login"
+import SetUser from "./Components/SetUser"
 //import axios from "axios";
 
 const App = () => {
@@ -64,6 +65,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
+        <Route exact path="/setusers" element={<SetUser />} />
         <Route exact path="/" element={<Login />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/departures" element={<DeparturePage />} />
