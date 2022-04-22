@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Home from "./Components/Home/Home";
@@ -61,6 +61,8 @@ const App = () => {
     backgroundColor: "none",
     height: "56rem",
   };
+
+  const [isAuthenticated, setAuthenticated] = useState(null)
 
   return (
     <Router>
