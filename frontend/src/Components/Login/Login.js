@@ -5,6 +5,7 @@ import {useNavigate, Navigate} from 'react-router-dom'
 
 
 
+
 const Login = (props) => {
   const containerStyle = {
     marginTop: "1rem",
@@ -158,8 +159,8 @@ const Login = (props) => {
       withCredentials: true,
       url: "http://localhost:3000/userlogin"
     }).then((res) => {
-      console.log('response within react component', res)
       
+     
       if(res.data.authenticated === true){
         navigate(from, {replace: true})
        } else {

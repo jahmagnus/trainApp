@@ -19,20 +19,17 @@ import SetUser from "./Components/SetUser";
 const App = () => {
   return (
     <Routes>
-    
+      {/* Public pages*/}
+      <Route path="/" element={<Login />} />
 
-        {/* Public pages*/}
-        <Route path="/" element={<Login />} />
+      {/* Private pages */}
 
-        {/* Private pages */}
-        <Route exact path = "/departures" element={<DeparturePage/>} />
-        <Route exact path = "/home" element={<Home/>} />
-        <Route exact path = "/setuser" element={<SetUser/>} />
+      <Route exact path="/departures" element={<DeparturePage />} />
+      <Route exact path="/home" element={<Home />} />
+      <Route exact path="/setuser" element={<SetUser />} />
 
-
-        {/** Catch */}
-        <Route path ='*' element={'Page does not exist'} />
-      
+      {/** Catch */}
+      <Route path="*" element={"Page does not exist"} />
     </Routes>
   );
 };

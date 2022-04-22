@@ -51,6 +51,9 @@ const uri = `mongodb+srv://${DBusername}:${pwd}@train-data.jizrg.mongodb.net/Tra
 await mongoose.connect(uri);
   
 
+app.get('/getUser', (req, res) => {
+  res.send(req.user)
+})
 
 //routes
 app.post("/userlogin", async (req, res, next) => {
@@ -63,6 +66,7 @@ app.post("/userlogin", async (req, res, next) => {
       else {
         req.logIn(user, err => {
           res.send({authenticated: true})
+          console.log(req.user)
         })
       }
     })(req, res, next)

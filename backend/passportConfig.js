@@ -27,7 +27,14 @@ export default function(passport){
 
     passport.deserializeUser((id, cb) => {
         User.findOne({_id: id}, (err, user) => {
-             cb(err, user)
+            const userData = {
+                firstName: user.username,
+                surname: user.surname,
+                payNumber: user.payNumber,
+                role: user.role
+                
+            }
+              cb(err, userData)
         })
     })
 }
