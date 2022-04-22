@@ -62,7 +62,7 @@ const App = () => {
     height: "56rem",
   };
 
-  const [isAuthenticated, setAuthenticated] = useState(null)
+  
 
   return (
     <Router>
