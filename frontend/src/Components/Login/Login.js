@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {useNavigate, Navigate} from 'react-router-dom'
 
 
 
@@ -127,9 +128,27 @@ const Login = (props) => {
     }
   }
 
-  
+
+  const setUserError = () => {
+    const errorDiv = document.getElementById('user-warning')
+    const errorMessage = document.createElement('p')
+    errorMessage.innerHTML = 'Invalid username or password'
+    errorMessage.style.color = "red"
+    errorDiv.append(errorMessage)
+
+    setTimeout(()=> {
+      errorDiv.removeChild(errorDiv.firstChild)
+    }, 5000)
+
+    
+  }
+
+  //tools and settings for navigating once logged in
+  const navigate = useNavigate()
+  let from = '/home'
 
   const login = async () => {
+    
     axios({
       method: "POST",
       data: {
@@ -139,7 +158,14 @@ const Login = (props) => {
       withCredentials: true,
       url: "http://localhost:3000/userlogin"
     }).then((res) => {
-      console.log(res)
+      console.log('response within react component', res)
+      
+      if(res.data.authenticated === true){
+        navigate(from, {replace: true})
+       } else {
+          setUserError()
+    ////////////////////////
+       }
     })
   }
 
@@ -189,6 +215,8 @@ const Login = (props) => {
           <button style={buttonStyle} className="ui button" type="submit" onClick={login}>
             Login
           </button>
+
+          <div id="user-warning"></div>
         </form>
       </div>
     </div>
