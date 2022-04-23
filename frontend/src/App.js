@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
+import axios from 'axios'
 
 /* // <Router>
     //   <Routes>
@@ -15,8 +16,19 @@ import Home from "./Components/Home/Home";
 import DeparturePage from "./Components/Departures/DeparturePage";
 import Login from "./Components/Login/Login";
 import SetUser from "./Components/SetUser";
+import {getUser} from "./Components/userData"
+
+
+
 
 const App = () => {
+
+ 
+
+  
+
+  
+
   return (
     <Routes>
       {/* Public pages*/}

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import GetUser from '../getUser'
+
 
 const Home = () => {
     const iconStyles = {
@@ -81,7 +81,7 @@ const Home = () => {
         <div className="ui two column grid" style={gridStyle}>
         
       <div className="six wide column" style={columnOneStyle}>
-      <GetUser/>
+      
         <div className="seven column row" style={rowStyleOne}>
           <div className="row" style={iconStyles}>
             <Link to='/home'><div style={divStyle}>
