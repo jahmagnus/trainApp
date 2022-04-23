@@ -19,9 +19,9 @@ const SetUser = () => {
       data: {
         username: registerUsername,
         password: registerPassword,
-        payNumber: registerFirstName,
-        firstName: registerSurname,
-        surname: registerPayNumber,
+        payNumber: registerPayNumber,
+        firstName: registerFirstName,
+        surname: registerSurname,
         role: registerRole,
       },
       withCredentials: true,

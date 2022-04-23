@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { Routes, Route, Navigate } from 'react-router-dom';
 import TrainList from "./TrainList";
 
-const DeparturePage = () => {
+const DeparturePage = ({user}) => {
   //array containg a sample of stations for departure
   let departureStations = [
       {label: "Aberdeen",
@@ -81,6 +81,12 @@ const DeparturePage = () => {
       console.log(station)
   }, [station])
 
+
+  if(!user){
+    console.log('protected page, please login')
+    return <Navigate to="/" replace/>
+    
+  }
   return (
     <div>
       <select onChange={(e)=> {setStation(e.target.value)}}>

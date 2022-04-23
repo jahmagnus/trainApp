@@ -23,10 +23,21 @@ import {getUser} from "./Components/userData"
 
 const App = () => {
 
- 
+  const [user, setUser] = useState(null)
 
+  const userData = async() => {
+    const userObject = await getUser()
+    const data = userObject.data
+    setUser(data)
+    
+  }
+
+  useEffect(()=> {
+    userData()
+  }, [])
   
 
+  
   
 
   return (
@@ -36,9 +47,9 @@ const App = () => {
 
       {/* Private pages */}
 
-      <Route exact path="/departures" element={<DeparturePage />} />
-      <Route exact path="/home" element={<Home />} />
-      <Route exact path="/setuser" element={<SetUser />} />
+      <Route exact path="/departures" element={<DeparturePage user={user} />} />
+      <Route exact path="/home" element={<Home user={user}/>} />
+      <Route exact path="/setuser" element={<SetUser user={user}/>} />
 
       {/** Catch */}
       <Route path="*" element={"Page does not exist"} />

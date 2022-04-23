@@ -1,8 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 
-const Home = () => {
+const Home = ({user}) => {
     const iconStyles = {
         textAlign: "center",
         fontSize: "large",
@@ -73,7 +74,11 @@ const Home = () => {
             
         }
 
-      
+        if(!user){
+          console.log('protected page, please login')
+          return <Navigate to="/" replace/>
+          
+        }
 
         return(
         <div className="ui grid" style={appStyle}>
