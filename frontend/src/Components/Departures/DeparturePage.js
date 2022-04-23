@@ -72,21 +72,21 @@ const DeparturePage = ({user}) => {
       value: "YRK" }];
 
   //Using state to track what the selected station is
-  let [station, setStation] = useState("Select departure station");
+  let [station, setStation] = useState("");
 
   //this function will update the current state of station when selected from the dropdown
   //I believe it will be here that I will need to take the value of the dropdown and send it out to
   //the server and have it sent away to transport API
-  useEffect(()=> {
-      console.log(station)
+   useEffect(()=> {
+      
   }, [station])
-
 
   if(!user){
     console.log('protected page, please login')
     return <Navigate to="/" replace/>
     
   }
+  
   return (
     <div>
       <select onChange={(e)=> {setStation(e.target.value)}}>
