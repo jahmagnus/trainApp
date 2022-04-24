@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {useNavigate, Navigate} from 'react-router-dom'
+import { useNavigate, Navigate } from "react-router-dom";
 
+import GetUser from "../GetUser";
 
-
-
-
-const Login = (props) => {
+const Login = ({ handleUser }) => {
   const containerStyle = {
     marginTop: "1rem",
     backgroundColor: "",
@@ -61,8 +59,7 @@ const Login = (props) => {
   //set current state of username and password
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
-  let [isCapsMessage, setCapsMessage] = useState(false)
-  
+  let [isCapsMessage, setCapsMessage] = useState(false);
 
   //
   useEffect(() => {
@@ -91,90 +88,92 @@ const Login = (props) => {
     e.preventDefault();
   };
 
-//function to detect whether caps lock is on
+  //function to detect whether caps lock is on
   const capsDetection = (e) => {
-    
-
-
     //get the div by its ID
-    const inputBox = document.getElementById('warningAttach')
+    const inputBox = document.getElementById("warningAttach");
 
     //create a paragraph element
-    const warningDiv = document.createElement('div')
-    
-    //assign an ID to the element
-    warningDiv.setAttribute('id', 'warning')
+    const warningDiv = document.createElement("div");
 
-    warningDiv.innerHTML = "Caps lock on"
-    warningDiv.style.color = 'red'
-  
-    
-    if(e.getModifierState('CapsLock') === true && document.body.contains(document.getElementById('warning')) === false){
-      inputBox.append(warningDiv)
-      console.log(document.body.contains(warningDiv))
-      setCapsMessage(true)
-    } else if(e.getModifierState('CapsLock') === false && document.body.contains(document.getElementById('warning')) === true){
-      inputBox.removeChild(inputBox.firstChild)
-      setCapsMessage(false)
-      console.log(document.body.contains(warningDiv))
-    } 
-  }
+    //assign an ID to the element
+    warningDiv.setAttribute("id", "warning");
+
+    warningDiv.innerHTML = "Caps lock on";
+    warningDiv.style.color = "red";
+
+    if (
+      e.getModifierState("CapsLock") === true &&
+      document.body.contains(document.getElementById("warning")) === false
+    ) {
+      inputBox.append(warningDiv);
+      console.log(document.body.contains(warningDiv));
+      setCapsMessage(true);
+    } else if (
+      e.getModifierState("CapsLock") === false &&
+      document.body.contains(document.getElementById("warning")) === true
+    ) {
+      inputBox.removeChild(inputBox.firstChild);
+      setCapsMessage(false);
+      console.log(document.body.contains(warningDiv));
+    }
+  };
 
   //function to clear caps lock warning if onfocus event handler is fired on username field
   const clearWarnings = () => {
-    const inputBox = document.getElementById('warningAttach')
-    if(isCapsMessage){
-      inputBox.removeChild(inputBox.firstChild)
-      setCapsMessage(false)
+    const inputBox = document.getElementById("warningAttach");
+    if (isCapsMessage) {
+      inputBox.removeChild(inputBox.firstChild);
+      setCapsMessage(false);
     }
-  }
-
+  };
 
   const setUserError = () => {
-    const errorDiv = document.getElementById('user-warning')
-    const errorMessage = document.createElement('p')
-    errorMessage.innerHTML = 'Invalid username or password'
-    errorMessage.style.color = "red"
-    errorDiv.append(errorMessage)
+    const errorDiv = document.getElementById("user-warning");
+    const errorMessage = document.createElement("p");
+    errorMessage.innerHTML = "Invalid username or password";
+    errorMessage.style.color = "red";
+    errorDiv.append(errorMessage);
 
-    setTimeout(()=> {
-      errorDiv.removeChild(errorDiv.firstChild)
-    }, 5000)
-
-    
-  }
+    setTimeout(() => {
+      errorDiv.removeChild(errorDiv.firstChild);
+    }, 5000);
+  };
 
   //tools and settings for navigating once logged in
-  const navigate = useNavigate()
-  let from = '/home'
+  const navigate = useNavigate();
+  let from = "/home";
 
+  //handle clicks on login button
   const login = async () => {
-    
     axios({
       method: "POST",
       data: {
         username: username,
-        password: password
+        password: password,
       },
       withCredentials: true,
-      url: "http://localhost:3000/userlogin"
+      url: "http://localhost:3000/userlogin",
     }).then((res) => {
-      
-     
-      if(res.data.authenticated === true){
-        navigate(from, {replace: true})
-       } else {
-          setUserError()
-    ////////////////////////
-       }
-    })
-  }
 
+      if (!res.data) {
+        console.log(res.data);
+        setUserError();
+      } else {
+        console.log(res.data);
+        //send current user up to App.js for use in other component pages
+        handleUser(res.data)
+        localStorage.setItem('user', JSON.stringify(res.data))
+        navigate(from, { replace: true });
+      }
+    });
+  };
 
   return (
     <div className="ui grid container" style={containerStyle}>
       <div className="ui centered grid" style={gridStyle}>
         <form onSubmit={handleSubmit} className="ui form" style={formStyle}>
+          {/*<GetUser />*/}
           <i className="user huge icon" style={iconStyle} />
           <div className="field" id="usernameID" onFocus={clearWarnings}>
             <label style={labelStyle}>Username</label>
@@ -189,15 +188,12 @@ const Login = (props) => {
               style={inputStyle}
             />
           </div>
-          <div className="field" id = "passwordField" onKeyUp={capsDetection}>
+          <div className="field" id="passwordField" onKeyUp={capsDetection}>
             <label style={labelStyle}>Password</label>
             <input
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
-              
-              
-              
               id="password"
               type="password"
               name="pwd"
@@ -213,7 +209,12 @@ const Login = (props) => {
             </div>
           </div>
           <div className="field"></div>
-          <button style={buttonStyle} className="ui button" type="submit" onClick={login}>
+          <button
+            style={buttonStyle}
+            className="ui button"
+            type="submit"
+            onClick={login}
+          >
             Login
           </button>
 

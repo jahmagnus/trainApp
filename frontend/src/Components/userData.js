@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 
@@ -12,7 +11,7 @@ export const getUser = async() => {
             url: 'http://localhost:3000/getUser'
         }
         )
-
+        console.log('user data function file', JSON.stringify(userObject.data))
         return userObject     
 
 

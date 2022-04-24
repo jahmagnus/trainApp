@@ -75,7 +75,8 @@ const Home = ({user}) => {
         }
 
         if(!user){
-          console.log('protected page, please login')
+          console.log('protected page, please login', user)
+          
           return <Navigate to="/" replace/>
           
         }

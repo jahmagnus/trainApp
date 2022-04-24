@@ -81,11 +81,13 @@ const DeparturePage = ({user}) => {
       
   }, [station])
 
-  if(!user){
-    console.log('protected page, please login')
+  if(user == null){
+    console.log('protected page, please login', user)
     return <Navigate to="/" replace/>
     
   }
+
+  console.log(user)
   
   return (
     <div>

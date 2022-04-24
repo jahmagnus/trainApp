@@ -52,6 +52,7 @@ await mongoose.connect(uri);
   
 
 app.get('/getUser', (req, res) => {
+  console.log('/getuser endpoint')
   res.send(req.user)
 })
 
@@ -61,12 +62,15 @@ app.post("/userlogin", async (req, res, next) => {
    passport.authenticate("local", (err, user, info) => {
       if(err)throw err
       if(!user){
-        res.send({authenticated: false})
+        console.log('app.post endpoint index.js', req.user)
+        //res.send({authenticated: false})
+        res.send(user)
       }
       else {
         req.logIn(user, err => {
-          res.send({authenticated: true})
-          console.log(req.user)
+         // res.send({authenticated: true})
+          console.log('user login endpoint, index.js', req.user)
+          res.send(user)
         })
       }
     })(req, res, next)
