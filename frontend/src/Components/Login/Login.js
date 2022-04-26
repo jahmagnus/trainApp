@@ -75,7 +75,7 @@ const Login = ({ handleUser }) => {
 
   useEffect(() => {
     const passwordInput = document.getElementById("password");
-    if (password.length > 0 && password.length < 8) {
+    if (password.length > 0 && password.length < 7) {
       passwordInput.style.borderBottomColor = "red";
     } else if (password.length === 0) {
       passwordInput.style.borderBottomColor = "black";
