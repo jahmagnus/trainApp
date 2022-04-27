@@ -60,6 +60,8 @@ const Home = ({ user }) => {
   const rowStyleUsername = {
     height: "5rem",
     paddingTop: "1.5rem",
+    fontSize: "",
+    
   };
 
   //homepage user details div styles
@@ -68,6 +70,7 @@ const Home = ({ user }) => {
     border: ".08rem solid black",
     paddingLeft: "0.5rem",
     backgroundColor: "#c5c6c7",
+    paddingTop: "7rem"
   };
 
   const gridStyle = {

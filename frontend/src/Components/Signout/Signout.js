@@ -3,9 +3,14 @@ import React from 'react'
 
 const Signout = () => {
 
+    const linkStyle = {
+        fontSize : "2rem",
+       
+    }
+
 
     return(
-        <a href='/'>Signout</a>
+        <a style={linkStyle} href='/'>Signout</a>
     )
 }
 
