@@ -2,17 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router-dom";
 
+import Signout from '../Signout/Signout'
+
 const Home = ({ user }) => {
   const [name, setName] = useState("");
   const [payNum, setPayNum] = useState("");
+  const [surname, setSurname] = useState("")
 
   useEffect(() => {
     const userStorage = localStorage.getItem("user");
     const parseUser = JSON.parse(userStorage);
 
-    setName(parseUser.firstName);
+    setName(parseUser.firstName)
     setPayNum(parseUser.payNumber)
-    console.log(parseUser);
+    setSurname(parseUser.surname)
+   // console.log(parseUser);
   }, []);
 
   const iconStyles = {
@@ -158,8 +162,12 @@ const Home = ({ user }) => {
             </div>
 
             <div className="row" style={rowStyleUserDetails}>
-              PAY NUMBER: {payNum} <br />
-              <a href="#"> Sign out</a>
+              PAY NUMBER: <br/>{payNum} <br />
+
+              <div className="row" style={rowStyleUsername}>
+              NAME:<br/> {name} {surname}  
+            </div>
+              <Signout/>
             </div>
           </div>
         </div>
