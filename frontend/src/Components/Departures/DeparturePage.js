@@ -81,7 +81,10 @@ const DeparturePage = ({user}) => {
       
   }, [station])
 
-  if(user == null){
+  const storageData = localStorage.getItem("user")
+  const parseUser = JSON.parse(storageData)
+  console.log(parseUser)
+  if(parseUser == null){
     console.log('protected page, please login', user)
     return <Navigate to="/" replace/>
     
