@@ -5,6 +5,8 @@ const Signout = () => {
 
     const linkStyle = {
         fontSize : "2rem",
+        color: "black",
+        textDecoration: "underline"
        
     }
 

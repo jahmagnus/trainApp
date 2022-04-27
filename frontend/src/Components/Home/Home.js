@@ -22,7 +22,7 @@ const Home = ({ user }) => {
   const iconStyles = {
     textAlign: "center",
     fontSize: "large",
-    backgroundColor: "#45a29e",
+    backgroundColor: "#5df542",
     border: "0.1rem solid #0b0c10",
     borderBottom: "none",
   };
@@ -53,7 +53,7 @@ const Home = ({ user }) => {
   const columnOneStyle = {
     borderRight: ".08rem solid black",
     height: "66rem",
-    backgroundColor: "#66fcf1",
+    backgroundColor: "black",
   };
 
   //styling for column 2 row 1
