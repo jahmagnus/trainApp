@@ -80,9 +80,11 @@ app.post("/userlogin", async (req, res, next) => {
 app.post("/createUser", async (req, res) => {
   try {
 
-    //consider removal of this connection code as connection already established
+    //consider removal of this connection code as connection already established above
     await mongoose.connect(uri);
     console.log("mongoose connected set user");
+
+
     User.findOne({ username: req.body.username }, async (err, document) => {
       if (err) throw err;
       if (document) res.send("user already exists");
