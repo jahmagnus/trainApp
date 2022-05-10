@@ -97,10 +97,10 @@ const DeparturePage = ({user}) => {
 
  //function to send stations to server for API requirement
   const submitStations = () => {
-    // const stationObject = {
-    //   originStation: origin, 
-    //   destinationStation: destination
-    // }
+    const stationObject = {
+      originStation: origin, 
+      destinationStation: destination
+    }
 
     console.log('clicked')
   }
