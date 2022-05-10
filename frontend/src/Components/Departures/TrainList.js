@@ -4,12 +4,14 @@ import Loader from "./Loader"
 
 import axios from "axios";
 
-const TrainList = () => {
+const TrainList = ({departures}) => {
   let renderedList = [];
   
-  let trains = axios.get("/trains").then((response) => {
-    console.log(response.data.departures)
-  });
+  let trains = departures
+
+  // let trains = axios.get("/trains").then((response) => {
+  //   console.log(response.data.departures)
+  // });
   
   if (!trains.all) {
     return(<Loader/>)

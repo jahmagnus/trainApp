@@ -161,7 +161,6 @@ const Login = ({ handleUser }) => {
         console.log(res.data);
         setUserError();
       } else {
-        console.log(res.data);
         //send current user up to App.js for use in other component pages
         handleUser(res.data)
         localStorage.setItem('user', JSON.stringify(res.data))

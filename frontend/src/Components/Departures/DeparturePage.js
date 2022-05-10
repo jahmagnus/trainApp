@@ -11,7 +11,7 @@ const DeparturePage = ({user}) => {
       {label: "Aberdeen",
       value: "ABD",},
       {label: "Alnmouth",
-      value: "ALN" },
+      value: "ALM" },
       { label: "Arbroath",
       value: "ARB" },
       { label: "Berwick Upon Tweed",
@@ -76,10 +76,9 @@ const DeparturePage = ({user}) => {
   //Using state to track what the selected station is
   let [destination, setDestination] = useState("");
   let [origin, setOrigin] = useState("")
+  let [departureList, setDepartureList] = useState([])
 
   //this function will update the current state of station when selected from the dropdown
-  //I believe it will be here that I will need to take the value of the dropdown and send it out to
-  //the server and have it sent away to transport API
    useEffect(()=> {
       console.log(origin, destination)
   }, [origin, destination])
@@ -88,7 +87,6 @@ const DeparturePage = ({user}) => {
 
   const storageData = localStorage.getItem("user")
   const parseUser = JSON.parse(storageData)
-  console.log(parseUser)
   if(parseUser == null){
     console.log('protected page, please login', user)
     return <Navigate to="/" replace/>
@@ -102,7 +100,15 @@ const DeparturePage = ({user}) => {
       destinationStation: destination
     }
 
-    console.log('clicked')
+    //within this function we can make a POST request to the endpoint at the server 
+    //which will include the origin and destination station which can then 
+    //be added to the URI string and data then fetched from the API provider
+    axios.post('/trains', stationObject).then((res) => {
+      setDepartureList(res.data.departures)
+    })
+    
+    
+  
   }
   
   return (
@@ -128,7 +134,7 @@ const DeparturePage = ({user}) => {
 
       
 
-      <TrainList />
+      <TrainList departures={departureList}/>
     </div>
   );
 };
