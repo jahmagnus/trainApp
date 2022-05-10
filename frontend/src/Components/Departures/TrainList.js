@@ -1,6 +1,7 @@
 import React from "react";
 import TrainItem from "./TrainItem";
 import Loader from "./Loader"
+import WarningPage from '../WarningPage'
 
 import axios from "axios";
 
