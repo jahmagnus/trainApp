@@ -72,14 +72,17 @@ const DeparturePage = ({user}) => {
       value: "YRK" }];
 
   //Using state to track what the selected station is
-  let [station, setStation] = useState("");
+  let [destination, setDestination] = useState("");
+  let [origin, setOrigin] = useState("")
 
   //this function will update the current state of station when selected from the dropdown
   //I believe it will be here that I will need to take the value of the dropdown and send it out to
   //the server and have it sent away to transport API
    useEffect(()=> {
-      
-  }, [station])
+      console.log(origin, destination)
+  }, [origin, destination])
+
+
 
   const storageData = localStorage.getItem("user")
   const parseUser = JSON.parse(storageData)
@@ -90,17 +93,28 @@ const DeparturePage = ({user}) => {
     
   }
 
-  console.log(user)
+ 
   
   return (
     <div>
-      <select onChange={(e)=> {setStation(e.target.value)}}>
-        <option value="select station">Select departure station</option>
+
+<select onChange={(e)=> {setOrigin(e.target.value)}}>
+        <option value="select station">Select origin</option>
         {/*map through the stations array to populate the dropdown*/}
         {departureStations.map((station) => (
           <option value={station.value}>{station.label}</option>
         ))}
       </select>
+
+      <select onChange={(e)=> {setDestination(e.target.value)}}>
+        <option value="select station">Select destination</option>
+        {/*map through the stations array to populate the dropdown*/}
+        {departureStations.map((station) => (
+          <option value={station.value}>{station.label}</option>
+        ))}
+      </select>
+
+      
 
       <TrainList />
     </div>

@@ -127,12 +127,12 @@ app.use(
 
 app.get("/trains", async (request, response) => {
   const apiKey = process.env.API_KEY;
-  const appID = "b74798d6";
-  const stationCRS = "WHP"; //west hampstead thameslink
-  const calling_at = "STP"; //St Pancras
-  const baseURL = "https://transportapi.com/v3/uk/train/station/WHP/live.json?";
+  const appID = "b74798d6"; //this may need to be changed on deployment
+  const origin = 'abd'
+  const destination = 'dee'
+  //const baseURL = "https://transportapi.com/v3/uk/train/station/WHP/live.json?";
 
-  const api_url = `https://transportapi.com/v3/uk/train/station/${stationCRS}/live.json?app_id=${appID}&app_key=${apiKey}&darwin=false&calling_at=${calling_at}&train_status=passenger`;
+  const api_url = `https://transportapi.com/v3/uk/train/station/${origin}/live.json?app_id=${appID}&app_key=${apiKey}&darwin=false&calling_at=${destination}&train_status=passenger`;
   const fetch_response = await fetch(api_url);
   const trainData = await fetch_response.json();
   response.send(trainData);
