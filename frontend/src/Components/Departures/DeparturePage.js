@@ -3,8 +3,10 @@ import axios from "axios";
 import { Routes, Route, Navigate } from 'react-router-dom';
 import TrainList from "./TrainList";
 
+
 const DeparturePage = ({user}) => {
-  //array containg a sample of stations for departure
+  //array containg a sample of stations for destinations and origins
+  //this could go in it's own component, but leaving here for now.
   let departureStations = [
       {label: "Aberdeen",
       value: "ABD",},
@@ -93,7 +95,15 @@ const DeparturePage = ({user}) => {
     
   }
 
- 
+ //function to send stations to server for API requirement
+  const submitStations = () => {
+    // const stationObject = {
+    //   originStation: origin, 
+    //   destinationStation: destination
+    // }
+
+    console.log('clicked')
+  }
   
   return (
     <div>
@@ -113,6 +123,8 @@ const DeparturePage = ({user}) => {
           <option value={station.value}>{station.label}</option>
         ))}
       </select>
+
+      <button className = "ui positive button" onClick={submitStations}>Find Services</button>
 
       
 
