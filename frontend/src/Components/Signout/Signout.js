@@ -10,9 +10,15 @@ const Signout = () => {
        
     }
 
+const clearStorage = () => {
+    localStorage.clear()
+    const currentUser = localStorage.getItem("user")
+    console.log(currentUser)
+}
+
 
     return(
-        <a style={linkStyle} href='/'>Signout</a>
+        <a style={linkStyle} href='/' onClick={clearStorage}>Signout</a>
     )
 }
 
