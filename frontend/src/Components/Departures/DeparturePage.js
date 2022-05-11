@@ -1,140 +1,118 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from "react-router-dom";
 import TrainList from "./TrainList";
 
-
-const DeparturePage = ({user}) => {
+const DeparturePage = ({ user }) => {
   //array containg a sample of stations for destinations and origins
   //this could go in it's own component, but leaving here for now.
   let departureStations = [
-      {label: "Aberdeen",
-      value: "ABD",},
-      {label: "Alnmouth",
-      value: "ALM" },
-      { label: "Arbroath",
-      value: "ARB" },
-      { label: "Berwick Upon Tweed",
-      value: "BWK" },
-      { label: "Darlington",
-      value: "DAR" },
-      { label: "Doncaster",
-      value: "DON" },
-      { label: "Dunbar",
-      value: "DUN" },
-      { label: "Dunee",
-      value: "DEE" },
-      { label: "Edinburgh",
-      value: "edb" },
-      { label: "Falkirk Grahamston",
-      value: "FKG" },
-      { label: "Glasgow Central",
-      value: "GLC" },
-      { label: "Grantham",
-      value: "GRA" },
-      { label: "Haymarket",
-      value: "HYM" },
-      { label: "Inverkeithing",
-      value: "INK" },
-      { label: "Inverness",
-      value: "INV" },
-      { label: "London Kings Cross",
-      value: "KGX" },
-      { label: "Kirkcaldy",
-      value: "KDY" },
-      { label: "Leeds",
-      value: "LDS" },
-      { label: "Leuchars",
-      value: "LEU" },
-      { label: "Montrose",
-      value: "MTS" },
-      { label: "Morpeth",
-      value: "MPT" },
-      { label: "Motherwell",
-      value: "MTH" },
-      { label: "Newark North Gate",
-      value: "NNG" },
-      { label: "Newcastle",
-      value: "NCL" },
-      { label: "Perth",
-      value: "PTH" },
-      { label: "Peterborough",
-      value: "PBO" },
-      { label: "Retford",
-      value: "RET" },
-      { label: "Stevenage",
-      value: "SVG" },
-      { label: "Stirling",
-      value: "STG" },
-      { label: "Stonehaven",
-      value: "STN" },
-      { label: "Wakefield Westgate",
-      value: "WKF" },
-      { label: "York",
-      value: "YRK" }];
+    { label: "Aberdeen", value: "ABD" },
+    { label: "Alnmouth", value: "ALM" },
+    { label: "Arbroath", value: "ARB" },
+    { label: "Berwick Upon Tweed", value: "BWK" },
+    { label: "Darlington", value: "DAR" },
+    { label: "Doncaster", value: "DON" },
+    { label: "Dunbar", value: "DUN" },
+    { label: "Dunee", value: "DEE" },
+    { label: "Edinburgh", value: "edb" },
+    { label: "Falkirk Grahamston", value: "FKG" },
+    { label: "Glasgow Central", value: "GLC" },
+    { label: "Grantham", value: "GRA" },
+    { label: "Haymarket", value: "HYM" },
+    { label: "Inverkeithing", value: "INK" },
+    { label: "Inverness", value: "INV" },
+    { label: "London Kings Cross", value: "KGX" },
+    { label: "Kirkcaldy", value: "KDY" },
+    { label: "Leeds", value: "LDS" },
+    { label: "Leuchars", value: "LEU" },
+    { label: "Montrose", value: "MTS" },
+    { label: "Morpeth", value: "MPT" },
+    { label: "Motherwell", value: "MTH" },
+    { label: "Newark North Gate", value: "NNG" },
+    { label: "Newcastle", value: "NCL" },
+    { label: "Perth", value: "PTH" },
+    { label: "Peterborough", value: "PBO" },
+    { label: "Retford", value: "RET" },
+    { label: "Stevenage", value: "SVG" },
+    { label: "Stirling", value: "STG" },
+    { label: "Stonehaven", value: "STN" },
+    { label: "Wakefield Westgate", value: "WKF" },
+    { label: "York", value: "YRK" },
+  ];
 
   //Using state to track what the selected station is
   let [destination, setDestination] = useState("");
-  let [origin, setOrigin] = useState("")
-  let [departureList, setDepartureList] = useState([])
+  let [origin, setOrigin] = useState("");
+  let [departureList, setDepartureList] = useState([]);
 
   //this function will update the current state of station when selected from the dropdown
-   useEffect(()=> {
-      console.log(origin, destination)
-  }, [origin, destination])
+  useEffect(() => {
+    console.log(origin, destination);
+  }, [origin, destination]);
 
-
-
-  const storageData = localStorage.getItem("user")
-  const parseUser = JSON.parse(storageData)
-  if(parseUser == null){
-    console.log('protected page, please login', user)
-    return <Navigate to="/" replace/>
-    
+  const storageData = localStorage.getItem("user");
+  const parseUser = JSON.parse(storageData);
+  if (parseUser == null) {
+    console.log("protected page, please login", user);
+    return <Navigate to="/" replace />;
   }
 
- //function to send stations to server for API requirement
+  //function to send stations to server for API requirement
   const submitStations = () => {
     const stationObject = {
-      originStation: origin, 
-      destinationStation: destination
-    }
+      originStation: origin,
+      destinationStation: destination,
+    };
 
-    //within this function we can make a POST request to the endpoint at the server 
-    //which will include the origin and destination station which can then 
+    //within this function we can make a POST request to the endpoint at the server
+    //which will include the origin and destination station which can then
     //be added to the URI string and data then fetched from the API provider
-    axios.post('/trains', stationObject).then((res) => {
-      setDepartureList(res.data.departures)
-    })
-    
-    
-  
+    axios.post("/trains", stationObject).then((res) => {
+      setDepartureList(res.data.departures);
+    });
+  };
+
+  const gridStyle = {
+    backgroundColor: 'black'
   }
-  
+
   return (
-    <div>
+    <div className="ui centered grid" style={gridStyle}>
+      <div className="row">
+        <select
+          onChange={(e) => {
+            setOrigin(e.target.value);
+          }}
+        >
+          <option value="select station">Select origin</option>
+          {/*map through the stations array to populate the dropdown*/}
+          {departureStations.map((station) => (
+            <option value={station.value}>{station.label}</option>
+          ))}
+        </select>
+      </div>
 
-<select onChange={(e)=> {setOrigin(e.target.value)}}>
-        <option value="select station">Select origin</option>
-        {/*map through the stations array to populate the dropdown*/}
-        {departureStations.map((station) => (
-          <option value={station.value}>{station.label}</option>
-        ))}
-      </select>
+      <div className="row">
+        <select
+          onChange={(e) => {
+            setDestination(e.target.value);
+          }}
+        >
+          <option value="select station">Select destination</option>
+          {/*map through the stations array to populate the dropdown*/}
+          {departureStations.map((station) => (
+            <option value={station.value}>{station.label}</option>
+          ))}
+        </select>
+      </div>
 
-      <select onChange={(e)=> {setDestination(e.target.value)}}>
-        <option value="select station">Select destination</option>
-        {/*map through the stations array to populate the dropdown*/}
-        {departureStations.map((station) => (
-          <option value={station.value}>{station.label}</option>
-        ))}
-      </select>
-
-      <button className = "ui positive button" onClick={submitStations}>Find Services</button>
-
-      
-
-      <TrainList departures={departureList}/>
+      <div className="row">
+      <button className="ui positive button" onClick={submitStations}>
+        Find Services
+      </button>
+            </div>
+      <TrainList departures={departureList} />
     </div>
   );
 };
