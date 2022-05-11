@@ -3,11 +3,13 @@ import React from "react";
 const Loader = () => {
 
     const styles = {
-        marginTop: '50vh',
+        marginTop: '10vh',
+        paddingBottom: "20rem",
+        color: 'green'
         
     }
   return (
-    <div className="ui active centered inline loader" style={styles}></div>
+    <i className="train huge icon" style={styles}></i> 
   );
 };
 

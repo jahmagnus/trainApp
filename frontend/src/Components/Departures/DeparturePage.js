@@ -46,10 +46,11 @@ const DeparturePage = ({ user }) => {
   let [destination, setDestination] = useState("");
   let [origin, setOrigin] = useState("");
   let [departureList, setDepartureList] = useState([]);
+  let [hasData, setHasData] = useState(false)
 
   //this function will update the current state of station when selected from the dropdown
   useEffect(() => {
-    console.log(origin, destination);
+
   }, [origin, destination]);
 
   const storageData = localStorage.getItem("user");
@@ -70,6 +71,8 @@ const DeparturePage = ({ user }) => {
         stationObject.originStation !== "" &&
         stationObject.destinationStation !== ""
       ) {
+
+        
         //within this function we can make a POST request to the endpoint at the server
         //which will include the origin and destination station which can then
         //be added to the URI string and data then fetched from the API provider
@@ -80,7 +83,7 @@ const DeparturePage = ({ user }) => {
         console.log("--No origin or destination data");
       }
     } catch (error) {
-      console.log(error, "--No origin or destination data");
+      console.log(error);
     }
   };
 
@@ -147,7 +150,13 @@ const DeparturePage = ({ user }) => {
           Find Services
         </button>
       </div>
-      <TrainList departures={departureList} />
+
+      <div id="cards">
+
+       
+        <TrainList departures={departureList}/>
+      
+      </div>
     </div>
   );
 };
