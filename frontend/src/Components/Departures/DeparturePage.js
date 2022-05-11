@@ -15,7 +15,7 @@ const DeparturePage = ({ user }) => {
     { label: "Doncaster", value: "DON" },
     { label: "Dunbar", value: "DUN" },
     { label: "Dunee", value: "DEE" },
-    { label: "Edinburgh", value: "edb" },
+    { label: "Edinburgh", value: "EDB" },
     { label: "Falkirk Grahamston", value: "FKG" },
     { label: "Glasgow Central", value: "GLC" },
     { label: "Grantham", value: "GRA" },
@@ -74,16 +74,24 @@ const DeparturePage = ({ user }) => {
   };
 
   const gridStyle = {
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    paddingTop: '4rem'
+  }
+
+  const dropdownStyle = {
+    width: "20rem",
+    height: "3rem",
+    border: '5px'
   }
 
   return (
     <div className="ui centered grid" style={gridStyle}>
+      <form className="ui form">
       <div className="row">
         <select
           onChange={(e) => {
             setOrigin(e.target.value);
-          }}
+          }} style={dropdownStyle}
         >
           <option value="select station">Select origin</option>
           {/*map through the stations array to populate the dropdown*/}
@@ -97,7 +105,7 @@ const DeparturePage = ({ user }) => {
         <select
           onChange={(e) => {
             setDestination(e.target.value);
-          }}
+          }} style ={dropdownStyle}
         >
           <option value="select station">Select destination</option>
           {/*map through the stations array to populate the dropdown*/}
@@ -106,6 +114,7 @@ const DeparturePage = ({ user }) => {
           ))}
         </select>
       </div>
+      </form>
 
       <div className="row">
       <button className="ui positive button" onClick={submitStations}>
