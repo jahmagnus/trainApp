@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route, Navigate } from "react-router-dom";
 import TrainList from "./TrainList";
+import WarningPage from "../WarningPage";
 
 const DeparturePage = ({ user }) => {
   //array containg a sample of stations for destinations and origins
@@ -58,69 +59,94 @@ const DeparturePage = ({ user }) => {
     return <Navigate to="/" replace />;
   }
 
-  //function to send stations to server for API requirement
+  //function posts stations to server for API consumption
   const submitStations = () => {
     const stationObject = {
       originStation: origin,
       destinationStation: destination,
     };
-
-    //within this function we can make a POST request to the endpoint at the server
-    //which will include the origin and destination station which can then
-    //be added to the URI string and data then fetched from the API provider
-    axios.post("/trains", stationObject).then((res) => {
-      setDepartureList(res.data.departures);
-    });
+    try {
+      if (
+        stationObject.originStation !== "" &&
+        stationObject.destinationStation !== ""
+      ) {
+        //within this function we can make a POST request to the endpoint at the server
+        //which will include the origin and destination station which can then
+        //be added to the URI string and data then fetched from the API provider
+        axios.post("/trains", stationObject).then((res) => {
+          setDepartureList(res.data.departures);
+        });
+      } else {
+        console.log("--No origin or destination data");
+      }
+    } catch (error) {
+      console.log(error, "--No origin or destination data");
+    }
   };
 
   const gridStyle = {
-    backgroundColor: 'black',
-    paddingTop: '4rem'
-  }
+    backgroundColor: "black",
+    paddingTop: "4rem",
+  };
 
   const dropdownStyle = {
     width: "20rem",
     height: "3rem",
-    border: '5px'
-  }
+    border: "5px",
+  };
+
+  const rowStyle = {
+    marginTop: "1rem",
+  };
+
+  const buttonStyle = {
+    width: "11rem",
+    height: "4rem",
+  };
 
   return (
     <div className="ui centered grid" style={gridStyle}>
       <form className="ui form">
-      <div className="row">
-        <select
-          onChange={(e) => {
-            setOrigin(e.target.value);
-          }} style={dropdownStyle}
-        >
-          <option value="select station">Select origin</option>
-          {/*map through the stations array to populate the dropdown*/}
-          {departureStations.map((station) => (
-            <option value={station.value}>{station.label}</option>
-          ))}
-        </select>
-      </div>
+        <div className="row" style={rowStyle}>
+          <select
+            onChange={(e) => {
+              setOrigin(e.target.value);
+            }}
+            style={dropdownStyle}
+          >
+            <option value="">Select origin</option>
+            {/*map through the stations array to populate the dropdown*/}
+            {departureStations.map((station) => (
+              <option value={station.value}>{station.label}</option>
+            ))}
+          </select>
+        </div>
 
-      <div className="row">
-        <select
-          onChange={(e) => {
-            setDestination(e.target.value);
-          }} style ={dropdownStyle}
-        >
-          <option value="select station">Select destination</option>
-          {/*map through the stations array to populate the dropdown*/}
-          {departureStations.map((station) => (
-            <option value={station.value}>{station.label}</option>
-          ))}
-        </select>
-      </div>
+        <div className="row" style={rowStyle}>
+          <select
+            onChange={(e) => {
+              setDestination(e.target.value);
+            }}
+            style={dropdownStyle}
+          >
+            <option value="">Select destination</option>
+            {/*map through the stations array to populate the dropdown*/}
+            {departureStations.map((station) => (
+              <option value={station.value}>{station.label}</option>
+            ))}
+          </select>
+        </div>
       </form>
 
       <div className="row">
-      <button className="ui positive button" onClick={submitStations}>
-        Find Services
-      </button>
-            </div>
+        <button
+          className="ui positive button"
+          onClick={submitStations}
+          style={buttonStyle}
+        >
+          Find Services
+        </button>
+      </div>
       <TrainList departures={departureList} />
     </div>
   );
