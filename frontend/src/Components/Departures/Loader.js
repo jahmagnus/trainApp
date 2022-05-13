@@ -5,7 +5,7 @@ const Loader = () => {
     const styles = {
         marginTop: '10vh',
         paddingBottom: "20rem",
-        color: 'green'
+        color: '#21ba45'
         
     }
   return (

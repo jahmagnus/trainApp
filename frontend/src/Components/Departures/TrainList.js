@@ -11,7 +11,6 @@ const TrainList = ({departures, data}) => {
   let trains = departures
     
   if (!trains.all) {
-    console.log(trains)
     return <Loader/>
    
   }
@@ -20,7 +19,6 @@ const TrainList = ({departures, data}) => {
    
   }
   else {
-    console.log('else', trains)
     renderedList = trains.all.map((train) => {
       return <TrainItem train={train} />;
     });

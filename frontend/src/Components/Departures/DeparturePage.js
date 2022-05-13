@@ -66,6 +66,14 @@ const DeparturePage = ({ user }) => {
       originStation: origin,
       destinationStation: destination,
     };
+
+    if(stationObject.originStation !== "" && stationObject.destinationStation === ""){
+      stationObject.destinationStation = stationObject.originStation
+      setDestination(stationObject.originStation)
+
+      console.log('if', stationObject)
+    }
+
     try {
       if (
         stationObject.originStation !== "" &&
@@ -106,6 +114,10 @@ const DeparturePage = ({ user }) => {
     width: "11rem",
     height: "4rem",
   };
+
+  const spanStyle = {
+    fontStyle: 'italic'
+  }
 
   return (
     <div className="ui centered grid" style={gridStyle}>
