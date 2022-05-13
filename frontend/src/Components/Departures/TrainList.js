@@ -3,7 +3,7 @@ import TrainItem from "./TrainItem";
 import Loader from "./Loader"
 import WarningPage from '../WarningPage'
 
-import axios from "axios";
+
 
 const TrainList = ({departures, data}) => {
   let renderedList = [];
