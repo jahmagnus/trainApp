@@ -22,7 +22,7 @@ const Login = ({ handleUser }) => {
     borderRadius: "10px",
     height: "80vh",
     width: "20rem",
-    paddingTop: "8rem",
+    paddingTop: "6rem",
     backgroundColor: "black",
   };
 

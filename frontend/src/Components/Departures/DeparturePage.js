@@ -96,8 +96,9 @@ const DeparturePage = ({ user }) => {
   };
 
   const gridStyle = {
-    backgroundColor: "black",
     paddingTop: "4rem",
+    height: 'auto',
+    backgroundColor: '#2b2a26'
   };
 
   const dropdownStyle = {
@@ -119,9 +120,27 @@ const DeparturePage = ({ user }) => {
     fontStyle: 'italic'
   }
 
+  const headerStyle = {
+    color: 'white',
+    paddingTop: "1rem"
+  }
+
+  const formStyle = {
+    border: '1px black',
+    borderRadius: '.25rem',
+    backgroundColor: '#2b2a26'
+  }
+
+  const cardConStyle ={
+    backgroundColor: "#2b2a26"
+  }
+
   return (
     <div className="ui centered grid" style={gridStyle}>
-      <form className="ui form">
+      
+      <form className="ui form" style={formStyle}>
+
+      <h1 class="ui header" style ={headerStyle}>Departure Board</h1>
         <div className="row" style={rowStyle}>
           <select
             onChange={(e) => {
@@ -163,7 +182,7 @@ const DeparturePage = ({ user }) => {
         </button>
       </div>
 
-      <div id="cards">
+      <div id="cards" style={cardConStyle}>
 
        
         <TrainList departures={departureList}/>
