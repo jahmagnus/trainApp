@@ -97,7 +97,7 @@ const DeparturePage = ({ user }) => {
 
   const gridStyle = {
     paddingTop: "4rem",
-    height: 'auto',
+    minHeight: '100vh',
     backgroundColor: '#2b2a26'
   };
 
