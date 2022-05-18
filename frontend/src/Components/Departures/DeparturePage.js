@@ -116,9 +116,6 @@ const DeparturePage = ({ user }) => {
     height: "4rem",
   };
 
-  const spanStyle = {
-    fontStyle: 'italic'
-  }
 
   const headerStyle = {
     color: 'white',
