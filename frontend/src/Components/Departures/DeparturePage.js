@@ -4,6 +4,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import TrainList from "./TrainList";
 import WarningPage from "../WarningPage";
 
+
+
 const DeparturePage = ({ user }) => {
   //array containg a sample of stations for destinations and origins
   //this could go in it's own component, but leaving here for now.
@@ -15,7 +17,7 @@ const DeparturePage = ({ user }) => {
     { label: "Darlington", value: "DAR" },
     { label: "Doncaster", value: "DON" },
     { label: "Dunbar", value: "DUN" },
-    { label: "Dunee", value: "DEE" },
+    { label: "Dundee", value: "DEE" },
     { label: "Edinburgh", value: "EDB" },
     { label: "Falkirk Grahamston", value: "FKG" },
     { label: "Glasgow Central", value: "GLC" },
@@ -46,11 +48,15 @@ const DeparturePage = ({ user }) => {
   let [destination, setDestination] = useState("");
   let [origin, setOrigin] = useState("");
   let [departureList, setDepartureList] = useState([]);
-  let [hasData, setHasData] = useState(false)
 
-  //this function will update the current state of station when selected from the dropdown
+  //this function will display the current state of origin and destination whenever their state changes
   useEffect(() => {
-
+    console.log(
+      "current origin = ",
+      origin,
+      " current destination = ",
+      destination
+    );
   }, [origin, destination]);
 
   const storageData = localStorage.getItem("user");
@@ -62,16 +68,19 @@ const DeparturePage = ({ user }) => {
 
   //function posts stations to server for API consumption
   const submitStations = () => {
+    setDepartureList([])
+    
     const stationObject = {
       originStation: origin,
       destinationStation: destination,
     };
 
-    if(stationObject.originStation !== "" && stationObject.destinationStation === ""){
-      stationObject.destinationStation = stationObject.originStation
-      setDestination(stationObject.originStation)
-
-      console.log('if', stationObject)
+    if (
+      stationObject.originStation !== "" &&
+      stationObject.destinationStation === ""
+    ) {
+      stationObject.destinationStation = stationObject.originStation;
+      setDestination(stationObject.originStation);
     }
 
     try {
@@ -79,8 +88,6 @@ const DeparturePage = ({ user }) => {
         stationObject.originStation !== "" &&
         stationObject.destinationStation !== ""
       ) {
-
-        
         //within this function we can make a POST request to the endpoint at the server
         //which will include the origin and destination station which can then
         //be added to the URI string and data then fetched from the API provider
@@ -89,16 +96,33 @@ const DeparturePage = ({ user }) => {
         });
       } else {
         console.log("--No origin or destination data");
+        console.log("origin", origin, "des", destination);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
+  //on clicking clear stations button, input values in form will be cleared and departure cards will
+  //be removed
+  const clearStations = () => {
+    //these values represent the values in the dropdown menu
+    const originValue = document.querySelector(".origin-dropdown");
+    const destinationValue = document.querySelector(".destination-dropdown");
+    
+    //set the values in the dropdown to empty strings for user to make a new search
+    originValue.value = "";
+    destinationValue.value = "";
+
+    setOrigin("")
+    setDestination("")
+    setDepartureList([]);
+  };
+
   const gridStyle = {
     paddingTop: "4rem",
-    minHeight: '100vh',
-    backgroundColor: '#2b2a26'
+    minHeight: "100vh",
+    backgroundColor: "#2b2a26",
   };
 
   const dropdownStyle = {
@@ -116,36 +140,39 @@ const DeparturePage = ({ user }) => {
     height: "4rem",
   };
 
-
   const headerStyle = {
-    color: 'white',
-    paddingTop: "1rem"
-  }
+    color: "white",
+    paddingTop: "1rem",
+  };
 
   const formStyle = {
-    border: '1px black',
-    borderRadius: '.25rem',
-    backgroundColor: '#2b2a26'
-  }
+    border: "1px black",
+    borderRadius: ".25rem",
+    backgroundColor: "#2b2a26",
+    
+    
+  };
 
-  const cardConStyle ={
-    backgroundColor: "#2b2a26"
-  }
+  const cardConStyle = {
+    backgroundColor: "#2b2a26",
+  };
 
   return (
     <div className="ui centered grid" style={gridStyle}>
-      
       <form className="ui form" style={formStyle}>
-
-      <h1 className="ui header" style ={headerStyle}>Departure Board</h1>
+        <h1 className="ui header" style={headerStyle}>
+          Departure Board
+        </h1>
         <div className="row" style={rowStyle}>
-          <select
+          <select className="origin-dropdown"
             onChange={(e) => {
               setOrigin(e.target.value);
             }}
             style={dropdownStyle}
           >
-            <option value="">Select origin</option>
+            <option value="">
+              Select origin
+            </option>
             {/*map through the stations array to populate the dropdown*/}
             {departureStations.map((station) => (
               <option value={station.value}>{station.label}</option>
@@ -154,13 +181,15 @@ const DeparturePage = ({ user }) => {
         </div>
 
         <div className="row" style={rowStyle}>
-          <select
+          <select className="destination-dropdown"
             onChange={(e) => {
               setDestination(e.target.value);
             }}
             style={dropdownStyle}
           >
-            <option value="">Select destination</option>
+            <option value="" >
+              Select destination
+            </option>
             {/*map through the stations array to populate the dropdown*/}
             {departureStations.map((station) => (
               <option value={station.value}>{station.label}</option>
@@ -177,18 +206,18 @@ const DeparturePage = ({ user }) => {
         >
           Find Services
         </button>
+
+        <button
+          className="ui inverted green button"
+          style={buttonStyle}
+          onClick={clearStations}
+        >
+          <i className="undo icon"></i>Clear Stations
+        </button>
       </div>
 
-      <div className="row">
-      <button class="ui inverted green button" style={buttonStyle}>
-      <i class="undo icon"></i>Clear Stations</button>
-        </div>
-
       <div id="cards" style={cardConStyle}>
-
-       
-        <TrainList departures={departureList}/>
-      
+        <TrainList departures={departureList} />
       </div>
     </div>
   );
