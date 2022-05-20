@@ -112,7 +112,7 @@ const DeparturePage = ({ user }) => {
   };
 
   const buttonStyle = {
-    width: "11rem",
+    width: "20rem",
     height: "4rem",
   };
 
@@ -137,7 +137,7 @@ const DeparturePage = ({ user }) => {
       
       <form className="ui form" style={formStyle}>
 
-      <h1 class="ui header" style ={headerStyle}>Departure Board</h1>
+      <h1 className="ui header" style ={headerStyle}>Departure Board</h1>
         <div className="row" style={rowStyle}>
           <select
             onChange={(e) => {
@@ -178,6 +178,11 @@ const DeparturePage = ({ user }) => {
           Find Services
         </button>
       </div>
+
+      <div className="row">
+      <button class="ui inverted green button" style={buttonStyle}>
+      <i class="undo icon"></i>Clear Stations</button>
+        </div>
 
       <div id="cards" style={cardConStyle}>
 
