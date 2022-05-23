@@ -10,6 +10,7 @@ const TrainList = ({departures, data}) => {
   
   let trains = departures
     
+  //loader is largely just a holding icon - no real indication of loading yet
   if (!trains.all) {
     return <Loader/>
    
