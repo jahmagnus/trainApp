@@ -3,6 +3,7 @@ import axios from "axios";
 import { Routes, Route, Navigate } from "react-router-dom";
 import TrainList from "./TrainList";
 import WarningPage from "../WarningPage";
+import EscapeHome from "../Escape/EscapeHome"
 
 
 
@@ -132,12 +133,13 @@ const DeparturePage = ({ user }) => {
   };
 
   const rowStyle = {
-    marginTop: "1rem",
+    marginTop: "0.5rem"
   };
 
   const buttonStyle = {
     width: "20rem",
     height: "4rem",
+    display: "block"
   };
 
   const headerStyle = {
@@ -149,16 +151,29 @@ const DeparturePage = ({ user }) => {
     border: "1px black",
     borderRadius: ".25rem",
     backgroundColor: "#2b2a26",
-    
-    
   };
 
   const cardConStyle = {
     backgroundColor: "#2b2a26",
   };
 
+  const conStyle = {
+    marginLeft: '-11rem'
+  }
+
+  const buttonRow = {
+    marginTop: '.5rem',
+    padding: '0'
+  }
+
+
   return (
     <div className="ui centered grid" style={gridStyle}>
+     <div className="row">
+       <div className="container" style={conStyle}>
+      <EscapeHome/>
+      </div>
+      </div>
       <form className="ui form" style={formStyle}>
         <h1 className="ui header" style={headerStyle}>
           Departure Board
@@ -198,7 +213,7 @@ const DeparturePage = ({ user }) => {
         </div>
       </form>
 
-      <div className="row">
+      <div className="row" style={buttonRow}>
         <button
           className="ui positive button"
           onClick={submitStations}
@@ -206,7 +221,9 @@ const DeparturePage = ({ user }) => {
         >
           Find Services
         </button>
-
+        </div>
+        
+        <div className="row" style={buttonRow}>
         <button
           className="ui inverted green button"
           style={buttonStyle}
@@ -214,7 +231,7 @@ const DeparturePage = ({ user }) => {
         >
           <i className="undo icon"></i>Clear Stations
         </button>
-      </div>
+     </div>
 
       <div id="cards" style={cardConStyle}>
         <TrainList departures={departureList} />
