@@ -203,6 +203,8 @@ const Login = ({ handleUser }) => {
             />
             <div id="warningAttach"></div>
             <div className="resetDiv" style={resetDiv}>
+
+              {/* yet to be implemented */}
               <a href="#" style={resetStyle}>
                 Reset password
               </a>

@@ -163,7 +163,7 @@ const DeparturePage = ({ user }) => {
 
   const buttonRow = {
     marginTop: '.5rem',
-    padding: '0'
+    padding: '0',
   }
 
 
