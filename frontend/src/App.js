@@ -11,32 +11,6 @@ import { getUser } from "./Components/userData";
 const App = () => {
   const [user, setUser] = useState(null);
 
-  // const userData = async() => {
-  //   const userObject = await getUser()
-  //   const data = userObject.data
-  //   setUser(data)
-  //console.log(user)
-  // }
-
-  
-
-  //userData()
-
-  // const getUser = async () => {
-  //   const userObject = await axios({
-  //     method: "GET",
-  //     withCredentials: true,
-  //     url: "http://localhost:3000/getUser",
-  //   });
-  //   console.log("get user function", JSON.stringify(userObject.data));
-  //   setUser(userObject.data)
-  // };
-
-  // useEffect(()=> {
-  //   getUser()
-  //   console.log('user', user)
-  // }, [])
-
 
   const handleUser = (currentUser) => {
     setUser(currentUser)
