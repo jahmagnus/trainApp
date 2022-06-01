@@ -7,10 +7,10 @@ import EscapeHome from "../Escape/EscapeHome"
 
 
 
-const DeparturePage = ({ user }) => {
+const ArrivalPage = ({ user }) => {
   //array containg a sample of stations for destinations and origins
   //this could go in it's own component, but leaving here for now.
-  let departureStations = [
+  let stations = [
     { label: "Aberdeen", value: "ABD" },
     { label: "Alnmouth", value: "ALM" },
     { label: "Arbroath", value: "ARB" },
@@ -46,19 +46,16 @@ const DeparturePage = ({ user }) => {
   ];
 
   //Using state to track what the selected station is
-  let [destination, setDestination] = useState("");
-  let [origin, setOrigin] = useState("");
-  let [departureList, setDepartureList] = useState([]);
+  let [arrivalStation, setArrivalStation] = useState("");
+  let [arrivalList, setArrivalList] = useState([]);
 
   //this function will display the current state of origin and destination whenever their state changes
   useEffect(() => {
     console.log(
-      "current origin = ",
-      origin,
-      " current destination = ",
-      destination
+      "current station = ",
+      arrivalStation
     );
-  }, [origin, destination]);
+  }, [arrivalStation]);
 
   const storageData = localStorage.getItem("user");
   const parseUser = JSON.parse(storageData);
@@ -69,35 +66,25 @@ const DeparturePage = ({ user }) => {
 
   //function posts stations to server for API consumption
   const submitStations = () => {
-    setDepartureList([])
+    setArrivalList([])
     
     const stationObject = {
-      originStation: origin,
-      destinationStation: destination,
+      arrivalStation: arrivalStation,
+      
     };
-
-    if (
-      stationObject.originStation !== "" &&
-      stationObject.destinationStation === ""
-    ) {
-      stationObject.destinationStation = stationObject.originStation;
-      setDestination(stationObject.originStation);
-    }
 
     try {
       if (
-        stationObject.originStation !== "" &&
-        stationObject.destinationStation !== ""
+        stationObject.arrivalStation !== "" 
       ) {
         //within this function we can make a POST request to the endpoint at the server
         //which will include the origin and destination station which can then
         //be added to the URI string and data then fetched from the API provider
         axios.post("/trains", stationObject).then((res) => {
-          setDepartureList(res.data.departures);
+          setArrivalList(res.data.departures);
         });
       } else {
-        console.log("--No origin or destination data");
-        console.log("origin", origin, "des", destination);
+        console.log("--No Arrival station");
       }
     } catch (error) {
       console.log(error);
@@ -108,16 +95,15 @@ const DeparturePage = ({ user }) => {
   //be removed
   const clearStations = () => {
     //these values represent the values in the dropdown menu
-    const originValue = document.querySelector(".origin-dropdown");
-    const destinationValue = document.querySelector(".destination-dropdown");
+    const arrivalValue = document.querySelector(".arrival-dropdown");
+    
     
     //set the values in the dropdown to empty strings for user to make a new search
-    originValue.value = "";
-    destinationValue.value = "";
-
-    setOrigin("")
-    setDestination("")
-    setDepartureList([]);
+    arrivalValue.value = "";
+    
+    //clear the state of arrival station and arrival list
+    setArrivalStation("")
+    setArrivalList([]);
   };
 
   const gridStyle = {
@@ -176,41 +162,25 @@ const DeparturePage = ({ user }) => {
       </div>
       <form className="ui form" style={formStyle}>
         <h1 className="ui header" style={headerStyle}>
-          Departure Board
+          Arrival Board
         </h1>
         <div className="row" style={rowStyle}>
-          <select className="origin-dropdown"
+          <select className="arrival-dropdown"
             onChange={(e) => {
-              setOrigin(e.target.value);
+              setArrivalStation(e.target.value);
             }}
             style={dropdownStyle}
           >
             <option value="">
-              Select origin
+              Select arrival station
             </option>
             {/*map through the stations array to populate the dropdown*/}
-            {departureStations.map((station) => (
+            {stations.map((station) => (
               <option value={station.value}>{station.label}</option>
             ))}
           </select>
         </div>
 
-        <div className="row" style={rowStyle}>
-          <select className="destination-dropdown"
-            onChange={(e) => {
-              setDestination(e.target.value);
-            }}
-            style={dropdownStyle}
-          >
-            <option value="" >
-              Select destination
-            </option>
-            {/*map through the stations array to populate the dropdown*/}
-            {departureStations.map((station) => (
-              <option value={station.value}>{station.label}</option>
-            ))}
-          </select>
-        </div>
       </form>
 
       <div className="row" style={buttonRow}>
@@ -234,10 +204,10 @@ const DeparturePage = ({ user }) => {
      </div>
 
       <div id="cards" style={cardConStyle}>
-        <TrainList services={departureList} />
+        <TrainList services={arrivalList} />
       </div>
     </div>
   );
 };
 
-export default DeparturePage;
+export default ArrivalPage;

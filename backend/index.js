@@ -69,7 +69,6 @@ app.post("/userlogin", async (req, res, next) => {
       else {
         req.logIn(user, err => {
          // res.send({authenticated: true})
-          console.log('user login endpoint, index.js', req.user)
           res.send(user)
         })
       }
@@ -133,7 +132,6 @@ app.post("/trains", async (request, response) => {
   const appID = "b74798d6"; //this may need to be changed on deployment
   const origin = request.body.originStation
   const destination = request.body.destinationStation
-  //const baseURL = "https://transportapi.com/v3/uk/train/station/WHP/live.json?";
 
   const api_url = `https://transportapi.com/v3/uk/train/station/${origin}/live.json?app_id=${appID}&app_key=${apiKey}&darwin=false&calling_at=${destination}&train_status=passenger`;
   const fetch_response = await fetch(api_url);

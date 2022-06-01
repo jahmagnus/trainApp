@@ -5,10 +5,10 @@ import WarningPage from '../WarningPage'
 
 
 
-const TrainList = ({departures, data}) => {
+const TrainList = ({services, data}) => {
   let renderedList = [];
   
-  let trains = departures
+  let trains = services
     
   //loader is largely just a holding icon - no real indication of loading yet
   if (!trains.all) {
