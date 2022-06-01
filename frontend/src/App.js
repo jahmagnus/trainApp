@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import axios from "axios";
+
 
 import Home from "./Components/Home/Home";
-import DeparturePage from "./Components/Departures/DeparturePage";
+import DeparturePage from "./Components/ServiceBoards/DeparturePage";
 import Login from "./Components/Login/Login";
 import SetUser from "./Components/SetUser";
-import { getUser } from "./Components/userData";
+// import { getUser } from "./Components/userData";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -17,6 +17,7 @@ const App = () => {
     
   }
 
+  //check for a logged in user and set this user as the current logged in user
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
