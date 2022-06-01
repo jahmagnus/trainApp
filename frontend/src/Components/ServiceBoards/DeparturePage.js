@@ -53,10 +53,15 @@ const DeparturePage = ({ user }) => {
   let [origin, setOrigin] = useState("");
   let [departureList, setDepartureList] = useState([]);
   let [serviceList, setServiceList] = useState([])
+  
+  
 
-  //this function will display the current state of origin and destination whenever their state changes
+  //render a list of services on first render and everytime state of departure list changes
   useEffect(()=> {
+    
     renderList()
+
+    
   }, [departureList])
 
   const storageData = localStorage.getItem("user");
@@ -93,12 +98,11 @@ const DeparturePage = ({ user }) => {
         //be added to the URI string and data then fetched from the API provider
         axios.post("/departures", stationObject).then((res) => {
           setDepartureList(res.data.departures);
-
-          
         });
       } else {
         console.log("--No origin or destination data");
         console.log("origin", origin, "des", destination);
+        
       }
     } catch (error) {
       console.log(error);
@@ -131,16 +135,15 @@ const DeparturePage = ({ user }) => {
     
     let trains = departureList
       
-    //loader is largely just a holding icon - no real indication of loading yet
+    
     if (!trains.all) {
-      return <Loader/>
+      setServiceList(<Loader/>)
      
-    }
-   else if(trains.all.length === 0){
-     return <WarningPage/>
-     
-    }
-    else {
+    } else if(trains.all.length === 0){
+      setServiceList(<WarningPage/>)
+    }  
+    
+    else{
       setServiceList(trains.all.map((train) => {
         return <TrainItem destination={train.destination_name}
         boardType={"Departure"}
@@ -149,8 +152,7 @@ const DeparturePage = ({ user }) => {
         platform={train.platform} />;
       }));
     }
-    
-    
+
   }
 
 
@@ -266,10 +268,18 @@ const DeparturePage = ({ user }) => {
           <i className="undo icon"></i>Clear Stations
         </button>
      </div>
-
+      <div className="row">
       <div id="cards" style={cardConStyle}>
         {serviceList}
       </div>
+      </div>
+
+      <div className="row">
+              <div className="warning">
+                </div>
+        </div>
+
+      
     </div>
   );
 };

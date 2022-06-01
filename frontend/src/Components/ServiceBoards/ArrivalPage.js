@@ -122,6 +122,31 @@ const ArrivalPage = ({ user }) => {
     setArrivalList([]);
   };
 
+
+  //render a list of the arrival trains
+  const renderList = () => {
+    let renderedList = [];
+  
+    let trains = services
+      
+    //loader is largely just a holding icon - no real indication of loading yet
+    if (!trains.all) {
+      return <Loader/>
+     
+    }
+   else if(trains.all.length === 0){
+     return <WarningPage/>
+     
+    }
+    else {
+      renderedList = trains.all.map((train) => {
+        return <TrainItem train={train} />;
+      });
+    }
+    
+    return <div>{renderedList}</div>;
+  }
+
   const gridStyle = {
     paddingTop: "4rem",
     minHeight: "100vh",
