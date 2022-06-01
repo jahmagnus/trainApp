@@ -46,13 +46,17 @@ const ArrivalPage = ({ user }) => {
   ];
 
   //Using state to track what the selected station is
+  let [originStation, setOriginStation] = useState("")
   let [arrivalStation, setArrivalStation] = useState("");
   let [arrivalList, setArrivalList] = useState([]);
 
   //this function will display the current state of origin and destination whenever their state changes
   useEffect(() => {
     console.log(
-      "current station = ",
+        
+      "current origin = ",
+      arrivalStation,
+      "current arrival = ",
       arrivalStation
     );
   }, [arrivalStation]);
@@ -70,8 +74,16 @@ const ArrivalPage = ({ user }) => {
     
     const stationObject = {
       arrivalStation: arrivalStation,
-      
+      originStation: originStation
     };
+
+    if (
+        stationObject.arrivalStation !== "" &&
+        stationObject.originStation === ""
+      ) {
+        stationObject.originStation = stationObject.arrivalStation;
+        setArrivalStation(stationObject.originStation);
+      }
 
     try {
       if (
@@ -80,8 +92,8 @@ const ArrivalPage = ({ user }) => {
         //within this function we can make a POST request to the endpoint at the server
         //which will include the origin and destination station which can then
         //be added to the URI string and data then fetched from the API provider
-        axios.post("/trains", stationObject).then((res) => {
-          setArrivalList(res.data.departures);
+        axios.post("/arrivals", stationObject).then((res) => {
+          setArrivalList(res.data.);
         });
       } else {
         console.log("--No Arrival station");
