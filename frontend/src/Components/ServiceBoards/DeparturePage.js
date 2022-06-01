@@ -4,11 +4,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 // import TrainList from "./TrainList";
 import WarningPage from "../WarningPage";
-import EscapeHome from "../Escape/EscapeHome"
-import Loader from "./Loader"
+import EscapeHome from "../Escape/EscapeHome";
+import Loader from "./Loader";
 import TrainItem from "./TrainItem";
-
-
 
 const DeparturePage = ({ user }) => {
   //array containg a sample of stations for destinations and origins
@@ -52,17 +50,12 @@ const DeparturePage = ({ user }) => {
   let [destination, setDestination] = useState("");
   let [origin, setOrigin] = useState("");
   let [departureList, setDepartureList] = useState([]);
-  let [serviceList, setServiceList] = useState([])
-  
-  
+  let [serviceList, setServiceList] = useState([]);
 
   //render a list of services on first render and everytime state of departure list changes
-  useEffect(()=> {
-    
-    renderList()
-
-    
-  }, [departureList])
+  useEffect(() => {
+    renderList();
+  }, [departureList]);
 
   const storageData = localStorage.getItem("user");
   const parseUser = JSON.parse(storageData);
@@ -73,8 +66,8 @@ const DeparturePage = ({ user }) => {
 
   //function posts stations to server for API consumption
   const submitStations = () => {
-    setDepartureList([])
-    
+    setDepartureList([]);
+
     const stationObject = {
       originStation: origin,
       destinationStation: destination,
@@ -102,12 +95,10 @@ const DeparturePage = ({ user }) => {
       } else {
         console.log("--No origin or destination data");
         console.log("origin", origin, "des", destination);
-        
       }
     } catch (error) {
       console.log(error);
     }
-    
   };
 
   //on clicking clear stations button, input values in form will be cleared and departure cards will
@@ -116,45 +107,43 @@ const DeparturePage = ({ user }) => {
     //these values represent the values in the dropdown menu
     const originValue = document.querySelector(".origin-dropdown");
     const destinationValue = document.querySelector(".destination-dropdown");
-    
+
     //set the values in the dropdown to empty strings for user to make a new search
     originValue.value = "";
     destinationValue.value = "";
 
-    setOrigin("")
-    setDestination("")
+    setOrigin("");
+    setDestination("");
     setDepartureList([]);
-    setServiceList([])
+    setServiceList([]);
   };
 
-
-
-   //render a list of the arrival trains
-   const renderList = () => {
+  //render a list of the arrival trains
+  const renderList = () => {
     //let renderedList = [];
-    
-    let trains = departureList
-      
-    
+
+    let trains = departureList;
+
     if (!trains.all) {
-      setServiceList(<Loader/>)
-     
-    } else if(trains.all.length === 0){
-      setServiceList(<WarningPage/>)
-    }  
-    
-    else{
-      setServiceList(trains.all.map((train) => {
-        return <TrainItem destination={train.destination_name}
-        boardType={"Departure"}
-        time={train.expected_departure_time}
-        status={train.status}
-        platform={train.platform} />;
-      }));
+      setServiceList(<Loader />);
+    } else if (trains.all.length === 0) {
+      setServiceList(<WarningPage />);
+    } else {
+      setServiceList(
+        trains.all.map((train) => {
+          return (
+            <TrainItem
+              destination={train.destination_name}
+              boardType={"Departure"}
+              time={train.expected_departure_time}
+              status={train.status}
+              platform={train.platform}
+            />
+          );
+        })
+      );
     }
-
-  }
-
+  };
 
   const gridStyle = {
     paddingTop: "4rem",
@@ -169,13 +158,13 @@ const DeparturePage = ({ user }) => {
   };
 
   const rowStyle = {
-    marginTop: "0.5rem"
+    marginTop: "0.5rem",
   };
 
   const buttonStyle = {
     width: "20rem",
     height: "4rem",
-    display: "block"
+    display: "block",
   };
 
   const headerStyle = {
@@ -194,36 +183,34 @@ const DeparturePage = ({ user }) => {
   };
 
   const conStyle = {
-    marginLeft: '-11rem'
-  }
+    marginLeft: "-9rem",
+  };
 
   const buttonRow = {
-    marginTop: '.5rem',
-    padding: '0',
-  }
-
+    marginTop: ".5rem",
+    padding: "0",
+  };
 
   return (
     <div className="ui centered grid" style={gridStyle}>
-     <div className="row">
-       <div className="container" style={conStyle}>
-      <EscapeHome/>
-      </div>
+      <div className="row">
+        <div className="container" style={conStyle}>
+          <EscapeHome />
+        </div>
       </div>
       <form className="ui form" style={formStyle}>
         <h1 className="ui header" style={headerStyle}>
           Departure Board
         </h1>
         <div className="row" style={rowStyle}>
-          <select className="origin-dropdown"
+          <select
+            className="origin-dropdown"
             onChange={(e) => {
               setOrigin(e.target.value);
             }}
             style={dropdownStyle}
           >
-            <option value="">
-              Select origin
-            </option>
+            <option value="">Select origin</option>
             {/*map through the stations array to populate the dropdown*/}
             {departureStations.map((station) => (
               <option value={station.value}>{station.label}</option>
@@ -232,15 +219,14 @@ const DeparturePage = ({ user }) => {
         </div>
 
         <div className="row" style={rowStyle}>
-          <select className="destination-dropdown"
+          <select
+            className="destination-dropdown"
             onChange={(e) => {
               setDestination(e.target.value);
             }}
             style={dropdownStyle}
           >
-            <option value="" >
-              Select destination
-            </option>
+            <option value="">Select destination</option>
             {/*map through the stations array to populate the dropdown*/}
             {departureStations.map((station) => (
               <option value={station.value}>{station.label}</option>
@@ -257,9 +243,9 @@ const DeparturePage = ({ user }) => {
         >
           Find Services
         </button>
-        </div>
-        
-        <div className="row" style={buttonRow}>
+      </div>
+
+      <div className="row" style={buttonRow}>
         <button
           className="ui inverted green button"
           style={buttonStyle}
@@ -267,19 +253,16 @@ const DeparturePage = ({ user }) => {
         >
           <i className="undo icon"></i>Clear Stations
         </button>
-     </div>
-      <div className="row">
-      <div id="cards" style={cardConStyle}>
-        {serviceList}
       </div>
-      </div>
-
       <div className="row">
-              <div className="warning">
-                </div>
+        <div id="cards" style={cardConStyle}>
+          {serviceList}
         </div>
+      </div>
 
-      
+      <div className="row">
+        <div className="warning"></div>
+      </div>
     </div>
   );
 };
