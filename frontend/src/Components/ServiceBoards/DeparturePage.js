@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route, Navigate } from "react-router-dom";
-import TrainList from "./TrainList";
+
+// import TrainList from "./TrainList";
 import WarningPage from "../WarningPage";
 import EscapeHome from "../Escape/EscapeHome"
+import Loader from "./Loader"
+import TrainItem from "./TrainItem";
 
 
 
@@ -49,16 +52,12 @@ const DeparturePage = ({ user }) => {
   let [destination, setDestination] = useState("");
   let [origin, setOrigin] = useState("");
   let [departureList, setDepartureList] = useState([]);
+  let [serviceList, setServiceList] = useState([])
 
   //this function will display the current state of origin and destination whenever their state changes
-  useEffect(() => {
-    console.log(
-      "current origin = ",
-      origin,
-      " current destination = ",
-      destination
-    );
-  }, [origin, destination]);
+  useEffect(()=> {
+    renderList()
+  }, [departureList])
 
   const storageData = localStorage.getItem("user");
   const parseUser = JSON.parse(storageData);
@@ -94,6 +93,8 @@ const DeparturePage = ({ user }) => {
         //be added to the URI string and data then fetched from the API provider
         axios.post("/departures", stationObject).then((res) => {
           setDepartureList(res.data.departures);
+
+          
         });
       } else {
         console.log("--No origin or destination data");
@@ -102,6 +103,7 @@ const DeparturePage = ({ user }) => {
     } catch (error) {
       console.log(error);
     }
+    
   };
 
   //on clicking clear stations button, input values in form will be cleared and departure cards will
@@ -118,7 +120,39 @@ const DeparturePage = ({ user }) => {
     setOrigin("")
     setDestination("")
     setDepartureList([]);
+    setServiceList([])
   };
+
+
+
+   //render a list of the arrival trains
+   const renderList = () => {
+    //let renderedList = [];
+    
+    let trains = departureList
+      
+    //loader is largely just a holding icon - no real indication of loading yet
+    if (!trains.all) {
+      return <Loader/>
+     
+    }
+   else if(trains.all.length === 0){
+     return <WarningPage/>
+     
+    }
+    else {
+      setServiceList(trains.all.map((train) => {
+        return <TrainItem destination={train.destination_name}
+        boardType={"Departure"}
+        time={train.expected_departure_time}
+        status={train.status}
+        platform={train.platform} />;
+      }));
+    }
+    
+    
+  }
+
 
   const gridStyle = {
     paddingTop: "4rem",
@@ -234,7 +268,7 @@ const DeparturePage = ({ user }) => {
      </div>
 
       <div id="cards" style={cardConStyle}>
-        <TrainList services={departureList} />
+        {serviceList}
       </div>
     </div>
   );

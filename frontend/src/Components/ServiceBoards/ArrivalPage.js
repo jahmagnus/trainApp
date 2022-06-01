@@ -87,13 +87,14 @@ const ArrivalPage = ({ user }) => {
 
     try {
       if (
-        stationObject.arrivalStation !== "" 
+        stationObject.arrivalStation !== "" &&
+        stationObject.originStation !== ""
       ) {
         //within this function we can make a POST request to the endpoint at the server
         //which will include the origin and destination station which can then
         //be added to the URI string and data then fetched from the API provider
         axios.post("/arrivals", stationObject).then((res) => {
-          setArrivalList(res.data.);
+          setArrivalList(res.data.departures);
         });
       } else {
         console.log("--No Arrival station");
@@ -108,12 +109,15 @@ const ArrivalPage = ({ user }) => {
   const clearStations = () => {
     //these values represent the values in the dropdown menu
     const arrivalValue = document.querySelector(".arrival-dropdown");
+    const originValue = document.querySelector(".origin-dropdown")
     
     
     //set the values in the dropdown to empty strings for user to make a new search
     arrivalValue.value = "";
+    originValue.value = ""
     
     //clear the state of arrival station and arrival list
+    setOriginStation("")
     setArrivalStation("")
     setArrivalList([]);
   };
@@ -191,7 +195,24 @@ const ArrivalPage = ({ user }) => {
               <option value={station.value}>{station.label}</option>
             ))}
           </select>
+
+          <select className="origin-dropdown"
+            onChange={(e) => {
+              setOriginStation(e.target.value);
+            }}
+            style={dropdownStyle}
+          >
+            <option value="">
+              Select origin station
+            </option>
+            {/*map through the stations array to populate the dropdown*/}
+            {stations.map((station) => (
+              <option value={station.value}>{station.label}</option>
+            ))}
+          </select>
         </div>
+
+        
 
       </form>
 

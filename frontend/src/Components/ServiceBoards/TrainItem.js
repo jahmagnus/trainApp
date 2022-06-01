@@ -4,9 +4,9 @@ import ClockOutline from "./ClockOutline";
 import LineBreak from "./LineBreak";
 import CircleIcon from "./CircleIcon";
 
-const CardDisplay = ({train}) => {
+const CardDisplay = ({destination, boardType, time, status, platform}) => {
  
-  console.log(train)
+ 
  
   const cardStyle = {
     textAlign: "center",
@@ -92,18 +92,18 @@ const CardDisplay = ({train}) => {
       <div className="card" style={cardStyleCard}>
         <div className="content">
           <div className="header" style={headerStyle}>
-            <TrainIcon /> <p>{train.destination_name}</p> <LineBreak />
+            <TrainIcon /> <p>{destination}</p> <LineBreak />
           </div>
           <div className="meta" style={metaStyle}>
-            <ClockIcon /> <span style={departureSpan}>Departure:</span>{" "}
-            <span style={departureTimeSpan}>{train.aimed_departure_time}</span>
+            <ClockIcon /> <span style={departureSpan}>{boardType}</span>{" "}
+            <span style={departureTimeSpan}>{time}</span>
           </div>
           <div className="meta" style={metaStyleInfo}>
-            <CircleIcon /> <span style={statusStyle}>{train.status}</span>
+            <CircleIcon /> <span style={statusStyle}>{status}</span>
           </div>
           <div className="meta" style={metaStyle}>
             <ClockOutline /> <span style={arrivalSpan}> Platform:</span>{" "}
-            <span style={arrivalTimeSpan}>{train.platform}</span>
+            <span style={arrivalTimeSpan}>{platform}</span>
           </div>
         </div>
       </div>
