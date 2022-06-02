@@ -89,7 +89,7 @@ const DeparturePage = ({ user }) => {
         //within this function we can make a POST request to the endpoint at the server
         //which will include the origin and destination station which can then
         //be added to the URI string and data then fetched from the API provider
-        axios.post("/departures", stationObject).then((res) => {
+        axios.post("/arrivals", stationObject).then((res) => {
           setDepartureList(res.data.departures);
           console.log(res.data.departures)
         });

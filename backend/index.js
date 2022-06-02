@@ -124,9 +124,13 @@ app.use(
   })
 );
 
-//credentials
+//credentials using transportAPI
 const apiKey = process.env.API_KEY;
 const appID = "b74798d6"; //this may need to be changed on deployment
+
+
+//credentials using NR SOAP proxy
+const apiKeyNR = process.env.API_KEY_NR
 
 app.post("/departures", async (request, response) => {
   const origin = request.body.originStation
@@ -140,12 +144,13 @@ app.post("/departures", async (request, response) => {
 
 
 app.post("/arrivals", async (request, response) => {
-  const origin = request.body.arrivalStation
+  const arrivalStation = request.body.destinationStation
   
-
-  const api_url = `https://transportapi.com/v3/uk/train/station/${origin}/live.json?app_id=${appID}&app_key=${apiKey}&darwin=false&calling_at=${destination}&train_status=passenger`;
+  const api_url = `https://huxley2.azurewebsites.net/arrivals/${arrivalStation}?accessToken=${apiKeyNR}`
+  
   const fetch_response = await fetch(api_url);
   const trainData = await fetch_response.json();
+  console.log(trainData)
   response.send(trainData);
 });
 
