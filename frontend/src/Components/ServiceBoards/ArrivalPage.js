@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route, Navigate } from "react-router-dom";
-import TrainList from "./TrainList";
+
+// import TrainList from "./TrainList";
 import WarningPage from "../WarningPage";
-import EscapeHome from "../Escape/EscapeHome"
+import EscapeHome from "../Escape/EscapeHome";
+import Loader from "./Loader";
+import TrainItem from "./TrainItem";
 
-
-
-const ArrivalPage = ({ user }) => {
+const DeparturePage = ({ user }) => {
   //array containg a sample of stations for destinations and origins
   //this could go in it's own component, but leaving here for now.
-  let stations = [
+  let departureStations = [
     { label: "Aberdeen", value: "ABD" },
     { label: "Alnmouth", value: "ALM" },
     { label: "Arbroath", value: "ARB" },
@@ -46,20 +47,15 @@ const ArrivalPage = ({ user }) => {
   ];
 
   //Using state to track what the selected station is
-  let [originStation, setOriginStation] = useState("")
-  let [arrivalStation, setArrivalStation] = useState("");
-  let [arrivalList, setArrivalList] = useState([]);
+  let [destination, setDestination] = useState("");
+  let [origin, setOrigin] = useState("");
+  let [departureList, setDepartureList] = useState([]);
+  let [serviceList, setServiceList] = useState([]);
 
-  //this function will display the current state of origin and destination whenever their state changes
+  //render a list of services on first render and everytime state of departure list changes
   useEffect(() => {
-    console.log(
-        
-      "current origin = ",
-      arrivalStation,
-      "current arrival = ",
-      arrivalStation
-    );
-  }, [arrivalStation]);
+    renderList();
+  }, [departureList]);
 
   const storageData = localStorage.getItem("user");
   const parseUser = JSON.parse(storageData);
@@ -70,34 +66,36 @@ const ArrivalPage = ({ user }) => {
 
   //function posts stations to server for API consumption
   const submitStations = () => {
-    setArrivalList([])
-    
+    setDepartureList([]);
+
     const stationObject = {
-      arrivalStation: arrivalStation,
-      originStation: originStation
+      originStation: origin,
+      destinationStation: destination,
     };
 
     if (
-        stationObject.arrivalStation !== "" &&
-        stationObject.originStation === ""
-      ) {
-        stationObject.originStation = stationObject.arrivalStation;
-        setArrivalStation(stationObject.originStation);
-      }
+      stationObject.originStation !== "" &&
+      stationObject.destinationStation === ""
+    ) {
+      stationObject.destinationStation = stationObject.originStation;
+      setDestination(stationObject.originStation);
+    }
 
     try {
       if (
-        stationObject.arrivalStation !== "" &&
-        stationObject.originStation !== ""
+        stationObject.originStation !== "" &&
+        stationObject.destinationStation !== ""
       ) {
         //within this function we can make a POST request to the endpoint at the server
         //which will include the origin and destination station which can then
         //be added to the URI string and data then fetched from the API provider
-        axios.post("/arrivals", stationObject).then((res) => {
-          setArrivalList(res.data.departures);
+        axios.post("/departures", stationObject).then((res) => {
+          setDepartureList(res.data.departures);
+          console.log(res.data.departures)
         });
       } else {
-        console.log("--No Arrival station");
+        console.log("--No origin or destination data");
+        console.log("origin", origin, "des", destination);
       }
     } catch (error) {
       console.log(error);
@@ -108,44 +106,45 @@ const ArrivalPage = ({ user }) => {
   //be removed
   const clearStations = () => {
     //these values represent the values in the dropdown menu
-    const arrivalValue = document.querySelector(".arrival-dropdown");
-    const originValue = document.querySelector(".origin-dropdown")
-    
-    
-    //set the values in the dropdown to empty strings for user to make a new search
-    arrivalValue.value = "";
-    originValue.value = ""
-    
-    //clear the state of arrival station and arrival list
-    setOriginStation("")
-    setArrivalStation("")
-    setArrivalList([]);
-  };
+    const originValue = document.querySelector(".origin-dropdown");
+    const destinationValue = document.querySelector(".destination-dropdown");
 
+    //set the values in the dropdown to empty strings for user to make a new search
+    originValue.value = "";
+    destinationValue.value = "";
+
+    setOrigin("");
+    setDestination("");
+    setDepartureList([]);
+    setServiceList([]);
+  };
 
   //render a list of the arrival trains
   const renderList = () => {
-    let renderedList = [];
-  
-    let trains = services
-      
-    //loader is largely just a holding icon - no real indication of loading yet
+    //let renderedList = [];
+
+    let trains = departureList;
+
     if (!trains.all) {
-      return <Loader/>
-     
+      setServiceList(<Loader />);
+    } else if (trains.all.length === 0) {
+      setServiceList(<WarningPage />);
+    } else {
+      setServiceList(
+        trains.all.map((train) => {
+          return (
+            <TrainItem
+              destination={train.destination_name}
+              boardType={"Arrival"}
+              time={train.expected_arrival_time}
+              status={train.status}
+              
+            />
+          );
+        })
+      );
     }
-   else if(trains.all.length === 0){
-     return <WarningPage/>
-     
-    }
-    else {
-      renderedList = trains.all.map((train) => {
-        return <TrainItem train={train} />;
-      });
-    }
-    
-    return <div>{renderedList}</div>;
-  }
+  };
 
   const gridStyle = {
     paddingTop: "4rem",
@@ -160,13 +159,13 @@ const ArrivalPage = ({ user }) => {
   };
 
   const rowStyle = {
-    marginTop: "0.5rem"
+    marginTop: "0.5rem",
   };
 
   const buttonStyle = {
     width: "20rem",
     height: "4rem",
-    display: "block"
+    display: "block",
   };
 
   const headerStyle = {
@@ -185,60 +184,58 @@ const ArrivalPage = ({ user }) => {
   };
 
   const conStyle = {
-    marginLeft: '-11rem'
-  }
+    marginLeft: "-9rem",
+  };
 
   const buttonRow = {
-    marginTop: '.5rem',
-    padding: '0',
-  }
-
+    marginTop: ".5rem",
+    padding: "0",
+  };
 
   return (
     <div className="ui centered grid" style={gridStyle}>
-     <div className="row">
-       <div className="container" style={conStyle}>
-      <EscapeHome/>
-      </div>
+      <div className="row">
+        <div className="container" style={conStyle}>
+          <EscapeHome />
+        </div>
       </div>
       <form className="ui form" style={formStyle}>
         <h1 className="ui header" style={headerStyle}>
           Arrival Board
         </h1>
+
         <div className="row" style={rowStyle}>
-          <select className="arrival-dropdown"
+          <select
+            className="destination-dropdown"
             onChange={(e) => {
-              setArrivalStation(e.target.value);
+              setDestination(e.target.value);
             }}
             style={dropdownStyle}
           >
-            <option value="">
-              Select arrival station
-            </option>
+            <option value="">Select Arrival station</option>
             {/*map through the stations array to populate the dropdown*/}
-            {stations.map((station) => (
+            {departureStations.map((station) => (
               <option value={station.value}>{station.label}</option>
             ))}
           </select>
-
-          <select className="origin-dropdown"
+        </div>
+        <div className="row" style={rowStyle}>
+          <select
+            className="origin-dropdown"
             onChange={(e) => {
-              setOriginStation(e.target.value);
+              setOrigin(e.target.value);
             }}
             style={dropdownStyle}
           >
-            <option value="">
-              Select origin station
-            </option>
+            <option value="">Select origin station</option>
             {/*map through the stations array to populate the dropdown*/}
-            {stations.map((station) => (
+            {departureStations.map((station) => (
               <option value={station.value}>{station.label}</option>
             ))}
           </select>
         </div>
 
         
-
       </form>
 
       <div className="row" style={buttonRow}>
@@ -249,9 +246,9 @@ const ArrivalPage = ({ user }) => {
         >
           Find Services
         </button>
-        </div>
-        
-        <div className="row" style={buttonRow}>
+      </div>
+
+      <div className="row" style={buttonRow}>
         <button
           className="ui inverted green button"
           style={buttonStyle}
@@ -259,13 +256,18 @@ const ArrivalPage = ({ user }) => {
         >
           <i className="undo icon"></i>Clear Stations
         </button>
-     </div>
+      </div>
+      <div className="row">
+        <div id="cards" style={cardConStyle}>
+          {serviceList}
+        </div>
+      </div>
 
-      <div id="cards" style={cardConStyle}>
-        <TrainList services={arrivalList} />
+      <div className="row">
+        <div className="warning"></div>
       </div>
     </div>
   );
 };
 
-export default ArrivalPage;
+export default DeparturePage;

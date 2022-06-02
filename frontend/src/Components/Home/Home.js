@@ -116,11 +116,13 @@ const Home = ({ user }) => {
             </div>
 
             <div className="row" style={iconStyles}>
+              <Link to="/arrivals">
               <div style={divStyle}>
                 <i className=" big train icon"></i>
                 <br />
                 Arrivals
               </div>
+              </Link>
             </div>
 
             <div className="row" style={iconStyles}>
