@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import './buttonstyle.css'
 
 
 const EscapeHome = () => {
@@ -9,9 +10,9 @@ const EscapeHome = () => {
     return (
         <div>
             <Link to="/home">
-            <button className="ui inverted green button">
+            <button className="ui inverted green button escape">
             <i className="arrow alternate circle left outline icon"/>
-                Return Home</button>
+                Home</button>
             </Link>
         </div>
     )

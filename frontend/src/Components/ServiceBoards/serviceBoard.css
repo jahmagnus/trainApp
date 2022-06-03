@@ -1,0 +1,50 @@
+ .ui.centered.grid{
+    padding-top: 4rem;
+    min-height: 100vh;
+    background-color: #2b2a26;
+  };
+
+  .destination-dropdown {
+    width: 20rem;
+    height: 3rem;
+    border: 5px;
+  }
+
+  .ui.positive.button{
+    width: 20rem;
+    height: 4rem;
+    display: block;
+  }
+
+  .ui.inverted.green.button{
+    width: 20rem;
+    height: 4rem;
+    display: block;
+  }
+
+  .ui.header {
+    color: white;
+    padding-top: 1rem;
+  }
+
+.ui.form {
+    border: 1px black;
+    border-radius: 25rem;
+    background-color: #2b2a26;
+  }
+
+  .container.arrival {
+    background-color: #2b2a26
+  }
+
+  
+
+  .row.arrival {
+    margin-top: 1rem;
+    padding: 0;
+    width: 20rem;
+  }
+
+  .row.escape{
+      margin-right: 9rem;
+  }

@@ -1,0 +1,86 @@
+.ui.grid {
+    background-color:  #2b2a26;
+    min-height: 100vh;
+  }
+
+  .ui.two.column.grid {
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 4rem;
+  }
+
+  .six.wide.column.home {
+    min-height: 100vh;
+    margin-top: 1rem;
+  }
+
+  .seven.column.row {
+    height: 100%;
+  }
+
+
+.row.home{
+    text-align: center;
+    font-size: 1rem;
+    background-color: #5df542;
+    border: 0.1rem thin #0b0c10;
+    border-bottom: none;
+  }
+/* 
+  .row.home a{
+      text-decoration: none;
+  } */
+
+  /* //navbar divs containg the icons and heading */
+  .home-div{
+    height: 8rem;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2.5rem;
+    color: black;
+    background-color: #5df542;
+    border: 0.1rem solid #0b0c10;
+  }
+
+  .ten.wide.column {
+    min-height: 100vh;
+    padding-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+
+  .two.column.row {
+    height: 100%;
+    padding-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+
+  
+
+  /* //styling for column 2 row 1 */
+  .row.username {
+    height: 5rem;
+    font-size: 1rem;
+    
+  }
+
+  /* //homepage user details div styles */
+  .row.details{
+      
+    font-size: 1rem;
+    height: 56rem;
+    padding-left: 0.5rem;
+    background-color: #c5c6c7;
+    padding-top: 7rem;
+  }
+
+
+
+  
+ 
