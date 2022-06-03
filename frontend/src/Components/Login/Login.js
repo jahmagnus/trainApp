@@ -14,7 +14,7 @@ const Login = ({ handleUser }) => {
   const gridStyle = {
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: "5rem",
+    height: "100%"
   };
 
   const formStyle = {
