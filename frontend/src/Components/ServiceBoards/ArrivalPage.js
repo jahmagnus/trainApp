@@ -222,7 +222,8 @@ const ArrivalPage = ({ user }) => {
         >
           Find Services
         </button>
-
+              </div>
+              <div className="row arrival">
         <button
           className="ui inverted green button"
           onClick={clearStations}
