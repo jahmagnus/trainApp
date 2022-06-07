@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 // import TrainList from "./TrainList";
 import WarningPage from "../WarningPage";
@@ -8,7 +8,7 @@ import EscapeHome from "../Escape/EscapeHome";
 import Loader from "./Loader";
 import TrainItem from "./TrainItem";
 
-import "./serviceBoard.css"
+import "./serviceBoard.css";
 
 const ArrivalPage = ({ user }) => {
   //array containg a sample of stations for destinations
@@ -70,21 +70,17 @@ const ArrivalPage = ({ user }) => {
     setDepartureList([]);
 
     const stationObject = {
-       destinationStation: destination,
+      destinationStation: destination,
     };
 
-
-
     try {
-      if (
-        stationObject.destinationStation !== ""
-      ) {
+      if (stationObject.destinationStation !== "") {
         //within this function we can make a POST request to the endpoint at the server
         //which will include the destination station which can then
         //be added to the URI string and data then fetched from the API provider
         axios.post("/arrivals", stationObject).then((res) => {
           setDepartureList(res.data);
-         // console.log(res.data.trainServices)
+          // console.log(res.data.trainServices)
         });
       } else {
         console.log("--No destination");
@@ -98,7 +94,7 @@ const ArrivalPage = ({ user }) => {
   //be removed
   const clearStations = () => {
     //these values represent the values in the dropdown menu
-    
+
     const destinationValue = document.querySelector(".destination-dropdown");
 
     //set the values in the dropdown to empty strings for user to make a new search
@@ -114,7 +110,7 @@ const ArrivalPage = ({ user }) => {
     //let renderedList = [];
 
     let trains = departureList;
-    console.log(trains.trainServices)
+    console.log(trains.trainServices);
     if (!trains.trainServices) {
       setServiceList(<Loader />);
     } else if (trains.trainServices.length === 0) {
@@ -122,7 +118,7 @@ const ArrivalPage = ({ user }) => {
     } else {
       setServiceList(
         trains.trainServices.map((train) => {
-          console.log(train)
+          console.log(train);
           return (
             <TrainItem
               destination={train.origin[0].locationName}
@@ -130,59 +126,12 @@ const ArrivalPage = ({ user }) => {
               time={train.sta}
               status={train.eta}
               platform={train.platform}
-              
             />
           );
         })
       );
     }
   };
-
-  // const gridStyle = {
-  //   paddingTop: "4rem",
-  //   minHeight: "100vh",
-  //   backgroundColor: "#2b2a26",
-  // };
-
-  // const dropdownStyle = {
-  //   width: "20rem",
-  //   height: "3rem",
-  //   border: "5px",
-  // };
-
-  // const rowStyle = {
-  //   marginTop: "0.5rem",
-  // };
-
-  // const buttonStyle = {
-  //   width: "20rem",
-  //   height: "4rem",
-  //   display: "block",
-  // };
-
-  // const headerStyle = {
-  //   color: "white",
-  //   paddingTop: "1rem",
-  // };
-
-  // const formStyle = {
-  //   border: "1px black",
-  //   borderRadius: ".25rem",
-  //   backgroundColor: "#2b2a26",
-  // };
-
-  // const cardConStyle = {
-  //   backgroundColor: "#2b2a26",
-  // };
-
-  // const conStyle = {
-  //   marginLeft: "-9rem",
-  // };
-
-  // const buttonRow = {
-  //   marginTop: ".5rem",
-  //   padding: "0",
-  // };
 
   return (
     <div className="ui centered grid">
@@ -192,9 +141,7 @@ const ArrivalPage = ({ user }) => {
         </div>
       </div>
       <form className="ui form">
-        <h1 className="ui header">
-          Arrival Board
-        </h1>
+        <h1 className="ui header">Arrival Board</h1>
 
         <div className="row arrival">
           <select
@@ -202,7 +149,6 @@ const ArrivalPage = ({ user }) => {
             onChange={(e) => {
               setDestination(e.target.value);
             }}
-            
           >
             <option value="">Select Arrival station</option>
             {/*map through the stations array to populate the dropdown*/}
@@ -211,36 +157,22 @@ const ArrivalPage = ({ user }) => {
             ))}
           </select>
         </div>
-        
-        
       </form>
 
       <div className="row arrival">
-        <button
-          className="ui positive button"
-          onClick={submitStations}
-        >
+        <button className="ui positive button" onClick={submitStations}>
           Find Services
         </button>
-              </div>
-              <div className="row arrival">
-        <button
-          className="ui inverted green button"
-          onClick={clearStations}
-        >
+      </div>
+      <div className="row arrival">
+        <button className="ui inverted green button" onClick={clearStations}>
           <i className="undo icon"></i>Clear Stations
         </button>
       </div>
-      
 
-      
-      
       <div className="row arrival">
-        <div id="cards">
-          {serviceList}
-        </div>
+        <div id="cards">{serviceList}</div>
       </div>
-
     </div>
   );
 };
