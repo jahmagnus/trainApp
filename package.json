@@ -5,5 +5,9 @@
     "nodemon": "^2.0.15",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.0.0"
+  },
+  "devDependencies": {
+    "global-jsdom": "^8.4.0",
+    "jsdom": "^19.0.0"
   }
 }
