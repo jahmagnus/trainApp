@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, Navigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 //import GetUser from "../GetUser";
 
@@ -15,7 +14,7 @@ const Login = ({ handleUser }) => {
   const gridStyle = {
     marginLeft: "auto",
     marginRight: "auto",
-    height: "100%"
+    height: "100%",
   };
 
   const formStyle = {
@@ -61,7 +60,6 @@ const Login = ({ handleUser }) => {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
   let [isCapsMessage, setCapsMessage] = useState(false);
- 
 
   //
   useEffect(() => {
@@ -157,14 +155,13 @@ const Login = ({ handleUser }) => {
       withCredentials: true,
       url: "http://localhost:3000/userlogin",
     }).then((res) => {
-
       if (!res.data) {
         console.log(res.data);
         setUserError();
       } else {
         //send current user up to App.js for use in other component pages
-        handleUser(res.data)
-        localStorage.setItem('user', JSON.stringify(res.data))
+        handleUser(res.data);
+        localStorage.setItem("user", JSON.stringify(res.data));
         navigate(from, { replace: true });
       }
     });
@@ -204,7 +201,6 @@ const Login = ({ handleUser }) => {
             />
             <div id="warningAttach"></div>
             <div className="resetDiv" style={resetDiv}>
-
               {/* yet to be implemented */}
               <a href="#" style={resetStyle}>
                 Reset password

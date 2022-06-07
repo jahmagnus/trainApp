@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
-// import TrainList from "./TrainList";
 import WarningPage from "../WarningPage";
 import EscapeHome from "../Escape/EscapeHome";
 import Loader from "./Loader";
