@@ -109,10 +109,10 @@ const ArrivalPage = ({ user }) => {
     //let renderedList = [];
 
     let trains = departureList;
-    console.log(trains.trainServices);
-    if (!trains.trainServices) {
+    console.log(trains);
+    if (trains.length === 0) {
       setServiceList(<Loader />);
-    } else if (trains.trainServices.length === 0) {
+    } else if (!trains.trainServices) {
       setServiceList(<WarningPage />);
     } else {
       setServiceList(
@@ -165,7 +165,7 @@ const ArrivalPage = ({ user }) => {
       </div>
       <div className="row arrival">
         <button className="ui inverted green button" onClick={clearStations}>
-          <i className="undo icon"></i>Clear Stations
+          <i className="undo icon"></i>Clear Station
         </button>
       </div>
 
