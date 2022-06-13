@@ -133,29 +133,18 @@ const Home = ({ user }) => {
               </div>
             </div>
 
-            {/* <div className="row home" >
-              <div classname="home-div" >
-                <i className="big clipboard icon"></i>
-                <br />
-                Incident form
-              </div>
-            </div> */}
 
             <div className="row home">
+            <Link to="/incident">
               <div className="home-div">
                 <i className="big clipboard icon"></i>
                 <br />
                 Incident form
               </div>
+              </Link>
             </div>
 
-            {/* <div className="row home">
-              <div classname="home-div">
-                <i className="big first aid icon"></i>
-                <br />
-                Accident form
-              </div>
-            </div> */}
+  
 
             <div className="row home">
               <div className="home-div">
