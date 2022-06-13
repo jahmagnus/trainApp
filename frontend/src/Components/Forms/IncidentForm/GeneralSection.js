@@ -16,7 +16,7 @@ const GeneralSection = () => {
     
     
         <div className="row button-row">
-        <div className="row"><Prev/><Next/></div>
+        <div className="row"><Prev buttonState="disabled"/><Next buttonState=""/></div>
         <div className="row"><Submit/></div>     
       
       </div>

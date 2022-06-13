@@ -1,11 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import {Navigate} from 'react-router-dom';
+
+
 
 //css
 import './IncidentForm.css'
 
 //component imports
 import GeneralSection from './GeneralSection'
+import Escape from '../../Escape/EscapeHome'
 
 
 const IncidentForm = ({ user }) => {
@@ -22,6 +25,7 @@ const IncidentForm = ({ user }) => {
   return (
     <div className="ui centered grid">
         <div className="twelve wide column">
+        <Escape/>
       <form className="ui inverted form form-container">
 
         <GeneralSection/>

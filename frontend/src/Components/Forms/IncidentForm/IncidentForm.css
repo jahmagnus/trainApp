@@ -1,3 +1,8 @@
 .button-row{
     text-align: center;
+    margin-top: 3rem;
+}
+
+.form-container{
+    margin-top: 2rem;
 }
