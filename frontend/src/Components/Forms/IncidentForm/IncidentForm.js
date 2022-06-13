@@ -2,10 +2,7 @@ import React from "react";
 import {Navigate} from 'react-router-dom';
 
 //component imports
-import Field from './FormComponents/Field'
-import Dropdown from './FormComponents/Dropdown'
-import RadioButton from './FormComponents/RadioButton'
-import TextBox from './FormComponents/TextBox'
+import GeneralSection from './GeneralSection'
 
 
 const IncidentForm = ({ user }) => {
@@ -24,10 +21,7 @@ const IncidentForm = ({ user }) => {
         <div className="ten wide column">
       <form className="ui inverted form form-container">
 
-        <Field/>
-        <Dropdown/>
-        <RadioButton/>
-        <TextBox/>
+        
 
 
       </form>
