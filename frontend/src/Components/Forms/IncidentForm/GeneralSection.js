@@ -6,13 +6,13 @@ import Prev from "../FormComponents/PrevButton";
 import Next from "../FormComponents/NextButton";
 import Submit from "../FormComponents/SubmitButton";
 
-const GeneralSection = ({ handleDate,handleTime, handleLocation, values }) => {
+const GeneralSection = ({ }) => {
 
   return (
     <div className="container general-container">
-      <Field label="Date" type="date" name="date-time" onChange={handleDate}/>
-      <Field label="Time" type="time" name="time-date" onChange={handleTime}/>
-      <Field label="Location" type="text" name="location" onChange={() => console.log('thing')}/>
+      <Field label="Date" type="date" name="date-time"/>
+      <Field label="Time" type="time" name="time-date"/>
+      <Field label="Location" type="text" name="location"/>
 
       <div className="row button-row">
         <div className="row">

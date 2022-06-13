@@ -15,12 +15,13 @@ const IncidentForm = ({ user }) => {
   const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
 
-  useEffect(()=> {
-      console.log(date, time, location)
-  }, [date, time, location])
+  useEffect(() => {
+    console.log(date, time, location);
+  }, [date, time, location]);
 
   //different types of state to be handled
-  const values = {date, time, location};
+  const values = { date, time, location };
+
   //check to see if user data matches the user stored in local storage
   const storageData = localStorage.getItem("user");
   const parseUser = JSON.parse(storageData);
@@ -29,29 +30,30 @@ const IncidentForm = ({ user }) => {
     return <Navigate to="/" replace />;
   }
 
- 
-
   //handle the change of inputs
   const handleDate = (e) => {
-    setDate(e.target.value)
-  }
+    setDate(e.target.value);
+  };
 
   const handleTime = (e) => {
-    setTime(e.target.value)
-  }
+    setTime(e.target.value);
+  };
 
   const handleLocation = (e) => {
-    setLocation(e.target.value)
-  }
-  
-
+    setLocation(e.target.value);
+  };
 
   return (
     <div className="ui centered grid">
       <div className="twelve wide column">
         <Escape />
         <form className="ui inverted form form-container">
-          <GeneralSection handleTime={handleTime} handleDate ={handleDate} handleLocation={handleLocation} values={values}/>
+          <GeneralSection
+            handleTime={handleTime}
+            handleDate={handleDate}
+            handleLocation={handleLocation}
+            values={values}
+          />
         </form>
       </div>
     </div>
