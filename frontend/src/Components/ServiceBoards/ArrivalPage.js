@@ -57,6 +57,8 @@ const ArrivalPage = ({ user }) => {
     renderList();
   }, [departureList]);
 
+
+  //check to see if there is a user in local storage
   const storageData = localStorage.getItem("user");
   const parseUser = JSON.parse(storageData);
   if (parseUser == null) {

@@ -7,6 +7,7 @@ import DeparturePage from "./Components/ServiceBoards/DeparturePage";
 import Login from "./Components/Login/Login";
 import SetUser from "./Components/SetUser";
 import ArrivalPage from "./Components/ServiceBoards/ArrivalPage"
+import IncidentForm from "./Components/Forms/IncidentForm"
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -37,6 +38,7 @@ const App = () => {
       <Route exact path="/home" element={<Home user={user} />} />
       <Route exact path="/setuser" element={<SetUser user={user} />} />
       <Route exact path="/arrivals" element={<ArrivalPage user={user}/>} />
+      <Route exact path="/incident" element={<IncidentForm user={user}/>} />
 
       {/** Catch */}
       <Route path="*" element={"Page does not exist"} />
