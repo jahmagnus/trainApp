@@ -1,7 +1,12 @@
 import React from "react";
 
 const Button = () => {
-  return <button className="ui primary button">Submit</button>;
+
+  const buttonStyle={
+    marginTop: "2rem"
+  }
+
+  return <button style={buttonStyle} className="ui primary button">Submit</button>;
 };
 
 export default Button;

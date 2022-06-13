@@ -7,7 +7,7 @@ import DeparturePage from "./Components/ServiceBoards/DeparturePage";
 import Login from "./Components/Login/Login";
 import SetUser from "./Components/SetUser";
 import ArrivalPage from "./Components/ServiceBoards/ArrivalPage"
-import IncidentForm from "./Components/Forms/IncidentForm"
+import IncidentForm from "./Components/Forms/IncidentForm/IncidentForm"
 
 const App = () => {
   const [user, setUser] = useState(null);

@@ -1,10 +1,16 @@
 import React from "react";
 
-const Button = () => {
+const Button = ({ buttonState }) => {
+
+  const buttonStyle={
+    marginLeft: "2rem"
+  }
+
+
   return (
-    <button className="ui right labeled icon button">
+    <button style={buttonStyle} className={`ui ${buttonState} right labeled icon button`}>
       <i class="right arrow icon"></i>
-      Next Page
+      Next
     </button>
   );
 };
