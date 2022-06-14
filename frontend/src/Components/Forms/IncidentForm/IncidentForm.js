@@ -28,7 +28,7 @@ const IncidentForm = ({ user }) => {
   const [surname, setSurname] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [homeDepot, setHomeDepot] = useState("");
-  const [isOffwork, setIsOffWork] = useState(false);
+  const [isOffwork, setIsOffWork] = useState("");
   const [managerName, setManagerName] = useState("");
 
   //values to use for form persistence
@@ -111,6 +111,31 @@ const IncidentForm = ({ user }) => {
       case "origin":
         setOrigin(e.target.value);
         break;
+
+      case "firstName":
+        setFirstname(e.target.value);
+        break;
+
+      case "surname":
+        setSurname(e.target.value);
+        break;
+
+      case "job":
+        setJobTitle(e.target.value);
+        break;
+
+      case "home":
+        setHomeDepot(e.target.value);
+        break;
+
+      case "manager":
+        setManagerName(e.target.value);
+        break;
+
+      case "absence":
+        setIsOffWork(e.target.value);
+        break;
+    
       default:
         break;
     }
@@ -154,10 +179,18 @@ const IncidentForm = ({ user }) => {
             handleChange={handleChange}
             nextPage={nextPage}
             prevPage={prevPage}
+            values={values}
           />
         );
       case 3:
-        return <PersonsDetails />;
+        return (
+          <PersonsDetails
+            handleChange={handleChange}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            values={values}
+          />
+        );
       case 4:
         return <PoliceDetails />;
       default:

@@ -4,7 +4,7 @@ import React from "react";
 import Prev from "../FormComponents/PrevButton";
 import Submit from "../FormComponents/SubmitButton";
 
-const GeneralSection = ({ handleChange, nextPage }) => {
+const GeneralSection = ({ handleChange, nextPage, values }) => {
 
   const buttonStyle = {
     marginLeft: "2rem",
@@ -14,12 +14,12 @@ const GeneralSection = ({ handleChange, nextPage }) => {
     <div className="container general-container">
       <div className="field">
         <label>Date</label>
-        <input type="date" name="date-time" onChange={handleChange("date")} />
+        <input type="date" name="date-time" onChange={handleChange("date")} value={values.date}/>
       </div>
 
       <div className="field">
         <label>Time</label>
-        <input type="time" name="time-date" onChange={handleChange("time")} />
+        <input type="time" name="time-date" onChange={handleChange("time")} value={values.time}/>
       </div>
 
       <div className="field">
@@ -28,6 +28,7 @@ const GeneralSection = ({ handleChange, nextPage }) => {
           type="text"
           name="location"
           onChange={handleChange("location")}
+          value={values.location}
         />
       </div>
 
@@ -40,7 +41,7 @@ const GeneralSection = ({ handleChange, nextPage }) => {
             style={buttonStyle}
             className={`ui right labeled icon button`}
           >
-            <i class="right arrow icon"></i>
+            <i className="right arrow icon"></i>
             Next
           </button>
         </div>

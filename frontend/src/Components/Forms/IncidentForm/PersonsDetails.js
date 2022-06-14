@@ -23,12 +23,12 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage }) => {
           <input
             type="text"
             name="firstname"
-            onChange={handleChange("firstname")}
+            onChange={handleChange("firstName")}
           />
         </div>
 
         <div className="field">
-          <label>surname</label>
+          <label>Surname</label>
           <input
             type="text"
             name="surname"
@@ -47,7 +47,7 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage }) => {
         </div>
 
         <div className="field">
-          <label>Line Manager's name</label>
+          <label>Line Manager's Name</label>
           <input
             type="text"
             name="manager"
@@ -58,22 +58,31 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage }) => {
         {/* radio button */}
 
         <div class="inline fields">
-          <label for="offWork">Absence from work?</label>
+          <label for="offWork">Did incident cause absence from work?</label>
           <div class="field">
             <div class="ui radio checkbox">
               <input
                 type="radio"
                 name="offWork"
-                checked=""
-                tabindex="0"
-                class="hidden"
+                tabIndex="0"
+                class=""
+                value="yes"
+                onChange={handleChange('absence')}
               />
               <label>Yes</label>
             </div>
           </div>
+
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="yes" tabindex="0" class="hidden" />
+              <input
+                type="radio"
+                name="offWork"
+                tabIndex="0"
+                class=""
+                value="no"
+                onChange={handleChange('absence')}
+              />
               <label>No</label>
             </div>
           </div>
