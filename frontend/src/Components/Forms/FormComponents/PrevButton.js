@@ -7,7 +7,7 @@ const Button = ({ buttonState }) => {
 
   return (
     <button style={buttonStyle} className={`ui ${buttonState} left labeled icon button`}>
-      <i class="left arrow icon"></i>
+      <i className="left arrow icon"></i>
       back
     </button>
   );

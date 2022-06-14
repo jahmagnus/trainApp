@@ -7,7 +7,7 @@ const circleStyle = {
 
     return (
 
-        <div class="ui active centered inline loader" style={circleStyle}></div>
+        <div className="ui active centered inline loader" style={circleStyle}></div>
     )
 }
 

@@ -40,35 +40,39 @@ const TrainDetails = ({ handleChange, nextPage, prevPage, values }) => {
 
         <div className="field">
           <label>Origin</label>
-          <input type="text" name="origin" onChange={handleChange("origin")} value={values.origin}/>
+          <input
+            type="text"
+            name="origin"
+            onChange={handleChange("origin")}
+            value={values.origin}
+          />
         </div>
-          <div className="row button-row">
-            <div className="row">
-              <button
-                onClick={prevPage}
-                style={PrevButtonStyle}
-                className={`ui left labeled icon button`}
-              >
-                <i class="left arrow icon"></i>
-                Back
-              </button>
+        <div className="row button-row">
+          <div className="row">
+            <button
+              onClick={prevPage}
+              style={PrevButtonStyle}
+              className={`ui left labeled icon button`}
+            >
+              <i className="left arrow icon"></i>
+              Back
+            </button>
 
-              <button
-                onClick={nextPage}
-                style={NextButtonStyle}
-                className={`ui right labeled icon button`}
-              >
-                <i class="right arrow icon"></i>
-                Next
-              </button>
-            </div>
-            <div className="row">
-              <Submit />
-            </div>
+            <button
+              onClick={nextPage}
+              style={NextButtonStyle}
+              className={`ui right labeled icon button`}
+            >
+              <i className="right arrow icon"></i>
+              Next
+            </button>
+          </div>
+          <div className="row">
+            <Submit />
           </div>
         </div>
       </div>
-    
+    </div>
   );
 };
 

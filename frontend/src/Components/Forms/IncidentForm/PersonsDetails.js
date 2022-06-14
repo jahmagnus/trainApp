@@ -63,15 +63,15 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage, values }) => {
 
         {/* radio button */}
 
-        <div class="inline fields">
+        <div className="inline fields">
           <label for="offWork">Did incident cause absence from work?</label>
-          <div class="field">
-            <div class="ui radio checkbox">
+          <div className="field">
+            <div className="ui radio checkbox">
               <input
                 type="radio"
                 name="offWork"
                 tabIndex="0"
-                class=""
+                className=""
                 value="yes"
                 onChange={handleChange('absence')}
               />
@@ -79,13 +79,13 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage, values }) => {
             </div>
           </div>
 
-          <div class="field">
-            <div class="ui radio checkbox">
+          <div className="field">
+            <div className="ui radio checkbox">
               <input
                 type="radio"
                 name="offWork"
                 tabIndex="0"
-                class=""
+                className=""
                 value="no"
                 onChange={handleChange('absence')}
               />
@@ -101,7 +101,7 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage, values }) => {
               style={PrevButtonStyle}
               className={`ui left labeled icon button`}
             >
-              <i class="left arrow icon"></i>
+              <i className="left arrow icon"></i>
               Back
             </button>
 
@@ -110,7 +110,7 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage, values }) => {
               style={NextButtonStyle}
               className={`ui right labeled icon button`}
             >
-              <i class="right arrow icon"></i>
+              <i className="right arrow icon"></i>
               Next
             </button>
           </div>
