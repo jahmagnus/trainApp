@@ -6,3 +6,11 @@
 .form-container{
     margin-top: 2rem;
 }
+
+.prev-button{
+    margin-right: 2rem;
+}
+
+.next-button{
+    margin-left: 2rem;
+}

@@ -1,9 +1,9 @@
 import React from 'react'
 
-function PoliceDetails() {
+const PoliceDetails = () =>  {
   return (
     <div>PoliceDetails</div>
   )
 }
 
-export default PoliceDetails
+export default PoliceDetails; 

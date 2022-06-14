@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PersonsDetails() {
+const PersonsDetails =() => {
   return (
     <div>PersonsDetails</div>
   )

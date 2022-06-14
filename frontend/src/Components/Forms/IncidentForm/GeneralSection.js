@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 //component import
-
 import Prev from "../FormComponents/PrevButton";
 import Next from "../FormComponents/NextButton";
 import Submit from "../FormComponents/SubmitButton";
