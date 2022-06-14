@@ -10,22 +10,27 @@ import Escape from "../../Escape/EscapeHome";
 
 const IncidentForm = ({ user }) => {
   //state items
+  const [pageNum, setPageNum] = useState(1);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
 
-  const handleDate = (e) => {
-    setDate(e.target.value);
-  };
+  useEffect(() => {
+    console.log(
+      "date",
+      date,
+      "...",
+      "time",
+      time,
+      "....",
+      "location",
+      location, 
 
-  const handleTime = (e) => {
-    setTime(e.target.value);
-  };
+      pageNum
+    );
+  }, [date, time, location, pageNum]);
 
-  const handleLocation = (e) => {
-    setLocation(e.target.value);
-  };
-
+  //get details from form and set relevant state
   const handleChange = (field) => (e) => {
     switch (field) {
       case "date":
@@ -42,6 +47,18 @@ const IncidentForm = ({ user }) => {
     }
   };
 
+
+  const nextPage = (e) => {
+    e.preventDefault();
+    setPageNum(pageNum + 1);
+    console.log("next page num", pageNum);
+  };
+
+  const prevPage = () => {
+    setPageNum(pageNum - 1);
+    console.log("previous page num", pageNum);
+  };
+
   //check to see if user data matches the user stored in local storage
   const storageData = localStorage.getItem("user");
   const parseUser = JSON.parse(storageData);
@@ -55,7 +72,8 @@ const IncidentForm = ({ user }) => {
       <div className="twelve wide column">
         <Escape />
         <form className="ui inverted form form-container">
-          <GeneralSection handleChange={handleChange} />
+          
+          <GeneralSection handleChange={handleChange} nextPage={nextPage}/>
         </form>
       </div>
     </div>
