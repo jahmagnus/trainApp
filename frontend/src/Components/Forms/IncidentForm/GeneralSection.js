@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
 //component import
-import Field from "../FormComponents/Field";
+
 import Prev from "../FormComponents/PrevButton";
 import Next from "../FormComponents/NextButton";
 import Submit from "../FormComponents/SubmitButton";
 
-const GeneralSection = ({ }) => {
+const GeneralSection = ({ handleChange }) => {
+  
 
   return (
     <div className="container general-container">
-      <Field label="Date" type="date" name="date-time"/>
-      <Field label="Time" type="time" name="time-date"/>
-      <Field label="Location" type="text" name="location"/>
+      <div className="field">
+        <label>Date</label>
+        <input type="date" name="date-time" onChange={handleChange('date')}/>
+      </div>
+
+      <div className="field">
+        <label>Time</label>
+        <input type="time" name="time-date" onChange={handleChange('time')}/>
+      </div>
+
+      <div className="field">
+        <label>Location</label>
+        <input type="text" name="location" onChange={handleChange('location')}/>
+      </div>
 
       <div className="row button-row">
         <div className="row">
@@ -20,7 +32,7 @@ const GeneralSection = ({ }) => {
           <Next buttonState="" />
         </div>
         <div className="row">
-          <Submit/>
+          <Submit />
         </div>
       </div>
     </div>

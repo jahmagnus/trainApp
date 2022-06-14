@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+
 import Home from "./Components/Home/Home";
 import DeparturePage from "./Components/ServiceBoards/DeparturePage";
 import Login from "./Components/Login/Login";
 import SetUser from "./Components/SetUser";
 import ArrivalPage from "./Components/ServiceBoards/ArrivalPage";
 import IncidentForm from "./Components/Forms/IncidentForm/IncidentForm";
+
 
 const App = () => {
   const [user, setUser] = useState(null);
