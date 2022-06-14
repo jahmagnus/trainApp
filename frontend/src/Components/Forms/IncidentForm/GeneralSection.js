@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 //component import
 import Prev from "../FormComponents/PrevButton";
-import Next from "../FormComponents/NextButton";
 import Submit from "../FormComponents/SubmitButton";
 
 const GeneralSection = ({ handleChange, nextPage }) => {

@@ -16,10 +16,20 @@ const IncidentForm = ({ user }) => {
   const [pageNum, setPageNum] = useState(1);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+
+  //service details TRAINSSERVICE
   const [location, setLocation] = useState("");
   const [headcode, setHeadcode] = useState("");
   const [destination, setDestination] = useState("");
   const [origin, setOrigin] = useState("");
+
+  //assaulted persons state PERSONSDETAILS
+  const [firstName, setFirstname] = useState("");
+  const [surname, setSurname] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [homeDepot, setHomeDepot] = useState("");
+  const [isOffwork, setIsOffWork] = useState(false);
+  const [managerName, setManagerName] = useState("");
 
   //values to use for form persistence
   const values = {
@@ -30,6 +40,12 @@ const IncidentForm = ({ user }) => {
     headcode,
     destination,
     origin,
+    firstName,
+    surname,
+    jobTitle,
+    homeDepot,
+    isOffwork,
+    managerName,
   };
 
   useEffect(() => {
@@ -49,9 +65,30 @@ const IncidentForm = ({ user }) => {
 
       destination,
 
-      origin
+      origin,
+
+      firstName,
+      surname,
+      jobTitle,
+      homeDepot,
+      isOffwork,
+      managerName
     );
-  }, [date, time, location, pageNum, headcode, destination, origin]);
+  }, [
+    date,
+    time,
+    location,
+    pageNum,
+    headcode,
+    destination,
+    origin,
+    firstName,
+    surname,
+    jobTitle,
+    homeDepot,
+    isOffwork,
+    managerName,
+  ]);
 
   //get details from form and set relevant state
   const handleChange = (field) => (e) => {

@@ -1,7 +1,7 @@
 import React from "react";
 
 //css
-import './IncidentForm.css'
+import "./IncidentForm.css";
 
 //component imports
 import Submit from "../FormComponents/SubmitButton";
@@ -39,7 +39,7 @@ const TrainDetails = ({ handleChange, nextPage, prevPage }) => {
         <div className="field">
           <label>Origin</label>
           <input type="text" name="origin" onChange={handleChange("origin")} />
-
+        </div>
           <div className="row button-row">
             <div className="row">
               <button
@@ -66,7 +66,7 @@ const TrainDetails = ({ handleChange, nextPage, prevPage }) => {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 
