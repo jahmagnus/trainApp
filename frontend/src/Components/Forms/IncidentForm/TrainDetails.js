@@ -6,7 +6,7 @@ import "./IncidentForm.css";
 //component imports
 import Submit from "../FormComponents/SubmitButton";
 
-const TrainDetails = ({ handleChange, nextPage, prevPage }) => {
+const TrainDetails = ({ handleChange, nextPage, prevPage, values }) => {
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -24,6 +24,7 @@ const TrainDetails = ({ handleChange, nextPage, prevPage }) => {
             type="text"
             name="headcode"
             onChange={handleChange("headcode")}
+            value={values.headcode}
           />
         </div>
 
@@ -33,12 +34,13 @@ const TrainDetails = ({ handleChange, nextPage, prevPage }) => {
             type="text"
             name="destination"
             onChange={handleChange("destination")}
+            value={values.destination}
           />
         </div>
 
         <div className="field">
           <label>Origin</label>
-          <input type="text" name="origin" onChange={handleChange("origin")} />
+          <input type="text" name="origin" onChange={handleChange("origin")} value={values.origin}/>
         </div>
           <div className="row button-row">
             <div className="row">

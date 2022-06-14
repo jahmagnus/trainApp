@@ -6,7 +6,7 @@ import "./IncidentForm.css";
 //component imports
 import Submit from "../FormComponents/SubmitButton";
 
-const PersonsDetails = ({ handleChange, nextPage, prevPage }) => {
+const PersonsDetails = ({ handleChange, nextPage, prevPage, values }) => {
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -24,6 +24,7 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage }) => {
             type="text"
             name="firstname"
             onChange={handleChange("firstName")}
+            value={values.firstName}
           />
         </div>
 
@@ -33,17 +34,21 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage }) => {
             type="text"
             name="surname"
             onChange={handleChange("surname")}
+            value={values.surname}
           />
         </div>
 
         <div className="field">
           <label>Job Title</label>
-          <input type="text" name="job" onChange={handleChange("job")} />
+          <input type="text" name="job" onChange={handleChange("job")}
+          value={values.jobTitle} />
         </div>
 
         <div className="field">
           <label>Home Depot</label>
-          <input type="text" name="depot" onChange={handleChange("home")} />
+          <input type="text" name="depot" onChange={handleChange("home")}
+          value={values.homeDepot} />
+          
         </div>
 
         <div className="field">
@@ -52,6 +57,7 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage }) => {
             type="text"
             name="manager"
             onChange={handleChange("manager")}
+            value={values.managerName}
           />
         </div>
 
