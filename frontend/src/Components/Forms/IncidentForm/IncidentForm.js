@@ -155,7 +155,10 @@ const IncidentForm = ({ user }) => {
       case "attended":
         setDidAttend(e.target.value);
         break;
-      case "language": case "insults": case "threats": case "multiple":
+      case "language":
+      case "insults":
+      case "threats":
+      case "multiple":
         setAbuseType([e.target.value]);
         break;
       default:
@@ -167,13 +170,11 @@ const IncidentForm = ({ user }) => {
   const nextPage = (e) => {
     e.preventDefault();
     setPageNum(pageNum + 1);
-    console.log("next page num", pageNum);
   };
 
   //set page num state deduction
   const prevPage = () => {
     setPageNum(pageNum - 1);
-    console.log("previous page num", pageNum);
   };
 
   //check to see if user data matches the user stored in local storage
