@@ -37,9 +37,7 @@ const IncidentForm = ({ user }) => {
   const [didAttend, setDidAttend] = useState("");
 
   //abuse details state
-  const [isChecked, setIsChecked] = useState(
-    new Array(4).fill(false)
-  );
+  const [isChecked, setIsChecked] = useState(new Array(4).fill(false));
 
   //values to use for form persistence
   const values = {
@@ -106,8 +104,12 @@ const IncidentForm = ({ user }) => {
     isChecked,
   ]);
 
-  const handleChecked = () => {
-    setIsChecked(!isChecked);
+  //function for tracking which of the checkboxes are checked
+  const handleChecked = (position) => {
+    const updatedCheckedState = isChecked.map((item, index) => 
+      index === position ? !item : item
+    )
+    setIsChecked(updatedCheckedState);
   };
 
   //get details from form and set relevant state
