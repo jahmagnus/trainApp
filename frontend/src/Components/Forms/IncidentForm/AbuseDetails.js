@@ -6,7 +6,7 @@ import Submit from "../FormComponents/SubmitButton";
 //import css
 import "./IncidentForm.css";
 
-const AbuseDetails = ({ handleChange, prevPage, nextPage, values }) => {
+const AbuseDetails = ({ prevPage, nextPage, values }) => {
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -22,19 +22,19 @@ const AbuseDetails = ({ handleChange, prevPage, nextPage, values }) => {
       <label>Please describe the type of abuse</label>
       <div className="inline field checkbox-field">
         <div className="ui checkbox ui-checkbox">
-          <input type="checkbox" tabIndex="0" value="foul language" onChange={handleChange('language')} />
+          <input type="checkbox" tabIndex="0" value="foul language"  />
           <label>Foul or abusive language</label>
         </div>
         <div className="ui checkbox ui-checkbox">
-          <input type="checkbox" tabIndex="1" value="personal intimidation" onChange={handleChange('insults')}/>
+          <input type="checkbox" tabIndex="1" value="personal intimidation" />
           <label>Personal insults/intimidating behaviour</label>
         </div>
         <div className="ui checkbox ui-checkbox">
-          <input type="checkbox" tabIndex="2" value="Threatening behaviour" onChange={handleChange('threats')}/>
+          <input type="checkbox" tabIndex="2" value="Threatening behaviour" />
           <label>Threatening behaviour</label>
         </div>
         <div className="ui checkbox ui-checkbox">
-          <input type="checkbox" tabIndex="3" value="multiple offender abuse" onChange={handleChange('multiple')}/>
+          <input type="checkbox" tabIndex="3" value="multiple offender abuse" />
           <label>Multiple abuse by multiple people</label>
         </div>
 
