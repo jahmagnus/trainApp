@@ -37,8 +37,8 @@ const IncidentForm = ({ user }) => {
   const [didAttend, setDidAttend] = useState("");
 
   //abuse details state
-  const [abuseType, setAbuseType] = useState("");
-  const [abuseArray, setAbuseArray] = useState([])
+  const [isChecked, setIsChecked] = useState(false);
+  
 
   //values to use for form persistence
   const values = {
@@ -57,8 +57,8 @@ const IncidentForm = ({ user }) => {
     managerName,
     wasReported,
     didAttend,
-    abuseType,
-    abuseArray,
+    isChecked
+
   };
 
   useEffect(() => {
@@ -85,8 +85,8 @@ const IncidentForm = ({ user }) => {
       managerName,
       wasReported,
       didAttend,
-      abuseType,
-      abuseArray
+      isChecked,
+  
     );
   }, [
     date,
@@ -104,9 +104,12 @@ const IncidentForm = ({ user }) => {
     managerName,
     wasReported,
     didAttend,
-    abuseType,
-    abuseArray
+    isChecked,
+  
   ]);
+
+
+  
 
   //get details from form and set relevant state
   const handleChange = (field) => (e) => {
@@ -165,9 +168,9 @@ const IncidentForm = ({ user }) => {
     }
   };
 
-  const handleUpdateArray = (e) => {
-    setAbuseArray(...abuseArray, e.target.value);
-  }
+
+
+  
 
   //set page number state addition
   const nextPage = (e) => {
@@ -230,8 +233,6 @@ const IncidentForm = ({ user }) => {
       case 5:
         return (
           <AbuseDetails
-          handleArray = {handleUpdateArray}
-            // handleChange={handleChange}
             nextPage={nextPage}
             prevPage={prevPage}
             values={values}
