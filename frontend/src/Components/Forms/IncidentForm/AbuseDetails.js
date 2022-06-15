@@ -6,7 +6,7 @@ import Submit from "../FormComponents/SubmitButton";
 //import css
 import "./IncidentForm.css";
 
-const AbuseDetails = ({ prevPage, nextPage, values }) => {
+const AbuseDetails = ({ prevPage, nextPage, values, isChecked, handleChecked }) => {
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -22,7 +22,7 @@ const AbuseDetails = ({ prevPage, nextPage, values }) => {
       <label>Please describe the type of abuse</label>
       <div className="inline field checkbox-field">
         <div className="ui checkbox ui-checkbox">
-          <input type="checkbox" tabIndex="0" value="foul language" />
+          <input type="checkbox" tabIndex="0" value="foul language" onChange={handleChecked} checked={isChecked}/>
           <label>Foul or abusive language</label>
         </div>
         <div className="ui checkbox ui-checkbox">
