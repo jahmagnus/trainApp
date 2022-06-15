@@ -38,12 +38,7 @@ const IncidentForm = ({ user }) => {
 
   //abuse details state
   const [isChecked, setIsChecked] = useState(new Array(4).fill(false));
-  const [abuseObject, setAbuseObject] = useState([{
-    language: false,
-    personal: false,
-    threats: false,
-    multiple: false,
-  }])
+  const [abuseObject, setAbuseObject] = useState(new Map());
 
   //values to use for form persistence
   const values = {
@@ -66,7 +61,8 @@ const IncidentForm = ({ user }) => {
   };
 
   useEffect(() => {
-    console.log(
+    console
+      .log
       // date,
 
       // time,
@@ -90,7 +86,7 @@ const IncidentForm = ({ user }) => {
       // wasReported,
       // didAttend,
       // isChecked
-    );
+      ();
   }, [
     date,
     time,
@@ -112,15 +108,30 @@ const IncidentForm = ({ user }) => {
 
   // function for tracking which of the checkboxes are checked
   const handleChecked = (e, position) => {
-    const updatedCheckedState = isChecked.map((item, index) =>  
-    index === position ? !item : item
-    
+    const updatedCheckedState = isChecked.map((item, index) =>
+      index === position ? !item : item
     );
     setIsChecked(updatedCheckedState);
-    
-  }
 
-  
+    //create holder map
+    const mapHold = new Map([
+      ["language", false],
+      ["personal", false],
+      ["threats", false],
+      ["multiple", false],
+    ]);
+
+    //get keys from map
+    const keys = mapHold.keys();
+
+    //iterate through checked state and add false or true value to map key value pair
+    for (let i in updatedCheckedState) {
+      mapHold.set(keys.next().value, updatedCheckedState[i]);
+    }
+
+    //set state of abuse object
+    setAbuseObject(mapHold);
+  };
 
   //get details from form and set relevant state
   const handleChange = (field) => (e) => {
