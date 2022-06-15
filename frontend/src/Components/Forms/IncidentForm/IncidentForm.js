@@ -31,6 +31,11 @@ const IncidentForm = ({ user }) => {
   const [isOffwork, setIsOffWork] = useState("");
   const [managerName, setManagerName] = useState("");
 
+
+  //police details state
+  const [wasReported, setWasReported] = useState("");
+  const [didAttend, setDidAttend] = useState("");
+
   //values to use for form persistence
   const values = {
     pageNum,
@@ -46,17 +51,16 @@ const IncidentForm = ({ user }) => {
     homeDepot,
     isOffwork,
     managerName,
+    wasReported,
+    didAttend,
   };
 
   useEffect(() => {
     console.log(
-      "date",
       date,
-      "...",
-      "time",
+      
       time,
-      "....",
-      "location",
+      
       location,
 
       pageNum,
@@ -72,7 +76,9 @@ const IncidentForm = ({ user }) => {
       jobTitle,
       homeDepot,
       isOffwork,
-      managerName
+      managerName,
+      wasReported,
+      didAttend,
     );
   }, [
     date,
@@ -88,6 +94,8 @@ const IncidentForm = ({ user }) => {
     homeDepot,
     isOffwork,
     managerName,
+    wasReported,
+    didAttend
   ]);
 
   //get details from form and set relevant state

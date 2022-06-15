@@ -18,62 +18,21 @@ const PoliceDetails = ({ handleChange, nextPage, prevPage, values }) => {
   return (
     <div>
       <div className="container general-container">
-        <div className="field">
-          <label>First Name</label>
-          <input
-            type="text"
-            name="firstname"
-            onChange={handleChange("firstName")}
-            value={values.firstName}
-          />
-        </div>
+        
 
-        <div className="field">
-          <label>Surname</label>
-          <input
-            type="text"
-            name="surname"
-            onChange={handleChange("surname")}
-            value={values.surname}
-          />
-        </div>
-
-        <div className="field">
-          <label>Job Title</label>
-          <input type="text" name="job" onChange={handleChange("job")}
-          value={values.jobTitle} />
-        </div>
-
-        <div className="field">
-          <label>Home Depot</label>
-          <input type="text" name="depot" onChange={handleChange("home")}
-          value={values.homeDepot} />
-          
-        </div>
-
-        <div className="field">
-          <label>Line Manager's Name</label>
-          <input
-            type="text"
-            name="manager"
-            onChange={handleChange("manager")}
-            value={values.managerName}
-          />
-        </div>
-
-        {/* radio button */}
+        {/* radio buttons */}
 
         <div className="inline fields">
-          <label htmlFor="offWork">Did incident cause absence from work?</label>
+          <label htmlFor="police-report">Was incident reported to the British Transport Police?</label>
           <div className="field">
             <div className="ui radio checkbox">
               <input
                 type="radio"
-                name="offWork"
+                name="police-report"
                 tabIndex="0"
                 className=""
                 value="yes"
-                onChange={handleChange('absence')}
+                onChange={handleChange("absence")}
               />
               <label>Yes</label>
             </div>
@@ -83,11 +42,43 @@ const PoliceDetails = ({ handleChange, nextPage, prevPage, values }) => {
             <div className="ui radio checkbox">
               <input
                 type="radio"
-                name="offWork"
+                name="police-report"
                 tabIndex="0"
                 className=""
                 value="no"
-                onChange={handleChange('absence')}
+                onChange={handleChange("absence")}
+              />
+              <label>No</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div className="inline fields">
+          <label htmlFor="police-attend">Did British Transport Police attend the incident?</label>
+          <div className="field">
+            <div className="ui radio checkbox">
+              <input
+                type="radio"
+                name="police-attend"
+                tabIndex="0"
+                className=""
+                value="yes"
+                onChange={handleChange("absence")}
+              />
+              <label>Yes</label>
+            </div>
+          </div>
+
+          <div className="field">
+            <div className="ui radio checkbox">
+              <input
+                type="radio"
+                name="police-attend"
+                tabIndex="0"
+                className=""
+                value="no"
+                onChange={handleChange("absence")}
               />
               <label>No</label>
             </div>
