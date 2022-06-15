@@ -86,7 +86,7 @@ const IncidentForm = ({ user }) => {
       // wasReported,
       // didAttend,
       // isChecked
-      ();
+      (abuseObject);
   }, [
     date,
     time,
@@ -104,6 +104,7 @@ const IncidentForm = ({ user }) => {
     wasReported,
     didAttend,
     isChecked,
+    abuseObject,
   ]);
 
   // function for tracking which of the checkboxes are checked
