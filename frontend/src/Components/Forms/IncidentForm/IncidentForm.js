@@ -37,7 +37,14 @@ const IncidentForm = ({ user }) => {
   const [didAttend, setDidAttend] = useState("");
 
   //abuse details state
-  const [abuseType, setAbuseType] = useState([]);
+  const [abuseType, setAbuseType] = useState([
+    {
+      language: "",
+      insults: "",
+      threats: "",
+      multiplePeople: "",
+    },
+  ]);
 
   //values to use for form persistence
   const values = {
@@ -159,8 +166,9 @@ const IncidentForm = ({ user }) => {
       case "insults":
       case "threats":
       case "multiple":
-        setAbuseType([e.target.value]);
+        setAbuseType({ ...abuseType, ...e.target.value });
         break;
+
       default:
         break;
     }
