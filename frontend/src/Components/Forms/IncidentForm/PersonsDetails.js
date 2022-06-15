@@ -64,7 +64,7 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage, values }) => {
         {/* radio button */}
 
         <div className="inline fields">
-          <label for="offWork">Did incident cause absence from work?</label>
+          <label htmlFor="offWork">Did incident cause absence from work?</label>
           <div className="field">
             <div className="ui radio checkbox">
               <input

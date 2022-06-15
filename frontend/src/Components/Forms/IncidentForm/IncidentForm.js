@@ -135,7 +135,7 @@ const IncidentForm = ({ user }) => {
       case "absence":
         setIsOffWork(e.target.value);
         break;
-    
+
       default:
         break;
     }
@@ -192,7 +192,14 @@ const IncidentForm = ({ user }) => {
           />
         );
       case 4:
-        return <PoliceDetails />;
+        return (
+          <PoliceDetails
+            handleChange={handleChange}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            values={values}
+          />
+        );
       default:
         break;
     }
