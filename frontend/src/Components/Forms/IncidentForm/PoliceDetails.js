@@ -18,12 +18,12 @@ const PoliceDetails = ({ handleChange, nextPage, prevPage, values }) => {
   return (
     <div>
       <div className="container general-container">
-        
-
         {/* radio buttons */}
 
         <div className="inline fields">
-          <label htmlFor="police-report">Was incident reported to the British Transport Police?</label>
+          <label htmlFor="police-report">
+            Was incident reported to the British Transport Police?
+          </label>
           <div className="field">
             <div className="ui radio checkbox">
               <input
@@ -32,7 +32,7 @@ const PoliceDetails = ({ handleChange, nextPage, prevPage, values }) => {
                 tabIndex="0"
                 className=""
                 value="yes"
-                onChange={handleChange("absence")}
+                onChange={handleChange("reported")}
               />
               <label>Yes</label>
             </div>
@@ -46,16 +46,17 @@ const PoliceDetails = ({ handleChange, nextPage, prevPage, values }) => {
                 tabIndex="0"
                 className=""
                 value="no"
-                onChange={handleChange("absence")}
+                onChange={handleChange("reported")}
               />
               <label>No</label>
             </div>
           </div>
         </div>
 
-
         <div className="inline fields">
-          <label htmlFor="police-attend">Did British Transport Police attend the incident?</label>
+          <label htmlFor="police-attend">
+            Did British Transport Police attend the incident?
+          </label>
           <div className="field">
             <div className="ui radio checkbox">
               <input
@@ -64,7 +65,7 @@ const PoliceDetails = ({ handleChange, nextPage, prevPage, values }) => {
                 tabIndex="0"
                 className=""
                 value="yes"
-                onChange={handleChange("absence")}
+                onChange={handleChange("attended")}
               />
               <label>Yes</label>
             </div>
@@ -78,7 +79,7 @@ const PoliceDetails = ({ handleChange, nextPage, prevPage, values }) => {
                 tabIndex="0"
                 className=""
                 value="no"
-                onChange={handleChange("absence")}
+                onChange={handleChange("attended")}
               />
               <label>No</label>
             </div>

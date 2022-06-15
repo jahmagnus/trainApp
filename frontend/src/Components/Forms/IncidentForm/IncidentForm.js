@@ -10,6 +10,7 @@ import Escape from "../../Escape/EscapeHome";
 import TrainDetails from "./TrainDetails";
 import PersonsDetails from "./PersonsDetails";
 import PoliceDetails from "./PoliceDetails";
+import AbuseDetails from "./AbuseDetails";
 
 const IncidentForm = ({ user }) => {
   //state items
@@ -31,10 +32,12 @@ const IncidentForm = ({ user }) => {
   const [isOffwork, setIsOffWork] = useState("");
   const [managerName, setManagerName] = useState("");
 
-
   //police details state
   const [wasReported, setWasReported] = useState("");
   const [didAttend, setDidAttend] = useState("");
+
+  //abuse details state
+  const [abuseType, setAbuseType] = useState([]);
 
   //values to use for form persistence
   const values = {
@@ -53,14 +56,15 @@ const IncidentForm = ({ user }) => {
     managerName,
     wasReported,
     didAttend,
+    abuseType,
   };
 
   useEffect(() => {
     console.log(
       date,
-      
+
       time,
-      
+
       location,
 
       pageNum,
@@ -79,6 +83,7 @@ const IncidentForm = ({ user }) => {
       managerName,
       wasReported,
       didAttend,
+      abuseType
     );
   }, [
     date,
@@ -95,7 +100,8 @@ const IncidentForm = ({ user }) => {
     isOffwork,
     managerName,
     wasReported,
-    didAttend
+    didAttend,
+    abuseType,
   ]);
 
   //get details from form and set relevant state
@@ -143,7 +149,15 @@ const IncidentForm = ({ user }) => {
       case "absence":
         setIsOffWork(e.target.value);
         break;
-
+      case "reported":
+        setWasReported(e.target.value);
+        break;
+      case "attended":
+        setDidAttend(e.target.value);
+        break;
+      case "language": case "insults": case "threats": case "multiple":
+        setAbuseType([e.target.value]);
+        break;
       default:
         break;
     }
@@ -202,6 +216,16 @@ const IncidentForm = ({ user }) => {
       case 4:
         return (
           <PoliceDetails
+            handleChange={handleChange}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            values={values}
+          />
+        );
+
+      case 5:
+        return (
+          <AbuseDetails
             handleChange={handleChange}
             nextPage={nextPage}
             prevPage={prevPage}
