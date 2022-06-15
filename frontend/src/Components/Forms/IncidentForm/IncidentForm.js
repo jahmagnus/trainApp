@@ -38,6 +38,12 @@ const IncidentForm = ({ user }) => {
 
   //abuse details state
   const [isChecked, setIsChecked] = useState(new Array(4).fill(false));
+  const [abuseObject, setAbuseObject] = useState([{
+    language: false,
+    personal: false,
+    threats: false,
+    multiple: false,
+  }])
 
   //values to use for form persistence
   const values = {
@@ -61,29 +67,29 @@ const IncidentForm = ({ user }) => {
 
   useEffect(() => {
     console.log(
-      date,
+      // date,
 
-      time,
+      // time,
 
-      location,
+      // location,
 
-      pageNum,
+      // pageNum,
 
-      headcode,
+      // headcode,
 
-      destination,
+      // destination,
 
-      origin,
+      // origin,
 
-      firstName,
-      surname,
-      jobTitle,
-      homeDepot,
-      isOffwork,
-      managerName,
-      wasReported,
-      didAttend,
-      isChecked
+      // firstName,
+      // surname,
+      // jobTitle,
+      // homeDepot,
+      // isOffwork,
+      // managerName,
+      // wasReported,
+      // didAttend,
+      // isChecked
     );
   }, [
     date,
@@ -104,13 +110,17 @@ const IncidentForm = ({ user }) => {
     isChecked,
   ]);
 
-  //function for tracking which of the checkboxes are checked
-  const handleChecked = (position) => {
-    const updatedCheckedState = isChecked.map((item, index) => 
-      index === position ? !item : item
-    )
+  // function for tracking which of the checkboxes are checked
+  const handleChecked = (e, position) => {
+    const updatedCheckedState = isChecked.map((item, index) =>  
+    index === position ? !item : item
+    
+    );
     setIsChecked(updatedCheckedState);
-  };
+    
+  }
+
+  
 
   //get details from form and set relevant state
   const handleChange = (field) => (e) => {
