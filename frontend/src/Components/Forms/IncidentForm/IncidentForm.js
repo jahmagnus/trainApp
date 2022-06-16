@@ -196,6 +196,13 @@ const IncidentForm = ({ user }) => {
     }
   };
 
+  const getFactors = (factorArray) => {
+    const holderArray = [...factorArray];
+    setFactorsArray(holderArray)
+
+    console.log('factors array', factorsArray);
+  }
+
   //set page number state addition
   const nextPage = (e) => {
     e.preventDefault();
@@ -271,6 +278,7 @@ const IncidentForm = ({ user }) => {
             nextPage={nextPage}
             prevPage={prevPage}
             values={values}
+            getFactors={getFactors}
           />
         );
       default:

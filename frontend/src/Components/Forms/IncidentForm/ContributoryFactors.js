@@ -7,12 +7,12 @@ import Card from "../FormComponents/Card";
 //import css
 import "./IncidentForm.css";
 
-const ContributoryFactors = ({ prevPage, nextPage, values }) => {
+const ContributoryFactors = ({ prevPage, nextPage, values, getFactors }) => {
   const [currentValue, setCurrentValue] = useState("");
   const [valueArray, setValueArray] = useState([]);
 
   useEffect(() => {
-    console.log(currentValue);
+    getFactors(valueArray)
   }, [currentValue]);
 
   const PrevButtonStyle = {
