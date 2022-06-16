@@ -10,7 +10,19 @@ const dropdownValues = [
   {label: "Under the influence of drugs/alcohol", value: "drugs/alcohol"},
   {label: "Ticket irregularity", value: "ticket irreularity"},
   {label: "Electronic equipment noise", value: "electronic equipment"},
-  {label: "", value: ""},
+  {label: "Passenger to late to join train", value: "passenger late to train"},
+  {label: "Luggage obstruction", value: "luggage obstruction"},
+  {label: "Anti-social behaviour - malicious/threatening", value: "ASB"},
+  {label: "Football supporter anti social behaviour", value: "football ASB"},
+  {label: "Group travel - stag/hen party", value: "group travel"},
+  {label: "Smoking", value: "smoking"},
+  {label: "Involved in passenger disupute", value: "passenger dispute"},
+  {label: "Train running disruption", value: "train disruption"},
+  {label: "Equipment failure", value: "equipment failure"},
+  {label: "Reservation failure", value: "reservation failure"},
+  {label: "Reduced catering offering", value: "catering offering"},
+  {label: "Station issues", value: "station issues"},
+  {label: "Unknown", value: "unknown"},
 ]
 
 const ContributoryFactors = ({ prevPage, nextPage, values }) => {
