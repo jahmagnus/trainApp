@@ -34,12 +34,31 @@ const ContributoryFactors = ({ prevPage, nextPage, values }) => {
     marginLeft: "2rem",
   };
 
+  const dropdownStyle ={
+    height: "15rem"
+  }
+
+
+  const getDropdownValues = (e) => {
+    const selectedValues = []
+
+    e.target.value.style.backGroundColor = "green";
+    // selectedValues.push(e);
+  }
+
   return (
     <div className="container general-container">
       <div className="field">
         <label>Contributing Factors</label>
-        <select multiple="" className="ui dropdown" />
+        <select multiple="true" className="ui fluid dropdown" style={dropdownStyle}>
+       
+        {dropdownValues.map((factor) => (
+          <option value={factor.value} >{factor.label}</option>
+        ))}
+      </select>
       </div>
+    
+      
 
       <div className="row button-row">
         <div className="row">
