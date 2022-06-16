@@ -1,31 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 //submit button import
 import Submit from "../FormComponents/SubmitButton";
+import Card from "../FormComponents/Card";
 
 //import css
 import "./IncidentForm.css";
 
-const dropdownValues = [
-  {label: "Under the influence of drugs/alcohol", value: "drugs/alcohol"},
-  {label: "Ticket irregularity", value: "ticket irreularity"},
-  {label: "Electronic equipment noise", value: "electronic equipment"},
-  {label: "Passenger to late to join train", value: "passenger late to train"},
-  {label: "Luggage obstruction", value: "luggage obstruction"},
-  {label: "Anti-social behaviour - malicious/threatening", value: "ASB"},
-  {label: "Football supporter anti social behaviour", value: "football ASB"},
-  {label: "Group travel - stag/hen party", value: "group travel"},
-  {label: "Smoking", value: "smoking"},
-  {label: "Involved in passenger disupute", value: "passenger dispute"},
-  {label: "Train running disruption", value: "train disruption"},
-  {label: "Equipment failure", value: "equipment failure"},
-  {label: "Reservation failure", value: "reservation failure"},
-  {label: "Reduced catering offering", value: "catering offering"},
-  {label: "Station issues", value: "station issues"},
-  {label: "Unknown", value: "unknown"},
-]
-
 const ContributoryFactors = ({ prevPage, nextPage, values }) => {
+  const [currentValue, setCurrentValue] = useState("");
+  const [valueArray, setValueArray] = useState([]);
+
+  useEffect(() => {
+    console.log(currentValue);
+  }, [currentValue]);
+
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -34,31 +23,73 @@ const ContributoryFactors = ({ prevPage, nextPage, values }) => {
     marginLeft: "2rem",
   };
 
-  const dropdownStyle ={
-    height: "15rem"
-  }
+  const dropdownStyle = {
+    height: "15rem",
+  };
+  const dropdownValues = [
+    { label: "Under the influence of drugs/alcohol", value: "drugs/alcohol" },
+    { label: "Ticket irregularity", value: "ticket irreularity" },
+    { label: "Electronic equipment noise", value: "electronic equipment" },
+    {
+      label: "Passenger to late to join train",
+      value: "passenger late to train",
+    },
+    { label: "Luggage obstruction", value: "luggage obstruction" },
+    { label: "Anti-social behaviour - malicious/threatening", value: "ASB" },
+    {
+      label: "Football supporter anti social behaviour",
+      value: "football ASB",
+    },
+    { label: "Group travel - stag/hen party", value: "group travel" },
+    { label: "Smoking", value: "smoking" },
+    { label: "Involved in passenger disupute", value: "passenger dispute" },
+    { label: "Train running disruption", value: "train disruption" },
+    { label: "Equipment failure", value: "equipment failure" },
+    { label: "Reservation failure", value: "reservation failure" },
+    { label: "Reduced catering offering", value: "catering offering" },
+    { label: "Station issues", value: "station issues" },
+    { label: "Unknown", value: "unknown" },
+  ];
 
+  //get current value from the dropdown - if it doesn't exist in the current array then add it, otherwise don't add
+  const setValue = (e) => {
+    setCurrentValue(e.target.value);
 
-  const getDropdownValues = (e) => {
-    const selectedValues = []
+    if(!valueArray.includes(currentValue)){
+      valueArray.push(currentValue);
+    }
+  };
 
-    e.target.value.style.backGroundColor = "green";
-    // selectedValues.push(e);
+  //remove a factor from the value array
+  const removeValue = (e) => {
+    
+    for(let i in valueArray){
+      if(valueArray.includes(e.target.value)){
+        console.log('remove', e.target.value)
+      }
+    }
+
   }
 
   return (
     <div className="container general-container">
       <div className="field">
         <label>Contributing Factors</label>
-        <select multiple="true" className="ui fluid dropdown" style={dropdownStyle}>
-       
-        {dropdownValues.map((factor) => (
-          <option value={factor.value} >{factor.label}</option>
-        ))}
-      </select>
+        <select
+          multiple={true}
+          className="ui fluid dropdown"
+          style={dropdownStyle}
+          onClick={(e) => {
+            setValue(e);
+          }}
+        >
+          {dropdownValues.map((factor) => (
+            <option value={factor.value}>{factor.label}</option>
+          ))}
+        </select>
       </div>
-    
-      
+
+      <Card valueArray={valueArray} removeValue={removeValue} />
 
       <div className="row button-row">
         <div className="row">
