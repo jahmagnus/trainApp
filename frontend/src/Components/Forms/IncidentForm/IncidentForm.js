@@ -41,6 +41,9 @@ const IncidentForm = ({ user }) => {
   const [isChecked, setIsChecked] = useState(new Array(4).fill(false));
   const [abuseObject, setAbuseObject] = useState(new Map());
 
+  //contributory details
+  const [factorsArray, setFactorsArray] = useState([]);
+
   //values to use for form persistence
   const values = {
     pageNum,
@@ -59,6 +62,7 @@ const IncidentForm = ({ user }) => {
     wasReported,
     didAttend,
     isChecked,
+    factorsArray
   };
 
   useEffect(() => {

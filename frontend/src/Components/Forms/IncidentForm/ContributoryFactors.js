@@ -63,10 +63,9 @@ const ContributoryFactors = ({ prevPage, nextPage, values }) => {
   //remove a factor from the value array
   const removeValue = (item) => {
     
-        for(let i in valueArray){
-          
-          }
-        }
+        const index = valueArray.indexOf(item)
+        valueArray.splice(index, 1);
+        
         console.log(valueArray)
         let updatedArray = [...valueArray];
         setValueArray(updatedArray)

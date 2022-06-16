@@ -8,13 +8,14 @@ function Card({ valueArray, removeValue }) {
     const cardStyle = {
         marginLeft: 'auto',
         marginRight: 'auto',
+        width: "100%"
     }
 
 
     
   return (
     <div className="ui cards" style={cardStyle}>
-      <div className="card">
+      <div className="card" style={cardStyle}>
         <div className="content">
           <div className="header"></div>
           
