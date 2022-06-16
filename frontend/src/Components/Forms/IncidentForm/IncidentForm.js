@@ -11,6 +11,7 @@ import TrainDetails from "./TrainDetails";
 import PersonsDetails from "./PersonsDetails";
 import PoliceDetails from "./PoliceDetails";
 import AbuseDetails from "./AbuseDetails";
+import ContributoryFactors from "./ContributoryFactors";
 
 const IncidentForm = ({ user }) => {
   //state items
@@ -61,8 +62,7 @@ const IncidentForm = ({ user }) => {
   };
 
   useEffect(() => {
-    console
-      .log
+    console.log(
       // date,
 
       // time,
@@ -86,7 +86,8 @@ const IncidentForm = ({ user }) => {
       // wasReported,
       // didAttend,
       // isChecked
-      (abuseObject);
+      abuseObject
+    );
   }, [
     date,
     time,
@@ -253,6 +254,15 @@ const IncidentForm = ({ user }) => {
         return (
           <AbuseDetails
             isChecked={isChecked}
+            handleChecked={handleChecked}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            values={values}
+          />
+        );
+      case 6:
+        return (
+          <ContributoryFactors
             handleChecked={handleChecked}
             nextPage={nextPage}
             prevPage={prevPage}
