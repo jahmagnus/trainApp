@@ -7,7 +7,7 @@ const labelStyle = {
 }
 
   return (
-<a className="ui label" style={labelStyle} onClick={(e) => removeValue(e)}>
+<a className="ui label" style={labelStyle} onClick={()=> removeValue(content)}>
   
   <i className="delete icon"></i>
   {content}

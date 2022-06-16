@@ -55,21 +55,22 @@ const ContributoryFactors = ({ prevPage, nextPage, values }) => {
   const setValue = (e) => {
     setCurrentValue(e.target.value);
 
-    if(!valueArray.includes(currentValue)){
+    if (!valueArray.includes(currentValue)) {
       valueArray.push(currentValue);
     }
   };
 
   //remove a factor from the value array
-  const removeValue = (e) => {
+  const removeValue = (item) => {
     
-    for(let i in valueArray){
-      if(valueArray.includes(e.target.value)){
-        console.log('remove', e.target.value)
-      }
-    }
-
-  }
+        for(let i in valueArray){
+          
+          }
+        }
+        console.log(valueArray)
+        let updatedArray = [...valueArray];
+        setValueArray(updatedArray)
+  };
 
   return (
     <div className="container general-container">
