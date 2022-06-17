@@ -62,7 +62,7 @@ const IncidentForm = ({ user }) => {
     wasReported,
     didAttend,
     isChecked,
-    factorsArray
+    factorsArray,
   };
 
   useEffect(() => {
@@ -90,7 +90,8 @@ const IncidentForm = ({ user }) => {
       // wasReported,
       // didAttend,
       // isChecked
-      abuseObject
+
+      factorsArray
     );
   }, [
     date,
@@ -110,6 +111,7 @@ const IncidentForm = ({ user }) => {
     didAttend,
     isChecked,
     abuseObject,
+    factorsArray,
   ]);
 
   // function for tracking which of the checkboxes are checked
@@ -198,10 +200,8 @@ const IncidentForm = ({ user }) => {
 
   const getFactors = (factorArray) => {
     const holderArray = [...factorArray];
-    setFactorsArray(holderArray)
-
-    console.log('factors array', factorsArray);
-  }
+    setFactorsArray(holderArray);
+  };
 
   //set page number state addition
   const nextPage = (e) => {

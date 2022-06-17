@@ -1,5 +1,7 @@
 import React from 'react'
 
+
+//remove value comes from Contributory factors - component drilling
 function Label({ content, removeValue }) {
 
 const labelStyle = {
@@ -7,7 +9,7 @@ const labelStyle = {
 }
 
   return (
-<a className="ui label" style={labelStyle} onClick={()=> removeValue(content)}>
+<a className="ui label" style={labelStyle} onClick={() => removeValue(content)}>
   
   <i className="delete icon"></i>
   {content}
