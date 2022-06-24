@@ -13,16 +13,17 @@ const ContributoryFactors = ({
   values,
   getFactors,
   factorsArray,
+  pageNum,
 }) => {
   const [currentValue, setCurrentValue] = useState("");
-  //factors array is from the parent and keeps track of the state of the factors that have been selected - on loading of 
+  //factors array is from the parent and keeps track of the state of the factors that have been selected - on loading of
   //contributory factors it will load the current state, which will allow for some form of persistance while using
   //the form
   const [valueArray, setValueArray] = useState(factorsArray);
 
   useEffect(() => {
     setValue();
-  }, [currentValue, valueArray]);
+  }, [currentValue]);
 
   const PrevButtonStyle = {
     marginRight: "2rem",
@@ -62,7 +63,7 @@ const ContributoryFactors = ({
 
   //get current value from the dropdown - if it doesn't exist in the current array then add it, otherwise don't add
   const setValue = () => {
-    if (!valueArray.includes(currentValue) && currentValue !== '') {
+    if (!valueArray.includes(currentValue) && currentValue !== "") {
       valueArray.push(currentValue);
       getFactors(valueArray);
     }
@@ -80,6 +81,7 @@ const ContributoryFactors = ({
 
   return (
     <div className="container general-container">
+      <h4 class="ui header">Page: {pageNum}/8</h4>
       <div className="field">
         <label>Contributing Factors</label>
         <select

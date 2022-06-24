@@ -6,7 +6,7 @@ import "./IncidentForm.css";
 //component imports
 import Submit from "../FormComponents/SubmitButton";
 
-const PoliceDetails = ({ handleChange, nextPage, prevPage, values }) => {
+const PoliceDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) => {
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -19,6 +19,7 @@ const PoliceDetails = ({ handleChange, nextPage, prevPage, values }) => {
     <div>
       <div className="container general-container">
         {/* radio buttons */}
+        <h4 className="ui header">Page: {pageNum}/8</h4>
 
         <div className="inline fields">
           <label htmlFor="police-report">

@@ -6,7 +6,8 @@ import "./IncidentForm.css";
 //component imports
 import Submit from "../FormComponents/SubmitButton";
 
-const TrainDetails = ({ handleChange, nextPage, prevPage, values }) => {
+const TrainDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) => {
+  <h4 className="ui header">Page: {pageNum}/8</h4>
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -18,6 +19,7 @@ const TrainDetails = ({ handleChange, nextPage, prevPage, values }) => {
   return (
     <div>
       <div className="container general-container">
+      <h4 className="ui header">Page: {pageNum}/8</h4>
         <div className="field">
           <label>Train Head code</label>
           <input

@@ -6,7 +6,7 @@ import "./IncidentForm.css";
 //component imports
 import Submit from "../FormComponents/SubmitButton";
 
-function ReportingPerson({ handleChange, values, nextPage, prevPage }) {
+function ReportingPerson({ handleChange, values, nextPage, prevPage, pageNum }) {
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -18,6 +18,7 @@ function ReportingPerson({ handleChange, values, nextPage, prevPage }) {
   return (
     <div>
       <div className="container general-container">
+      <h4 className="ui header">Page: {pageNum}/8</h4>
         <div className="field">
           <label>Reporter First Name</label>
           <input

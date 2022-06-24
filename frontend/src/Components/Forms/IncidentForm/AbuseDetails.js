@@ -6,7 +6,7 @@ import Submit from "../FormComponents/SubmitButton";
 //import css
 import "./IncidentForm.css";
 
-const AbuseDetails = ({ prevPage, nextPage, values, isChecked, handleChecked }) => {
+const AbuseDetails = ({ prevPage, nextPage, values, isChecked, handleChecked, pageNum }) => {
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -19,6 +19,7 @@ const AbuseDetails = ({ prevPage, nextPage, values, isChecked, handleChecked }) 
 
   return (
     <div className="container general-container">
+      <h4 className="ui header">Page: {pageNum}/8</h4>
       <label>Please describe the type of abuse</label>
       <div className="inline field checkbox-field">
         <div className="ui checkbox ui-checkbox">

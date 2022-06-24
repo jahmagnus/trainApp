@@ -13,6 +13,7 @@ import PoliceDetails from "./PoliceDetails";
 import AbuseDetails from "./AbuseDetails";
 import ContributoryFactors from "./ContributoryFactors";
 import ReportingPerson from "./ReportingPerson";
+import Comments from "./Comments";
 
 const IncidentForm = ({ user }) => {
   //state items
@@ -52,6 +53,9 @@ const IncidentForm = ({ user }) => {
   const [reporterHomeLocation, setReporterHomeLocation] = useState("");
   const [reporterManagerName, setReporterManagerName] = useState("");
 
+  //comment details
+  const [comment, setComment] = useState("");
+
   //values to use for form persistence
   const values = {
     pageNum,
@@ -76,36 +80,13 @@ const IncidentForm = ({ user }) => {
     reporterJob,
     reporterHomeLocation,
     reporterManagerName,
+    comment
   };
 
   useEffect(() => {
-    console.log(
-      // date,
-
-      // time,
-
-      // location,
-
-      // pageNum,
-
-      // headcode,
-
-      // destination,
-
-      // origin,
-
-      // firstName,
-      // surname,
-      // jobTitle,
-      // homeDepot,
-      // isOffwork,
-      // managerName,
-      // wasReported,
-      // didAttend,
-      // isChecked,
-
-      factorsArray
-    );
+    console.log(values)
+      
+    ;
   }, [
     date,
     time,
@@ -125,6 +106,11 @@ const IncidentForm = ({ user }) => {
     isChecked,
     abuseObject,
     factorsArray,
+    reporterFirstName,
+    reporterHomeLocation,
+    reporterSurname,
+    reporterJob, 
+    reporterManagerName
   ]);
 
   // function for tracking which of the checkboxes are checked in type of abuse page
@@ -224,6 +210,10 @@ const IncidentForm = ({ user }) => {
         setReporterManagerName(e.target.value);
         break;
 
+        case "comment":
+          setComment(e.target.value);
+          break;
+
       default:
         break;
     }
@@ -261,6 +251,7 @@ const IncidentForm = ({ user }) => {
             handleChange={handleChange}
             nextPage={nextPage}
             values={values}
+            pageNum = {pageNum}
           />
         );
 
@@ -271,6 +262,7 @@ const IncidentForm = ({ user }) => {
             nextPage={nextPage}
             prevPage={prevPage}
             values={values}
+            pageNum = {pageNum}
           />
         );
       case 3:
@@ -280,6 +272,7 @@ const IncidentForm = ({ user }) => {
             nextPage={nextPage}
             prevPage={prevPage}
             values={values}
+            pageNum = {pageNum}
           />
         );
       case 4:
@@ -289,6 +282,7 @@ const IncidentForm = ({ user }) => {
             nextPage={nextPage}
             prevPage={prevPage}
             values={values}
+            pageNum = {pageNum}
           />
         );
 
@@ -300,6 +294,7 @@ const IncidentForm = ({ user }) => {
             nextPage={nextPage}
             prevPage={prevPage}
             values={values}
+            pageNum = {pageNum}
           />
         );
       case 6:
@@ -311,6 +306,7 @@ const IncidentForm = ({ user }) => {
             values={values}
             getFactors={getFactors}
             factorsArray={factorsArray}
+            pageNum = {pageNum}
           />
         );
 
@@ -321,6 +317,17 @@ const IncidentForm = ({ user }) => {
             nextPage={nextPage}
             prevPage={prevPage}
             values={values}
+            pageNum = {pageNum}
+          />
+        );
+      case 8:
+        return (
+          <Comments
+            nextPage={nextPage}
+            prevPage={prevPage}
+            values={values}
+            handleChange={handleChange}
+            pageNum = {pageNum}
           />
         );
       default:

@@ -4,22 +4,32 @@ import React from "react";
 import Prev from "../FormComponents/PrevButton";
 import Submit from "../FormComponents/SubmitButton";
 
-const GeneralSection = ({ handleChange, nextPage, values }) => {
-
+const GeneralSection = ({ handleChange, nextPage, values, pageNum }) => {
   const buttonStyle = {
     marginLeft: "2rem",
   };
 
   return (
     <div className="container general-container">
+      <h4 className="ui header">Page: {pageNum}/8</h4>
       <div className="field">
         <label>Date</label>
-        <input type="date" name="date-time" onChange={handleChange("date")} value={values.date}/>
+        <input
+          type="date"
+          name="date-time"
+          onChange={handleChange("date")}
+          value={values.date}
+        />
       </div>
 
       <div className="field">
         <label>Time</label>
-        <input type="time" name="time-date" onChange={handleChange("time")} value={values.time}/>
+        <input
+          type="time"
+          name="time-date"
+          onChange={handleChange("time")}
+          value={values.time}
+        />
       </div>
 
       <div className="field">
