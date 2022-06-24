@@ -12,7 +12,7 @@ import PersonsDetails from "./PersonsDetails";
 import PoliceDetails from "./PoliceDetails";
 import AbuseDetails from "./AbuseDetails";
 import ContributoryFactors from "./ContributoryFactors";
-import ReportingPerson from './ReportingPerson'
+import ReportingPerson from "./ReportingPerson";
 
 const IncidentForm = ({ user }) => {
   //state items
@@ -45,7 +45,12 @@ const IncidentForm = ({ user }) => {
   //contributory details
   const [factorsArray, setFactorsArray] = useState([]);
 
-  //
+  //details of person reporting
+  const [reporterFirstName, setReporterFirstName] = useState("");
+  const [reporterSurname, setReporterSurname] = useState("");
+  const [reporterJob, setReporterJob] = useState("");
+  const [reporterHomeLocation, setReporterHomeLocation] = useState("");
+  const [reporterManagerName, setReporterManagerName] = useState("");
 
   //values to use for form persistence
   const values = {
@@ -66,6 +71,11 @@ const IncidentForm = ({ user }) => {
     didAttend,
     isChecked,
     factorsArray,
+    reporterFirstName,
+    reporterSurname,
+    reporterJob,
+    reporterHomeLocation,
+    reporterManagerName,
   };
 
   useEffect(() => {
@@ -117,7 +127,7 @@ const IncidentForm = ({ user }) => {
     factorsArray,
   ]);
 
-  // function for tracking which of the checkboxes are checked
+  // function for tracking which of the checkboxes are checked in type of abuse page
   const handleChecked = (e, position) => {
     const updatedCheckedState = isChecked.map((item, index) =>
       index === position ? !item : item
@@ -194,6 +204,24 @@ const IncidentForm = ({ user }) => {
         break;
       case "attended":
         setDidAttend(e.target.value);
+        break;
+      case "reporterFirstName":
+        setReporterFirstName(e.target.value);
+        break;
+      case "reporterSurname":
+        setReporterSurname(e.target.value);
+        break;
+
+      case "reporterJob":
+        setReporterJob(e.target.value);
+        break;
+
+      case "reporterLocation":
+        setReporterHomeLocation(e.target.value);
+        break;
+
+      case "reporterManager":
+        setReporterManagerName(e.target.value);
         break;
 
       default:
@@ -282,7 +310,17 @@ const IncidentForm = ({ user }) => {
             prevPage={prevPage}
             values={values}
             getFactors={getFactors}
-            factorsArray = {factorsArray}
+            factorsArray={factorsArray}
+          />
+        );
+
+      case 7:
+        return (
+          <ReportingPerson
+            handleChange={handleChange}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            values={values}
           />
         );
       default:
