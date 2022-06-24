@@ -15,6 +15,9 @@ const ContributoryFactors = ({
   factorsArray,
 }) => {
   const [currentValue, setCurrentValue] = useState("");
+  //factors array is from the parent and keeps track of the state of the factors that have been selected - on loading of 
+  //contributory factors it will load the current state, which will allow for some form of persistance while using
+  //the form
   const [valueArray, setValueArray] = useState(factorsArray);
 
   useEffect(() => {
@@ -34,28 +37,28 @@ const ContributoryFactors = ({
     height: "15rem",
   };
   const dropdownValues = [
-    { label: "Under the influence of drugs/alcohol", value: "drugs/alcohol" },
-    { label: "Ticket irregularity", value: "ticket irreularity" },
-    { label: "Electronic equipment noise", value: "electronic equipment" },
+    { label: "Under the influence of drugs/alcohol", value: "Drugs/alcohol" },
+    { label: "Ticket irregularity", value: "Ticket irreularity" },
+    { label: "Electronic equipment noise", value: "Electronic equipment" },
     {
       label: "Passenger to late to join train",
-      value: "passenger late to train",
+      value: "Passenger late to train",
     },
-    { label: "Luggage obstruction", value: "luggage obstruction" },
+    { label: "Luggage obstruction", value: "Luggage obstruction" },
     { label: "Anti-social behaviour - malicious/threatening", value: "ASB" },
     {
       label: "Football supporter anti social behaviour",
-      value: "football ASB",
+      value: "Football ASB",
     },
-    { label: "Group travel - stag/hen party", value: "group travel" },
-    { label: "Smoking", value: "smoking" },
-    { label: "Involved in passenger disupute", value: "passenger dispute" },
-    { label: "Train running disruption", value: "train disruption" },
-    { label: "Equipment failure", value: "equipment failure" },
-    { label: "Reservation failure", value: "reservation failure" },
-    { label: "Reduced catering offering", value: "catering offering" },
-    { label: "Station issues", value: "station issues" },
-    { label: "Unknown", value: "unknown" },
+    { label: "Group travel - stag/hen party", value: "Group travel" },
+    { label: "Smoking", value: "Smoking" },
+    { label: "Involved in passenger disupute", value: "Passenger dispute" },
+    { label: "Train running disruption", value: "Train disruption" },
+    { label: "Equipment failure", value: "Equipment failure" },
+    { label: "Reservation failure", value: "Reservation failure" },
+    { label: "Reduced catering offering", value: "Catering offering" },
+    { label: "Station issues", value: "Station issues" },
+    { label: "Unknown", value: "Unknown" },
   ];
 
   //get current value from the dropdown - if it doesn't exist in the current array then add it, otherwise don't add
