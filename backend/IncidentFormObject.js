@@ -24,7 +24,8 @@ const incidentForm = new Schema({
     reporterSurname: String,
     reporterJob: String,
     reporterHomeLocation: String,
-    reporterManagerName: String
+    reporterManagerName: String,
+    comment: String
 })
 
 export default mongoose.model('IncidentForm', incidentForm)

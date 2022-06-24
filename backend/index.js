@@ -14,6 +14,9 @@ import bodyParser from "body-parser";
 //user schema for mongoDB
 import User from './User.js'
 
+//incident report schema
+import IncidentForm from './IncidentFormObject.js'
+
 
 dotenv.config();
 const app = express();
@@ -78,6 +81,8 @@ app.post("/userlogin", async (req, res, next) => {
    
 });
 
+
+//create new user in the database
 app.post("/createUser", async (req, res) => {
   try {
 
@@ -110,6 +115,44 @@ app.post("/createUser", async (req, res) => {
   console.log(req.body);
 });
 
+//create new incident form in the database
+app.post(
+  "/createIncidentForm", async(req, res) => {
+    try{
+      const newIncident = new IncidentForm({
+        username: req.body.username,
+        date: req.body.date,
+        time: req.body.time, 
+        location: req.body.location,
+        destination: req.body.destination,
+        headcode: req.body.headcode,
+        origin: req.body.origin,
+        firstName: req.body.firstName,
+        surname: req.body.surname,
+        jobTitle: req.body.jobTitle,
+        homeDepot: req.body.homeDepot,
+        isOffwork: req.body.isOffWork,
+        managerName: req.body.managerName,
+        wasReported: req.body.wasReported,
+        didAttend: req.body.didAttend,
+        abuseTypes: {[req.body.abuseObject]},
+        factors: {[req.body.factorsArray]},
+        reporterFirstName: req.body.reporterFirstName,
+        reporterSurname: req.body.reporterSurname,
+        reporterJob: req.body.job,
+        reporterHomeLocation: req.body.reporterHomeLocation,
+        reporterManagerName: req.body.reporterManagerName,
+        comment: req.body.comment
+      });
+      await newIncident.save();
+      res.send("Incident form saved")
+    } catch(err){
+      console.log(err);
+    }
+
+    console.log(req.body);
+  }
+)
 const port = 5000;
 //create the server instance and assign the port
 app.listen(port, () => {

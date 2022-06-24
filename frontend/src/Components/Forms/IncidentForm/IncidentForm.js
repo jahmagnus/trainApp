@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
+import axios from "axios";
 
 //css
 import "./IncidentForm.css";
@@ -33,7 +34,7 @@ const IncidentForm = ({ user }) => {
   const [surname, setSurname] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [homeDepot, setHomeDepot] = useState("");
-  const [isOffwork, setIsOffWork] = useState("");
+  const [isOffWork, setIsOffWork] = useState("");
   const [managerName, setManagerName] = useState("");
 
   //police details state
@@ -70,7 +71,7 @@ const IncidentForm = ({ user }) => {
     surname,
     jobTitle,
     homeDepot,
-    isOffwork,
+    isOffWork,
     managerName,
     wasReported,
     didAttend,
@@ -100,7 +101,7 @@ const IncidentForm = ({ user }) => {
     surname,
     jobTitle,
     homeDepot,
-    isOffwork,
+    isOffWork,
     managerName,
     wasReported,
     didAttend,
@@ -336,8 +337,39 @@ const IncidentForm = ({ user }) => {
     }
   };
 
+
+  //take data from form and send to database
   const handleSubmit = () => {
-    
+    axios({
+      method: "POST",
+      data: {
+        username: user.username,
+        date: date,
+        time: time, 
+        location: location,
+        destination: destination,
+        headcode: headcode,
+        origin: origin,
+        firstName: firstName,
+        surname: surname,
+        jobTitle: jobTitle,
+        homeDepot: homeDepot,
+        isOffWork: isOffWork,
+        managerName: managerName,
+        wasReported: wasReported,
+        didAttend: didAttend,
+        abuseTypes: abuseObject,
+        factors: factorsArray,
+        reporterFirstName: reporterFirstName,
+        reporterSurname: reporterSurname,
+        reporterJob: reporterJob,
+        reporterHomeLocation: reporterHomeLocation,
+        reporterManagerName: reporterManagerName,
+        comment: comment
+      },
+      withCredentials: true,
+      url: "http://localhost:3000/createIncidentForm"
+    }).then((res) => console.log(res));
   }
 
   return (
@@ -346,7 +378,7 @@ const IncidentForm = ({ user }) => {
         <Escape />
         <form className="ui inverted form form-container">{currentPage()}</form>
         <div className="row">
-        <Submit values={values}/>
+        <Submit values={values} handleSubmit={handleSubmit}/>
         </div>
         
       </div>

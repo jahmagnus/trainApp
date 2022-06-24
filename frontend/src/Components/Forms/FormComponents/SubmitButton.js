@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Button = () => {
+const Button = ({ handleSubmit }) => {
   const buttonStyle = {
     marginTop: "2rem",
     height: "3rem",
@@ -8,7 +8,7 @@ const Button = () => {
   };
 
   return (
-    <button style={buttonStyle} className={`ui primary button`}>
+    <button style={buttonStyle} className={`ui primary button`} onClick={handleSubmit}>
       Submit
     </button>
   );
