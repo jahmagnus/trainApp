@@ -12,11 +12,10 @@ import session from "express-session";
 import bodyParser from "body-parser";
 
 //user schema for mongoDB
-import User from './User.js'
+import User from "./User.js";
 
 //incident report schema
-import IncidentForm from './IncidentFormObject.js'
-
+import IncidentForm from "./IncidentFormObject.js";
 
 dotenv.config();
 const app = express();
@@ -45,58 +44,51 @@ app.use(
 );
 
 app.use(cookieParser("secretcode"));
-app.use(passport.initialize())
-app.use(passport.session())
-import passportConfig from './passportConfig.js'
-passportConfig(passport)
+app.use(passport.initialize());
+app.use(passport.session());
+import passportConfig from "./passportConfig.js";
+passportConfig(passport);
 
 const pwd = process.env.DB_PWD;
 const DBusername = process.env.DB_USERNAME;
 const uri = `mongodb+srv://${DBusername}:${pwd}@train-data.jizrg.mongodb.net/TrainData?retryWrites=true&w=majority`;
 await mongoose.connect(uri);
-  
 
-app.get('/getUser', (req, res) => {
-  console.log('/getuser endpoint')
-  res.send(req.user)
-})
+app.get("/getUser", (req, res) => {
+  console.log("/getuser endpoint");
+  res.send(req.user);
+});
 
 //routes
 app.post("/userlogin", async (req, res, next) => {
-
-   passport.authenticate("local", (err, user, info) => {
-      if(err)throw err
-      if(!user){
-        console.log('app.post endpoint index.js', req.user)
-        //res.send({authenticated: false})
-        res.send(user)
-      }
-      else {
-        req.logIn(user, err => {
-         // res.send({authenticated: true})
-          res.send(user)
-        })
-      }
-    })(req, res, next)
-   
+  passport.authenticate("local", (err, user, info) => {
+    if (err) throw err;
+    if (!user) {
+      console.log("app.post endpoint index.js", req.user);
+      //res.send({authenticated: false})
+      res.send(user);
+    } else {
+      req.logIn(user, (err) => {
+        // res.send({authenticated: true})
+        res.send(user);
+      });
+    }
+  })(req, res, next);
 });
-
 
 //create new user in the database
 app.post("/createUser", async (req, res) => {
   try {
-
-    //consider removal of this connection code as connection already established 
+    //consider removal of this connection code as connection already established
     await mongoose.connect(uri);
     console.log("mongoose connected set user");
-
 
     User.findOne({ username: req.body.username }, async (err, document) => {
       if (err) throw err;
       if (document) res.send("user already exists");
       if (!document) {
-        //hash the plain text password 
-        const hashedPwd = await bcrypt.hash(req.body.password, 10)
+        //hash the plain text password
+        const hashedPwd = await bcrypt.hash(req.body.password, 10);
         const newUser = new User({
           username: req.body.username,
           password: hashedPwd,
@@ -116,43 +108,44 @@ app.post("/createUser", async (req, res) => {
 });
 
 //create new incident form in the database
-app.post(
-  "/createIncidentForm", async(req, res) => {
-    try{
-      const newIncident = new IncidentForm({
-        username: req.body.username,
-        date: req.body.date,
-        time: req.body.time, 
-        location: req.body.location,
-        destination: req.body.destination,
-        headcode: req.body.headcode,
-        origin: req.body.origin,
-        firstName: req.body.firstName,
-        surname: req.body.surname,
-        jobTitle: req.body.jobTitle,
-        homeDepot: req.body.homeDepot,
-        isOffwork: req.body.isOffWork,
-        managerName: req.body.managerName,
-        wasReported: req.body.wasReported,
-        didAttend: req.body.didAttend,
-        abuseTypes: {[req.body.abuseObject]},
-        factors: {[req.body.factorsArray]},
-        reporterFirstName: req.body.reporterFirstName,
-        reporterSurname: req.body.reporterSurname,
-        reporterJob: req.body.job,
-        reporterHomeLocation: req.body.reporterHomeLocation,
-        reporterManagerName: req.body.reporterManagerName,
-        comment: req.body.comment
-      });
-      await newIncident.save();
-      res.send("Incident form saved")
-    } catch(err){
-      console.log(err);
-    }
+app.post("/createIncidentForm", async (req, res) => {
+  try {
+    await mongoose.connect(uri);
+    console.log("mongoose connected set user");
 
-    console.log(req.body);
+    const newIncident = new IncidentForm({
+      username: req.body.username,
+      date: req.body.date,
+      time: req.body.time,
+      location: req.body.location,
+      destination: req.body.destination,
+      headcode: req.body.headcode,
+      origin: req.body.origin,
+      firstName: req.body.firstName,
+      surname: req.body.surname,
+      jobTitle: req.body.jobTitle,
+      homeDepot: req.body.homeDepot,
+      isOffwork: req.body.isOffWork,
+      managerName: req.body.managerName,
+      wasReported: req.body.wasReported,
+      didAttend: req.body.didAttend,
+      abuseTypes: req.body.abuseObject,
+      factors: req.body.factorsArray,
+      reporterFirstName: req.body.reporterFirstName,
+      reporterSurname: req.body.reporterSurname,
+      reporterJob: req.body.job,
+      reporterHomeLocation: req.body.reporterHomeLocation,
+      reporterManagerName: req.body.reporterManagerName,
+      comment: req.body.comment,
+    });
+    await newIncident.save();
+    res.send("Incident form saved");
+  } catch (err) {
+    console.log(err);
   }
-)
+
+  console.log("in index", req.body);
+});
 const port = 5000;
 //create the server instance and assign the port
 app.listen(port, () => {
@@ -173,13 +166,12 @@ app.use(
 const apiKey = process.env.API_KEY;
 const appID = "b74798d6"; //this may need to be changed on deployment
 
-
 //credentials using NR SOAP proxy
-const apiKeyNR = process.env.API_KEY_NR
+const apiKeyNR = process.env.API_KEY_NR;
 
 app.post("/departures", async (request, response) => {
-  const origin = request.body.originStation
-  const destination = request.body.destinationStation
+  const origin = request.body.originStation;
+  const destination = request.body.destinationStation;
 
   const api_url = `https://transportapi.com/v3/uk/train/station/${origin}/live.json?app_id=${appID}&app_key=${apiKey}&darwin=false&calling_at=${destination}&train_status=passenger`;
   const fetch_response = await fetch(api_url);
@@ -187,16 +179,13 @@ app.post("/departures", async (request, response) => {
   response.send(trainData);
 });
 
-
 app.post("/arrivals", async (request, response) => {
-  const arrivalStation = request.body.destinationStation
-  
-  const api_url = `https://huxley2.azurewebsites.net/arrivals/${arrivalStation}?accessToken=${apiKeyNR}`
-  
+  const arrivalStation = request.body.destinationStation;
+
+  const api_url = `https://huxley2.azurewebsites.net/arrivals/${arrivalStation}?accessToken=${apiKeyNR}`;
+
   const fetch_response = await fetch(api_url);
   const trainData = await fetch_response.json();
-  console.log(trainData)
+  console.log(trainData);
   response.send(trainData);
 });
-
-
