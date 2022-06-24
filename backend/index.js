@@ -10,6 +10,8 @@ import cookieParser from "cookie-parser";
 import bcrypt from "bcrypt";
 import session from "express-session";
 import bodyParser from "body-parser";
+
+//user schema for mongoDB
 import User from './User.js'
 
 
