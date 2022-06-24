@@ -20,7 +20,7 @@ const ContributoryFactors = ({
   useEffect(() => {
     getFactors(valueArray);
     setValue();
-  }, [currentValue, valueArray]);
+  }, [currentValue]);
 
   const PrevButtonStyle = {
     marginRight: "2rem",
