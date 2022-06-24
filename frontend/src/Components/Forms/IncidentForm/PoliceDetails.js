@@ -6,7 +6,13 @@ import "./IncidentForm.css";
 //component imports
 import Submit from "../FormComponents/SubmitButton";
 
-const PoliceDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) => {
+const PoliceDetails = ({
+  handleChange,
+  nextPage,
+  prevPage,
+  values,
+  pageNum,
+}) => {
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -106,9 +112,6 @@ const PoliceDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) =>
               <i className="right arrow icon"></i>
               Next
             </button>
-          </div>
-          <div className="row">
-            <Submit />
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ import AbuseDetails from "./AbuseDetails";
 import ContributoryFactors from "./ContributoryFactors";
 import ReportingPerson from "./ReportingPerson";
 import Comments from "./Comments";
+import Submit from "../FormComponents/SubmitButton";
 
 const IncidentForm = ({ user }) => {
   //state items
@@ -340,6 +341,10 @@ const IncidentForm = ({ user }) => {
       <div className="twelve wide column">
         <Escape />
         <form className="ui inverted form form-container">{currentPage()}</form>
+        <div className="row">
+        <Submit/>
+        </div>
+        
       </div>
     </div>
   );

@@ -56,7 +56,7 @@ const GeneralSection = ({ handleChange, nextPage, values, pageNum }) => {
           </button>
         </div>
         <div className="row">
-          <Submit />
+        
         </div>
       </div>
     </div>

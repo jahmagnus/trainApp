@@ -69,9 +69,6 @@ const TrainDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) => 
               Next
             </button>
           </div>
-          <div className="row">
-            <Submit />
-          </div>
         </div>
       </div>
     </div>

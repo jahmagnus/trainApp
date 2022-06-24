@@ -122,9 +122,6 @@ const ContributoryFactors = ({
             Next
           </button>
         </div>
-        <div className="row">
-          <Submit />
-        </div>
       </div>
     </div>
   );

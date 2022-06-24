@@ -6,7 +6,13 @@ import "./IncidentForm.css";
 //component imports
 import Submit from "../FormComponents/SubmitButton";
 
-const PersonsDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) => {
+const PersonsDetails = ({
+  handleChange,
+  nextPage,
+  prevPage,
+  values,
+  pageNum,
+}) => {
   const PrevButtonStyle = {
     marginRight: "2rem",
   };
@@ -18,7 +24,7 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) =
   return (
     <div>
       <div className="container general-container">
-      <h4 className="ui header">Page: {pageNum}/8</h4>
+        <h4 className="ui header">Page: {pageNum}/8</h4>
         <div className="field">
           <label>First Name</label>
           <input
@@ -41,15 +47,22 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) =
 
         <div className="field">
           <label>Job Title</label>
-          <input type="text" name="job" onChange={handleChange("job")}
-          value={values.jobTitle} />
+          <input
+            type="text"
+            name="job"
+            onChange={handleChange("job")}
+            value={values.jobTitle}
+          />
         </div>
 
         <div className="field">
           <label>Home Depot</label>
-          <input type="text" name="depot" onChange={handleChange("home")}
-          value={values.homeDepot} />
-          
+          <input
+            type="text"
+            name="depot"
+            onChange={handleChange("home")}
+            value={values.homeDepot}
+          />
         </div>
 
         <div className="field">
@@ -74,7 +87,7 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) =
                 tabIndex="0"
                 className=""
                 value="yes"
-                onChange={handleChange('absence')}
+                onChange={handleChange("absence")}
               />
               <label>Yes</label>
             </div>
@@ -88,7 +101,7 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) =
                 tabIndex="0"
                 className=""
                 value="no"
-                onChange={handleChange('absence')}
+                onChange={handleChange("absence")}
               />
               <label>No</label>
             </div>
@@ -114,9 +127,6 @@ const PersonsDetails = ({ handleChange, nextPage, prevPage, values, pageNum }) =
               <i className="right arrow icon"></i>
               Next
             </button>
-          </div>
-          <div className="row">
-            <Submit />
           </div>
         </div>
       </div>

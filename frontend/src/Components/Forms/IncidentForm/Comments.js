@@ -37,9 +37,6 @@ function Comments({ nextPage, prevPage, handleChange, values, pageNum }) {
 
           <NextButton buttonState="disabled" />
         </div>
-        <div className="row">
-          <Submit />
-        </div>
       </div>
     </div>
   );

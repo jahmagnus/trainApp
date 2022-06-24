@@ -59,9 +59,6 @@ const AbuseDetails = ({ prevPage, nextPage, values, isChecked, handleChecked, pa
               Next
             </button>
           </div>
-          <div className="row">
-            <Submit />
-          </div>
         </div>
       </div>
     </div>
