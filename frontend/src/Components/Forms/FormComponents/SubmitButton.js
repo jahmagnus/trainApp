@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Button = ({ values }) => {
+const Button = () => {
   const buttonStyle = {
     marginTop: "2rem",
     height: "3rem",

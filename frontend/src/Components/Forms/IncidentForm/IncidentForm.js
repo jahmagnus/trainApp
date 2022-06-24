@@ -336,6 +336,10 @@ const IncidentForm = ({ user }) => {
     }
   };
 
+  const handleSubmit = () => {
+    
+  }
+
   return (
     <div className="ui centered grid">
       <div className="twelve wide column">
