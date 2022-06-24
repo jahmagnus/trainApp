@@ -7,13 +7,20 @@ import Card from "../FormComponents/Card";
 //import css
 import "./IncidentForm.css";
 
-const ContributoryFactors = ({ prevPage, nextPage, values, getFactors }) => {
+const ContributoryFactors = ({
+  prevPage,
+  nextPage,
+  values,
+  getFactors,
+  factorsArray,
+}) => {
   const [currentValue, setCurrentValue] = useState("");
-  const [valueArray, setValueArray] = useState([]);
+  const [valueArray, setValueArray] = useState(factorsArray);
 
   useEffect(() => {
-    getFactors(valueArray)
-  }, [currentValue]);
+    getFactors(valueArray);
+    setValue();
+  }, [currentValue, valueArray]);
 
   const PrevButtonStyle = {
     marginRight: "2rem",
@@ -52,23 +59,20 @@ const ContributoryFactors = ({ prevPage, nextPage, values, getFactors }) => {
   ];
 
   //get current value from the dropdown - if it doesn't exist in the current array then add it, otherwise don't add
-  const setValue = (e) => {
-    setCurrentValue(e.target.value);
-
-    if (!valueArray.includes(currentValue)) {
+  const setValue = () => {
+    if (!valueArray.includes(currentValue) && currentValue !== '') {
       valueArray.push(currentValue);
     }
   };
 
   //remove a factor from the value array
   const removeValue = (item) => {
-    
-        const index = valueArray.indexOf(item)
-        valueArray.splice(index, 1);
-        
-        console.log(valueArray)
-        let updatedArray = [...valueArray];
-        setValueArray(updatedArray)
+    const index = valueArray.indexOf(item);
+    valueArray.splice(index, 1);
+
+    let updatedArray = [...valueArray];
+    setValueArray(updatedArray);
+    getFactors(updatedArray);
   };
 
   return (
@@ -80,11 +84,13 @@ const ContributoryFactors = ({ prevPage, nextPage, values, getFactors }) => {
           className="ui fluid dropdown"
           style={dropdownStyle}
           onClick={(e) => {
-            setValue(e);
+            setCurrentValue(e.target.value);
           }}
         >
           {dropdownValues.map((factor) => (
-            <option value={factor.value}>{factor.label}</option>
+            <option key={factor.value} value={factor.value}>
+              {factor.label}
+            </option>
           ))}
         </select>
       </div>

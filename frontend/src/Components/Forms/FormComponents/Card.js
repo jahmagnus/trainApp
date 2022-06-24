@@ -20,7 +20,7 @@ function Card({ valueArray, removeValue }) {
           <div className="header"></div>
           
           {valueArray.map((content) => (
-              <Label content={ content } removeValue={removeValue}/>
+              <Label key={content} content={ content } removeValue={removeValue}/>
             ))}
           
         </div>

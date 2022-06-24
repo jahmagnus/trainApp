@@ -198,8 +198,8 @@ const IncidentForm = ({ user }) => {
     }
   };
 
-  const getFactors = (factorArray) => {
-    const holderArray = [...factorArray];
+  const getFactors = (arr) => {
+    const holderArray = [...arr];
     setFactorsArray(holderArray);
   };
 
@@ -279,6 +279,7 @@ const IncidentForm = ({ user }) => {
             prevPage={prevPage}
             values={values}
             getFactors={getFactors}
+            factorsArray = {factorsArray}
           />
         );
       default:
