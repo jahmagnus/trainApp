@@ -342,7 +342,7 @@ const IncidentForm = ({ user }) => {
         <Escape />
         <form className="ui inverted form form-container">{currentPage()}</form>
         <div className="row">
-        <Submit/>
+        <Submit values={values}/>
         </div>
         
       </div>
