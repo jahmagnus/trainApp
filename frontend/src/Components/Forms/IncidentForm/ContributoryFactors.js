@@ -21,9 +21,8 @@ const ContributoryFactors = ({
   const [valueArray, setValueArray] = useState(factorsArray);
 
   useEffect(() => {
-    getFactors(valueArray);
     setValue();
-  }, [currentValue]);
+  }, [currentValue, valueArray]);
 
   const PrevButtonStyle = {
     marginRight: "2rem",
@@ -65,6 +64,7 @@ const ContributoryFactors = ({
   const setValue = () => {
     if (!valueArray.includes(currentValue) && currentValue !== '') {
       valueArray.push(currentValue);
+      getFactors(valueArray);
     }
   };
 

@@ -12,6 +12,7 @@ import PersonsDetails from "./PersonsDetails";
 import PoliceDetails from "./PoliceDetails";
 import AbuseDetails from "./AbuseDetails";
 import ContributoryFactors from "./ContributoryFactors";
+import ReportingPerson from './ReportingPerson'
 
 const IncidentForm = ({ user }) => {
   //state items
@@ -43,6 +44,8 @@ const IncidentForm = ({ user }) => {
 
   //contributory details
   const [factorsArray, setFactorsArray] = useState([]);
+
+  //
 
   //values to use for form persistence
   const values = {
@@ -89,7 +92,7 @@ const IncidentForm = ({ user }) => {
       // managerName,
       // wasReported,
       // didAttend,
-      // isChecked
+      // isChecked,
 
       factorsArray
     );
