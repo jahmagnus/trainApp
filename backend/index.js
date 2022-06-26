@@ -98,7 +98,7 @@ app.post("/createUser", async (req, res) => {
           role: req.body.role,
         });
         await newUser.save();
-        res.send("user saved");
+        // res.send("user saved");
       }
     });
   } catch (error) {
