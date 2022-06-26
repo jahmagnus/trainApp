@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 //css
@@ -59,6 +59,9 @@ const IncidentForm = ({ user }) => {
   //comment details
   const [comment, setComment] = useState("");
 
+  //navigate variable
+  const navigate = useNavigate();
+
   //values to use for form persistence
   const values = {
     pageNum,
@@ -87,7 +90,7 @@ const IncidentForm = ({ user }) => {
   };
 
   useEffect(() => {
-    console.log('change of data')
+    console.log("change of data");
   }, [
     date,
     time,
@@ -336,6 +339,10 @@ const IncidentForm = ({ user }) => {
     }
   };
 
+  // const returnHome = () => {
+
+  // }
+
   //take data from form and send to database
   const handleSubmit = () => {
     axios({
@@ -368,7 +375,14 @@ const IncidentForm = ({ user }) => {
       withCredentials: true,
       url: "http://localhost:3000/createIncidentForm",
     }).then((res) => {
-      console.log(res);
+      const formContainer = document.querySelector(".form-container");
+      formContainer.style.color = "white";
+
+      formContainer.innerHTML =
+        "Form Submitted Successfully - \n returning to Homepage";
+      setTimeout(() => {
+        navigate("/home");
+      }, 4000);
     });
   };
 
@@ -377,6 +391,7 @@ const IncidentForm = ({ user }) => {
       <div className="twelve wide column">
         <Escape />
         <form className="ui inverted form form-container">{currentPage()}</form>
+
         <div className="row">
           <Submit values={values} handleSubmit={handleSubmit} />
         </div>

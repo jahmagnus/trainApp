@@ -1,12 +1,14 @@
 import React from "react";
 
 function Loader({ message }) {
+
+    const loaderStyle = {
+        height: "20rem",
+        textAlign: "center"
+    }
+
   return (
-    <div class="ui segment">
-      <div class="ui active dimmer">
-        <div class="ui massive text loader">{message}</div>
-      </div>
-    </div>
+    <div class="ui centered inline loader"></div>
   );
 }
 
