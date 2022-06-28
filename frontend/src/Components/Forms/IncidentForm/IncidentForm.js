@@ -90,7 +90,7 @@ const IncidentForm = ({ user }) => {
   };
 
   useEffect(() => {
-    console.log("change of data");
+    
   }, [
     date,
     time,
@@ -375,9 +375,10 @@ const IncidentForm = ({ user }) => {
       withCredentials: true,
       url: "http://localhost:3000/createIncidentForm",
     }).then((res) => {
-      const formContainer = document.querySelector(".form-container");
+      const formContainer = document.querySelector(".column-container");
       formContainer.style.color = "white";
-
+      formContainer.style.fontSize = "2rem";
+      formContainer.style.lineHeight="2rem";
       formContainer.innerHTML =
         "Form Submitted Successfully - \n returning to Homepage";
       setTimeout(() => {
