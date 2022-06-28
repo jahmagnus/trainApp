@@ -388,7 +388,7 @@ const IncidentForm = ({ user }) => {
 
   return (
     <div className="ui centered grid">
-      <div className="twelve wide column">
+      <div className="twelve wide column column-container">
         <Escape />
         <form className="ui inverted form form-container">{currentPage()}</form>
 
