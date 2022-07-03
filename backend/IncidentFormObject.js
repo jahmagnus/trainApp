@@ -1,3 +1,5 @@
+//schema for incident form
+
 import mongoose from 'mongoose'
 const {Schema} = mongoose
 
