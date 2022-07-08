@@ -8,7 +8,11 @@ const Button = ({ handleSubmit }) => {
   };
 
   return (
-    <button style={buttonStyle} className={`ui primary button`} onClick={handleSubmit}>
+    <button
+      style={buttonStyle}
+      className={`ui primary button`}
+      onClick={handleSubmit}
+    >
       Submit
     </button>
   );
