@@ -6,15 +6,12 @@ import axios from "axios";
 import "./AccidentForm.css";
 
 //component imports
-import GeneralSection from "./GeneralSection";
+import GeneralSection from "../IncidentForm/GeneralSection";
 import Escape from "../../Escape/EscapeHome";
-import TrainDetails from "./TrainDetails";
-import PersonsDetails from "./PersonsDetails";
-import PoliceDetails from "./PoliceDetails";
-import AbuseDetails from "./AbuseDetails";
-import ContributoryFactors from "./ContributoryFactors";
-import ReportingPerson from "./ReportingPerson";
-import Comments from "./Comments";
+import TrainDetails from "../IncidentForm/TrainDetails";
+import PersonsDetails from "../IncidentForm/PersonsDetails";
+import ReportingPerson from "../IncidentForm/ReportingPerson";
+import Comments from "../IncidentForm/Comments";
 import Submit from "../FormComponents/SubmitButton";
 
 
@@ -280,52 +277,18 @@ const AccidentForm = ({ user }) => {
             pageNum={pageNum}
           />
         );
-      // case 4:
-      //   return (
-      //     <PoliceDetails
-      //       handleChange={handleChange}
-      //       nextPage={nextPage}
-      //       prevPage={prevPage}
-      //       values={values}
-      //       pageNum={pageNum}
-      //     />
-      //   );
+      case 4:
+      return (
+        <ReportingPerson
+          handleChange={handleChange}
+          nextPage={nextPage}
+          prevPage={prevPage}
+          values={values}
+          pageNum={pageNum}
+        />
+      );
 
-      // case 5:
-      //   return (
-      //     <AbuseDetails
-      //       isChecked={isChecked}
-      //       handleChecked={handleChecked}
-      //       nextPage={nextPage}
-      //       prevPage={prevPage}
-      //       values={values}
-      //       pageNum={pageNum}
-      //     />
-      //   );
-      // case 6:
-      //   return (
-      //     <ContributoryFactors
-      //       handleChecked={handleChecked}
-      //       nextPage={nextPage}
-      //       prevPage={prevPage}
-      //       values={values}
-      //       getFactors={getFactors}
-      //       factorsArray={factorsArray}
-      //       pageNum={pageNum}
-      //     />
-      //   );
-
-      case 7:
-        return (
-          <ReportingPerson
-            handleChange={handleChange}
-            nextPage={nextPage}
-            prevPage={prevPage}
-            values={values}
-            pageNum={pageNum}
-          />
-        );
-      case 8:
+      case 5:
         return (
           <Comments
             nextPage={nextPage}
