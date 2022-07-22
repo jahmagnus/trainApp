@@ -5,7 +5,7 @@ import axios from "axios";
 //css
 import "./AccidentForm.css";
 
-//component imports
+//component imports - bad dependency in path/components are stored in incident form
 import GeneralSection from "../IncidentForm/GeneralSection";
 import Escape from "../../Escape/EscapeHome";
 import TrainDetails from "../IncidentForm/TrainDetails";
@@ -220,11 +220,7 @@ const AccidentForm = ({ user }) => {
     }
   };
 
-  //get factors of abuse
-  // const getFactors = (arr) => {
-  //   const holderArray = [...arr];
-  //   setFactorsArray(holderArray);
-  // };
+  
 
   //set page number state addition
   const nextPage = (e) => {
@@ -303,9 +299,6 @@ const AccidentForm = ({ user }) => {
     }
   };
 
-  // const returnHome = () => {
-
-  // }
 
   //take data from form and send to database
   const handleSubmit = () => {
@@ -319,16 +312,6 @@ const AccidentForm = ({ user }) => {
         destination: destination,
         headcode: headcode,
         origin: origin,
-        // firstName: firstName,
-        // surname: surname,
-        // jobTitle: jobTitle,
-        // homeDepot: homeDepot,
-        // isOffWork: isOffWork,
-        // managerName: managerName,
-        // wasReported: wasReported,
-        // didAttend: didAttend,
-        // abuseTypes: abuseObject,
-        // factors: factorsArray,
         reporterFirstName: reporterFirstName,
         reporterSurname: reporterSurname,
         reporterJob: reporterJob,
