@@ -17,6 +17,9 @@ import User from "./User.js";
 //incident report schema
 import IncidentForm from "./IncidentFormObject.js";
 
+//accident form Schema
+import AccidentForm from "./AccidentFormObject.js";
+
 dotenv.config();
 const app = express();
 
@@ -146,6 +149,45 @@ app.post("/createIncidentForm", async (req, res) => {
 
   console.log("in index", req.body);
 });
+
+
+app.post("/createAccidentForm", async (req, res) => {
+  try {
+    //connect to database at defined URI
+    await mongoose.connect(uri);
+    console.log("mongoose connected set user");
+
+    const newAccident = new AccidentForm({
+      username: req.body.username,
+      date: req.body.date,
+      time: req.body.time,
+      location: req.body.location,
+      destination: req.body.destination,
+      headcode: req.body.headcode,
+      origin: req.body.origin,
+      firstName: req.body.firstName,
+      surname: req.body.surname,
+      jobTitle: req.body.jobTitle,
+      homeDepot: req.body.homeDepot,
+      isOffwork: req.body.isOffWork,
+      managerName: req.body.managerName,
+      reporterFirstName: req.body.reporterFirstName,
+      reporterSurname: req.body.reporterSurname,
+      reporterJob: req.body.job,
+      reporterHomeLocation: req.body.reporterHomeLocation,
+      reporterManagerName: req.body.reporterManagerName,
+      comment: req.body.comment,
+    });
+    await newAccident.save();
+    res.send("Accident form saved");
+  } catch (err) {
+    console.log(err);
+  }
+
+  console.log("in index", req.body);
+});
+
+
 const port = 5000;
 //create the server instance and assign the port
 app.listen(port, () => {
