@@ -1,0 +1,27 @@
+.button-row{
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.form-container{
+    margin-top: 2rem;
+}
+
+.prev-button{
+    margin-right: 2rem;
+}
+
+.next-button{
+    margin-left: 2rem;
+}
+
+/* checkbox styling */
+.ui-checkbox{
+    margin-top: 1rem;
+    padding-left: 0.5rem;
+}
+
+.checkbox-field{
+    padding-top: 2.5rem;
+}
+
