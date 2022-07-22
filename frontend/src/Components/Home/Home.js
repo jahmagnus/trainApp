@@ -125,13 +125,13 @@ const Home = ({ user }) => {
               </Link>
             </div>
 
-            <div className="row home">
+            {/* <div className="row home">
               <div className="home-div">
                 <i className="big sun icon"></i>
                 <br />
                 Weather
               </div>
-            </div>
+            </div> */}
 
 
             <div className="row home">
@@ -147,11 +147,13 @@ const Home = ({ user }) => {
   
 
             <div className="row home">
+              <Link to="/accident">
               <div className="home-div">
                 <i className="big first aid icon"></i>
                 <br />
                  Accident form
               </div>
+              </Link>
             </div>
 
             <div className="row home">

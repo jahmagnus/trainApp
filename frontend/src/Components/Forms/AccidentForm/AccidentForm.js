@@ -16,7 +16,7 @@ import ContributoryFactors from "./ContributoryFactors";
 import ReportingPerson from "./ReportingPerson";
 import Comments from "./Comments";
 import Submit from "../FormComponents/SubmitButton";
-import Loader from "./Loader/Loader";
+
 
 const AccidentForm = ({ user }) => {
   //state items
@@ -31,23 +31,23 @@ const AccidentForm = ({ user }) => {
   const [origin, setOrigin] = useState("");
 
   //assaulted persons state PERSONSDETAILS
-  const [firstName, setFirstname] = useState("");
-  const [surname, setSurname] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [homeDepot, setHomeDepot] = useState("");
-  const [isOffWork, setIsOffWork] = useState("");
-  const [managerName, setManagerName] = useState("");
+  // const [firstName, setFirstname] = useState("");
+  // const [surname, setSurname] = useState("");
+  // const [jobTitle, setJobTitle] = useState("");
+  // const [homeDepot, setHomeDepot] = useState("");
+  // const [isOffWork, setIsOffWork] = useState("");
+  // const [managerName, setManagerName] = useState("");
 
-  //police details state
-  const [wasReported, setWasReported] = useState("");
-  const [didAttend, setDidAttend] = useState("");
+  // //police details state
+  // const [wasReported, setWasReported] = useState("");
+  // const [didAttend, setDidAttend] = useState("");
 
   //abuse details state
-  const [isChecked, setIsChecked] = useState(new Array(4).fill(false));
-  const [abuseObject, setAbuseObject] = useState(new Map());
+  // const [isChecked, setIsChecked] = useState(new Array(4).fill(false));
+  // const [abuseObject, setAbuseObject] = useState(new Map());
 
-  //contributory details
-  const [factorsArray, setFactorsArray] = useState([]);
+  // //contributory details
+  // const [factorsArray, setFactorsArray] = useState([]);
 
   //details of person reporting
   const [reporterFirstName, setReporterFirstName] = useState("");
@@ -71,16 +71,16 @@ const AccidentForm = ({ user }) => {
     headcode,
     destination,
     origin,
-    firstName,
-    surname,
-    jobTitle,
-    homeDepot,
-    isOffWork,
-    managerName,
-    wasReported,
-    didAttend,
-    isChecked,
-    factorsArray,
+    // firstName,
+    // surname,
+    // jobTitle,
+    // homeDepot,
+    // isOffWork,
+    // managerName,
+    // wasReported,
+    // didAttend,
+    // isChecked,
+    // factorsArray,
     reporterFirstName,
     reporterSurname,
     reporterJob,
@@ -99,17 +99,17 @@ const AccidentForm = ({ user }) => {
     headcode,
     destination,
     origin,
-    firstName,
-    surname,
-    jobTitle,
-    homeDepot,
-    isOffWork,
-    managerName,
-    wasReported,
-    didAttend,
-    isChecked,
-    abuseObject,
-    factorsArray,
+    // firstName,
+    // surname,
+    // jobTitle,
+    // homeDepot,
+    // isOffWork,
+    // managerName,
+    // wasReported,
+    // didAttend,
+    // isChecked,
+    // abuseObject,
+    // factorsArray,
     reporterFirstName,
     reporterHomeLocation,
     reporterSurname,
@@ -118,31 +118,31 @@ const AccidentForm = ({ user }) => {
   ]);
 
   // function for tracking which of the checkboxes are checked in type of abuse page
-  const handleChecked = (e, position) => {
-    const updatedCheckedState = isChecked.map((item, index) =>
-      index === position ? !item : item
-    );
-    setIsChecked(updatedCheckedState);
+  // const handleChecked = (e, position) => {
+  //   const updatedCheckedState = isChecked.map((item, index) =>
+  //     index === position ? !item : item
+  //   );
+  //   setIsChecked(updatedCheckedState);
 
     //create holder map
-    const mapHold = new Map([
-      ["language", false],
-      ["personal", false],
-      ["threats", false],
-      ["multiple", false],
-    ]);
+    // const mapHold = new Map([
+    //   ["language", false],
+    //   ["personal", false],
+    //   ["threats", false],
+    //   ["multiple", false],
+    // ]);
 
     //get keys from map
-    const keys = mapHold.keys();
+    // const keys = mapHold.keys();
 
     //iterate through checked state and add false or true value to map key value pair
-    for (let i in updatedCheckedState) {
-      mapHold.set(keys.next().value, updatedCheckedState[i]);
-    }
+    // for (let i in updatedCheckedState) {
+    //   mapHold.set(keys.next().value, updatedCheckedState[i]);
+    // }
 
     //set state of abuse object
-    setAbuseObject(mapHold);
-  };
+  //   setAbuseObject(mapHold);
+  // };
 
   //get details from form and set relevant state
   const handleChange = (field) => (e) => {
@@ -166,35 +166,35 @@ const AccidentForm = ({ user }) => {
         setOrigin(e.target.value);
         break;
 
-      case "firstName":
-        setFirstname(e.target.value);
-        break;
+      // case "firstName":
+      //   setFirstname(e.target.value);
+      //   break;
 
-      case "surname":
-        setSurname(e.target.value);
-        break;
+      // case "surname":
+      //   setSurname(e.target.value);
+      //   break;
 
-      case "job":
-        setJobTitle(e.target.value);
-        break;
+      // case "job":
+      //   setJobTitle(e.target.value);
+      //   break;
 
-      case "home":
-        setHomeDepot(e.target.value);
-        break;
+      // case "home":
+      //   setHomeDepot(e.target.value);
+      //   break;
 
-      case "manager":
-        setManagerName(e.target.value);
-        break;
+      // case "manager":
+      //   setManagerName(e.target.value);
+      //   break;
 
-      case "absence":
-        setIsOffWork(e.target.value);
-        break;
-      case "reported":
-        setWasReported(e.target.value);
-        break;
-      case "attended":
-        setDidAttend(e.target.value);
-        break;
+      // case "absence":
+      //   setIsOffWork(e.target.value);
+      //   break;
+      // case "reported":
+      //   setWasReported(e.target.value);
+      //   break;
+      // case "attended":
+      //   setDidAttend(e.target.value);
+      //   break;
       case "reporterFirstName":
         setReporterFirstName(e.target.value);
         break;
@@ -223,10 +223,11 @@ const AccidentForm = ({ user }) => {
     }
   };
 
-  const getFactors = (arr) => {
-    const holderArray = [...arr];
-    setFactorsArray(holderArray);
-  };
+  //get factors of abuse
+  // const getFactors = (arr) => {
+  //   const holderArray = [...arr];
+  //   setFactorsArray(holderArray);
+  // };
 
   //set page number state addition
   const nextPage = (e) => {
@@ -279,40 +280,40 @@ const AccidentForm = ({ user }) => {
             pageNum={pageNum}
           />
         );
-      case 4:
-        return (
-          <PoliceDetails
-            handleChange={handleChange}
-            nextPage={nextPage}
-            prevPage={prevPage}
-            values={values}
-            pageNum={pageNum}
-          />
-        );
+      // case 4:
+      //   return (
+      //     <PoliceDetails
+      //       handleChange={handleChange}
+      //       nextPage={nextPage}
+      //       prevPage={prevPage}
+      //       values={values}
+      //       pageNum={pageNum}
+      //     />
+      //   );
 
-      case 5:
-        return (
-          <AbuseDetails
-            isChecked={isChecked}
-            handleChecked={handleChecked}
-            nextPage={nextPage}
-            prevPage={prevPage}
-            values={values}
-            pageNum={pageNum}
-          />
-        );
-      case 6:
-        return (
-          <ContributoryFactors
-            handleChecked={handleChecked}
-            nextPage={nextPage}
-            prevPage={prevPage}
-            values={values}
-            getFactors={getFactors}
-            factorsArray={factorsArray}
-            pageNum={pageNum}
-          />
-        );
+      // case 5:
+      //   return (
+      //     <AbuseDetails
+      //       isChecked={isChecked}
+      //       handleChecked={handleChecked}
+      //       nextPage={nextPage}
+      //       prevPage={prevPage}
+      //       values={values}
+      //       pageNum={pageNum}
+      //     />
+      //   );
+      // case 6:
+      //   return (
+      //     <ContributoryFactors
+      //       handleChecked={handleChecked}
+      //       nextPage={nextPage}
+      //       prevPage={prevPage}
+      //       values={values}
+      //       getFactors={getFactors}
+      //       factorsArray={factorsArray}
+      //       pageNum={pageNum}
+      //     />
+      //   );
 
       case 7:
         return (
@@ -355,16 +356,16 @@ const AccidentForm = ({ user }) => {
         destination: destination,
         headcode: headcode,
         origin: origin,
-        firstName: firstName,
-        surname: surname,
-        jobTitle: jobTitle,
-        homeDepot: homeDepot,
-        isOffWork: isOffWork,
-        managerName: managerName,
-        wasReported: wasReported,
-        didAttend: didAttend,
-        abuseTypes: abuseObject,
-        factors: factorsArray,
+        // firstName: firstName,
+        // surname: surname,
+        // jobTitle: jobTitle,
+        // homeDepot: homeDepot,
+        // isOffWork: isOffWork,
+        // managerName: managerName,
+        // wasReported: wasReported,
+        // didAttend: didAttend,
+        // abuseTypes: abuseObject,
+        // factors: factorsArray,
         reporterFirstName: reporterFirstName,
         reporterSurname: reporterSurname,
         reporterJob: reporterJob,
@@ -373,7 +374,7 @@ const AccidentForm = ({ user }) => {
         comment: comment,
       },
       withCredentials: true,
-      url: "http://localhost:3000/createIncidentForm",
+      url: "http://localhost:3000/createAccidentForm",
     }).then((res) => {
       const formContainer = document.querySelector(".column-container");
       formContainer.style.color = "white";
