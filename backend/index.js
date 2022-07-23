@@ -14,10 +14,10 @@ import bodyParser from "body-parser";
 //user schema for mongoDB
 import User from "./User.js";
 
-//incident report schema
+//incident report schema import
 import IncidentForm from "./IncidentFormObject.js";
 
-//accident form Schema
+//accident form Schema import
 import AccidentForm from "./AccidentFormObject.js";
 
 dotenv.config();
