@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import Signout from "../Signout/Signout";
 import "./homestyle.css";
@@ -125,13 +125,7 @@ const Home = ({ user }) => {
               </Link>
             </div>
 
-            {/* <div className="row home">
-              <div className="home-div">
-                <i className="big sun icon"></i>
-                <br />
-                Weather
-              </div>
-            </div> */}
+            
 
 
             <div className="row home">
@@ -162,6 +156,16 @@ const Home = ({ user }) => {
                 <br />
                 Payslips
               </div>
+            </div>
+
+            <div className="row home">
+              <Link to="/formdata">
+              <div className="home-div">
+                <i className="big database icon"></i>
+                <br />
+                Completed forms
+              </div>
+              </Link>
             </div>
           </div>
         </div>

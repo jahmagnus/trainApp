@@ -9,6 +9,7 @@ import SetUser from "./Components/SetUser";
 import ArrivalPage from "./Components/ServiceBoards/ArrivalPage";
 import IncidentForm from "./Components/Forms/IncidentForm/IncidentForm";
 import AccidentForm from "./Components/Forms/AccidentForm/AccidentForm";
+import FormData from "./Components/FormData/FormData";
 
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
       <Route exact path="/arrivals" element={<ArrivalPage user={user} />} />
       <Route exact path="/incident" element={<IncidentForm user={user} />} />
       <Route exact path="/Accident" element={<AccidentForm user={user} />} />
+      <Route exact path="/FormData" element={<FormData user={user} />} />
 
       {/** Catch */}
       <Route path="*" element={"Page does not exist"} />
