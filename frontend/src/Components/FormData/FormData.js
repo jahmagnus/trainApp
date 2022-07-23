@@ -9,18 +9,17 @@ date - time - location - headcode */
 const FormData = ({ user }) => {
   
     const populateData = () => {
-    const currentUser = user.username;
+    //const currentUser = user.username;
     
-    const data = axios({
+        axios({
         method: "GET",
         url: "http://localhost:3000/formData"
     }).then((res) => {
         console.log(res);
     })
-
-
-
 };
+
+populateData();
 
   return <FormTable />;
 };

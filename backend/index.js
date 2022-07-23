@@ -58,7 +58,6 @@ const uri = `mongodb+srv://${DBusername}:${pwd}@train-data.jizrg.mongodb.net/Tra
 await mongoose.connect(uri);
 
 app.get("/getUser", (req, res) => {
-  console.log("/getuser endpoint");
   res.send(req.user);
 });
 
@@ -231,3 +230,29 @@ app.post("/arrivals", async (request, response) => {
   console.log(trainData);
   response.send(trainData);
 });
+
+app.get("/formData", async(request, response)=> {
+  
+  //query string defiend early as URI, did again here for clarity within this function
+  const queryString = `mongodb+srv://${DBusername}:${pwd}@train-data.jizrg.mongodb.net/?retryWrites=true&w=majority`
+  
+  //create new mongo client with the query string as the arguement
+  const client = new MongoClient(queryString);
+  
+    //connect to database asynchronously 
+    await client.connect();
+
+    //assign database to query
+    const db = client.db('TrainData');
+
+    //search collection within database and return all docs. 
+    db.collection("incidentforms").find().toArray((err, result) => {
+      if(err) throw err
+
+      response.send(result);
+    })
+
+    
+  
+
+})
