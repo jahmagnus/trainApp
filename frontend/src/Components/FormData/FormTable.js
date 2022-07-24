@@ -1,27 +1,24 @@
 import React from 'react'
 
-import Escape from "../Escape/EscapeHome"
 
-const FormTable = () => {
+
+const FormTable = ({ date, time, location, headcode }) => {
 
     
 
   return (
-    <div className ="ui centered grid">
-        <div className="fifteen wide column column-container">
-        <Escape/>
+    
     <table className="ui inverted table">
     <tbody>
       <tr>
-        <td>Date:</td>
-        <td>Time:</td>
-        <td>Location:</td>
-        <td>Headcode:</td>
+        <td>Date: {date}</td>
+        <td>Time: {time}</td>
+        <td>Location: {location}</td>
+        <td>Headcode: {headcode}</td>
       </tr>
       </tbody>
     </table>
-  </div>
-  </div>
+  
   )
 }
 

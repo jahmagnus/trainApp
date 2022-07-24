@@ -237,7 +237,6 @@ app.get("/formData", async (request, response) => {
   //query string defiend early as URI, did again here for clarity within this function
   const queryString = `mongodb+srv://${DBusername}:${pwd}@train-data.jizrg.mongodb.net/?retryWrites=true&w=majority`;
 
-  
   //create new mongo client with the query string as the arguement
   const client = new MongoClient(queryString);
 
@@ -249,7 +248,7 @@ app.get("/formData", async (request, response) => {
 
   //search collection within database and return all docs.
   db.collection("incidentforms")
-    .find({username: currentUser})
+    .find({ username: currentUser })
     .toArray((err, result) => {
       if (err) throw err;
 
