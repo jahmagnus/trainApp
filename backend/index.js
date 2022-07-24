@@ -61,6 +61,9 @@ app.get("/getUser", (req, res) => {
   res.send(req.user);
 });
 
+//current user
+let currentUser = undefined;
+
 //routes
 app.post("/userlogin", async (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -72,6 +75,7 @@ app.post("/userlogin", async (req, res, next) => {
     } else {
       req.logIn(user, (err) => {
         // res.send({authenticated: true})
+        currentUser = user.username;
         res.send(user);
       });
     }
@@ -149,7 +153,6 @@ app.post("/createIncidentForm", async (req, res) => {
   console.log("in index", req.body);
 });
 
-
 app.post("/createAccidentForm", async (req, res) => {
   try {
     //connect to database at defined URI
@@ -185,7 +188,6 @@ app.post("/createAccidentForm", async (req, res) => {
 
   console.log("in index", req.body);
 });
-
 
 const port = 5000;
 //create the server instance and assign the port
@@ -231,28 +233,26 @@ app.post("/arrivals", async (request, response) => {
   response.send(trainData);
 });
 
-app.get("/formData", async(request, response)=> {
-  
+app.get("/formData", async (request, response) => {
   //query string defiend early as URI, did again here for clarity within this function
-  const queryString = `mongodb+srv://${DBusername}:${pwd}@train-data.jizrg.mongodb.net/?retryWrites=true&w=majority`
+  const queryString = `mongodb+srv://${DBusername}:${pwd}@train-data.jizrg.mongodb.net/?retryWrites=true&w=majority`;
+
   
   //create new mongo client with the query string as the arguement
   const client = new MongoClient(queryString);
-  
-    //connect to database asynchronously 
-    await client.connect();
 
-    //assign database to query
-    const db = client.db('TrainData');
+  //connect to database asynchronously
+  await client.connect();
 
-    //search collection within database and return all docs. 
-    db.collection("incidentforms").find().toArray((err, result) => {
-      if(err) throw err
+  //assign database to query
+  const db = client.db("TrainData");
+
+  //search collection within database and return all docs.
+  db.collection("incidentforms")
+    .find({username: currentUser})
+    .toArray((err, result) => {
+      if (err) throw err;
 
       response.send(result);
-    })
-
-    
-  
-
-})
+    });
+});
