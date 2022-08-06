@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-
 import Home from "./Components/Home/Home";
 import DeparturePage from "./Components/ServiceBoards/DeparturePage";
 import Login from "./Components/Login/Login";
@@ -10,7 +9,6 @@ import ArrivalPage from "./Components/ServiceBoards/ArrivalPage";
 import IncidentForm from "./Components/Forms/IncidentForm/IncidentForm";
 import AccidentForm from "./Components/Forms/AccidentForm/AccidentForm";
 import FormData from "./Components/FormData/FormData";
-
 
 const App = () => {
   const [user, setUser] = useState(null);

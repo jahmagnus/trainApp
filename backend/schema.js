@@ -29,5 +29,26 @@ supporters on 1s25 - police attended train and Peterborough station"
 }
 
 
+Accident form Database schema
 
-
+{
+    username: "testUser",
+    date: "12/05/22",
+    time: "18:05",
+    location: "London Kings Cross",
+    destination: "Aberdeen",
+    headcode: "1W11",
+    origin: "London Kings Cross",
+    firstName: "Ken",
+    surname: "Biggs",
+    jobTitle: "guard",
+    homeDepot: "KGX",
+    isOffwork: false,
+    managerName: "G.Turnbull",
+    reporterFirstName: "Ken",
+    reporterSurname: "Biggs",
+    reporterJob: "Guard",
+    reporterHomeLocation: "KGX",
+    reporterManagerName: "G.Turbbull",
+    comment: "Tran guard, K.biggs jammed hand in vestibule door",
+  }
