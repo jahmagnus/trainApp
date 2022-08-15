@@ -36,30 +36,75 @@ const SetPayslip = () => {
   return (
     <div className="ui centered grid">
       <form className="ui form" style={formStyle}>
-
-      <div className="field">
+        <div className="field">
           <label>Net pay</label>
           <input
             type="date"
             name="date"
             placeholder="date"
-            onChange={(e) => {
-             
-            }}
+            onChange={(e) => {}}
           />
-          </div>
+        </div>
 
-      <div className="field">
+        <div className="field">
           <label>Net pay</label>
           <input
             type="text"
             name="netPay"
             placeholder="net pay"
-            onChange={(e) => {
-             
-            }}
+            onChange={(e) => {}}
           />
         </div>
+
+        <div className="field">
+          <label>Net pay</label>
+          <input
+            type="text"
+            name="netPay"
+            placeholder="net pay"
+            onChange={(e) => {}}
+          />
+        </div>
+        <div className="field">
+          <label>Net pay</label>
+          <input
+            type="text"
+            name="netPay"
+            placeholder="net pay"
+            onChange={(e) => {}}
+          />
+        </div>
+        <div className="field">
+          <label>Net pay</label>
+          <input
+            type="text"
+            name="netPay"
+            placeholder="net pay"
+            onChange={(e) => {}}
+          />
+        </div>
+        <div className="field">
+          <label>Net pay</label>
+          <input
+            type="text"
+            name="netPay"
+            placeholder="net pay"
+            onChange={(e) => {}}
+          />
+        </div>
+        <div className="field">
+          <label>Net pay</label>
+          <input
+            type="text"
+            name="netPay"
+            placeholder="net pay"
+            onChange={(e) => {}}
+          />
+        </div>
+
+        <button className="ui button" type="submit" onClick={registerPayslip}>
+          Submit
+        </button>
       </form>
     </div>
   );
