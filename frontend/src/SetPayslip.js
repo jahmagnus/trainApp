@@ -28,8 +28,10 @@ const SetPayslip = () => {
                 nationalInsurance: registerNationalInsurance,
                 pension: registerPension,
                 totalDeductions: registerTotalDeductions
-            }
-        })
+            },
+            withCredentials: true,
+            url: ""
+        }).then((res) => console.log(res))
     }
   
     return (
