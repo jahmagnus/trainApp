@@ -11,6 +11,10 @@ const SetPayslip = () => {
     const [nationalInsurance, setNationalInsurance] = useState("");
     const [pension, setPension] = useState("");
     const [totalDeductions, setTotalDeductions] = useState("");
+
+    const formStyle = {
+        marginTop: "3rem",
+      };
   
     return (
     <div>SetPayslip</div>
