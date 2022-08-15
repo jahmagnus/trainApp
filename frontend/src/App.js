@@ -9,6 +9,7 @@ import ArrivalPage from "./Components/ServiceBoards/ArrivalPage";
 import IncidentForm from "./Components/Forms/IncidentForm/IncidentForm";
 import AccidentForm from "./Components/Forms/AccidentForm/AccidentForm";
 import FormData from "./Components/FormData/FormData";
+import SetPayslip from "./Components/SetPayslip";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -36,6 +37,7 @@ const App = () => {
       <Route exact path="/departures" element={<DeparturePage user={user} />} />
       <Route exact path="/home" element={<Home user={user} />} />
       <Route exact path="/setuser" element={<SetUser user={user} />} />
+      <Route exact path="/setpayslip" element={<SetPayslip user={user} />} /> 
       <Route exact path="/arrivals" element={<ArrivalPage user={user} />} />
       <Route exact path="/incident" element={<IncidentForm user={user} />} />
       <Route exact path="/Accident" element={<AccidentForm user={user} />} />
