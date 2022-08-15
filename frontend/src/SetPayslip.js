@@ -23,7 +23,11 @@ const SetPayslip = () => {
                 date: registerDate,
                 netPay: registerNetPay,
                 basicPay: registerBasicPay,
-                
+                totalPayment: registerTotalPayments,
+                incomeTax: registerIncomeTax,
+                nationalInsurance: registerNationalInsurance,
+                pension: registerPension,
+                totalDeductions: registerTotalDeductions
             }
         })
     }
