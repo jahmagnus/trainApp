@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const SetPayslip = () => {
+const SetPayslip = ({ user }) => {
   const [registerDate, setDate] = useState("");
   const [registerNetPay, setNetPay] = useState("");
   const [registerBasicPay, SetBasicPay] = useState("");
@@ -19,6 +19,7 @@ const SetPayslip = () => {
     axios({
       method: "POST",
       data: {
+        user: user.payNumber,
         date: registerDate,
         netPay: registerNetPay,
         basicPay: registerBasicPay,
@@ -36,8 +37,9 @@ const SetPayslip = () => {
   return (
     <div className="ui centered grid">
       <form className="ui form" style={formStyle}>
+        
         <div className="field">
-          <label>Net pay</label>
+          <label>date</label>
           <input
             type="date"
             name="date"
@@ -57,20 +59,20 @@ const SetPayslip = () => {
         </div>
 
         <div className="field">
-          <label>Net pay</label>
+          <label>Basic pay</label>
           <input
             type="text"
-            name="netPay"
-            placeholder="net pay"
+            name="basicPay"
+            placeholder="basic pay"
             onChange={(e) => {}}
           />
         </div>
         <div className="field">
-          <label>Net pay</label>
+          <label>Total payment</label>
           <input
             type="text"
-            name="netPay"
-            placeholder="net pay"
+            name="totalPay"
+            placeholder="total pay"
             onChange={(e) => {}}
           />
         </div>
