@@ -44,7 +44,7 @@ const SetPayslip = ({ user }) => {
             type="date"
             name="date"
             placeholder="date"
-            onChange={(e) => {}}
+            onChange={(e) => {setDate(e.target.value)}}
           />
         </div>
 
@@ -54,7 +54,7 @@ const SetPayslip = ({ user }) => {
             type="text"
             name="netPay"
             placeholder="net pay"
-            onChange={(e) => {}}
+            onChange={(e) => {setNetPay(e.target.value)}}
           />
         </div>
 
@@ -64,38 +64,38 @@ const SetPayslip = ({ user }) => {
             type="text"
             name="basicPay"
             placeholder="basic pay"
-            onChange={(e) => {}}
+            onChange={(e) => {SetBasicPay(e.target.value)}}
           />
         </div>
         <div className="field">
-          <label>Total payment</label>
+          <label>Income Tax</label>
           <input
             type="text"
-            name="totalPay"
-            placeholder="total pay"
-            onChange={(e) => {}}
+            name="incomeTax"
+            placeholder="income tax"
+            onChange={(e) => {setTotalPayments(e.target.value)}}
           />
         </div>
         <div className="field">
-          <label>Net pay</label>
+          <label>National Insurance</label>
           <input
             type="text"
-            name="netPay"
-            placeholder="net pay"
-            onChange={(e) => {}}
+            name="nationalInsurance"
+            placeholder="National Insurance"
+            onChange={(e) => {setNationalInsurance(e.target.value)}}
           />
         </div>
         <div className="field">
-          <label>Net pay</label>
+          <label>Pension</label>
           <input
             type="text"
-            name="netPay"
-            placeholder="net pay"
-            onChange={(e) => {}}
+            name="pension"
+            placeholder="Pension"
+            onChange={(e) => {setPension(e.target.value)}}
           />
         </div>
         <div className="field">
-          <label>Net pay</label>
+          <label>Total deductions</label>
           <input
             type="text"
             name="netPay"
