@@ -157,7 +157,7 @@ app.post("/createAccidentForm", async (req, res) => {
   try {
     //connect to database at defined URI
     await mongoose.connect(uri);
-    console.log("mongoose connected set user");
+   
 
     const newAccident = new AccidentForm({
       username: req.body.username,
@@ -255,3 +255,12 @@ app.get("/formData", async (request, response) => {
       response.send(result);
     });
 });
+
+app.post("/payslipcreator", async (res, req) => {
+  try{
+    await mongoose.connect(uri)
+    console.log("mongoose connected, create a payslip");
+
+    
+  }
+})
