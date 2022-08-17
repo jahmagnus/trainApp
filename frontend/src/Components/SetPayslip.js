@@ -98,9 +98,9 @@ const SetPayslip = ({ user }) => {
           <label>Total deductions</label>
           <input
             type="text"
-            name="netPay"
-            placeholder="net pay"
-            onChange={(e) => {}}
+            name="totalDeductions"
+            placeholder="Total Deductions"
+            onChange={(e) => {setTotalDeductions(e.target.value)}}
           />
         </div>
 
