@@ -20,6 +20,9 @@ import IncidentForm from "./IncidentFormObject.js";
 //accident form Schema import
 import AccidentForm from "./AccidentFormObject.js";
 
+//payslip schema
+import Payslip from "./Payslip.js"
+
 dotenv.config();
 const app = express();
 
@@ -261,6 +264,16 @@ app.post("/payslipcreator", async (res, req) => {
     await mongoose.connect(uri)
     console.log("mongoose connected, create a payslip");
 
-    
+    const newPayslip = new Payslip({
+    user: req.body.username,
+    date: req.body.username,
+    netPay: req.body.username,
+    basicPay: req.body.username,
+    totalPayment: req.body.username,
+    incomeTax: req.body.username,
+    nationalInsurance: req.body.username,
+    pension: req.body.username,
+    totalDeductions: req.body.username
+    })
   }
 })
