@@ -265,15 +265,22 @@ app.post("/payslipcreator", async (res, req) => {
     console.log("mongoose connected, create a payslip");
 
     const newPayslip = new Payslip({
-    user: req.body.username,
-    date: req.body.username,
-    netPay: req.body.username,
-    basicPay: req.body.username,
-    totalPayment: req.body.username,
-    incomeTax: req.body.username,
-    nationalInsurance: req.body.username,
-    pension: req.body.username,
-    totalDeductions: req.body.username
-    })
+    user: req.body.user,
+    date: req.body.date,
+    netPay: req.body.netpay,
+    basicPay: req.body.basicpay,
+    totalPayment: req.body.totalPayment,
+    incomeTax: req.body.incomeTax,
+    nationalInsurance: req.body.nationalInsurance,
+    pension: req.body.pension,
+    totalDeductions: req.body.totaldeductions
+    });
+    await newPayslip.save();
+    console.log("payslip generated");
   }
+  catch(err){
+    console.log(err, 'failed to generate payslip')
+  }
+
+  console.log(req.body)
 })

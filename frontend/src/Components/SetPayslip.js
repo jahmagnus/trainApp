@@ -19,7 +19,7 @@ const SetPayslip = ({ user }) => {
     axios({
       method: "POST",
       data: {
-        user: user.payNumber,
+        user: user.username,
         date: registerDate,
         netPay: registerNetPay,
         basicPay: registerBasicPay,
@@ -30,7 +30,7 @@ const SetPayslip = ({ user }) => {
         totalDeductions: registerTotalDeductions,
       },
       withCredentials: true,
-      url: "",
+      url: "http://localhost:3000/payslipcreator",
     }).then((res) => console.log(res));
   };
 
