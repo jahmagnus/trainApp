@@ -17,76 +17,9 @@ const Home = ({ user }) => {
     setName(parseUser.firstName);
     setPayNum(parseUser.payNumber);
     setSurname(parseUser.surname);
-    // console.log(parseUser);
   }, []);
 
-  // const iconStyles = {
-  //   textAlign: "center",
-  //   fontSize: "large",
-  //   backgroundColor: "#5df542",
-  //   border: "0.1rem solid #0b0c10",
-  //   borderBottom: "none",
-  // };
-
-  // const rowStyleOne = {
-  //   height: "60rem",
-  // };
-
-  // const rowStyleTwo = {
-  //   height: "64rem",
-  //   paddingTop: "1rem",
-  //   marginLeft: "auto",
-  //   marginRight: "auto",
-  // };
-
-  // //navbar divs containg the icons and heading
-  // const divStyle = {
-  //   height: "9rem",
-  //   width: "8rem",
-  //   textAlign: "center",
-  //   marginLeft: "auto",
-  //   marginRight: "auto",
-  //   paddingTop: "2.5rem",
-  //   paddingBottom: "",
-  //   color: "black",
-  // };
-
-  // const columnOneStyle = {
-  //   borderRight: ".08rem solid black",
-  //   height: "66rem",
-  //   backgroundColor: "black",
-  // };
-
-  // //styling for column 2 row 1
-  // const rowStyleUsername = {
-  //   height: "5rem",
-  //   paddingTop: "1.5rem",
-  //   fontSize: "",
-
-  // };
-
-  // //homepage user details div styles
-  // const rowStyleUserDetails = {
-  //   height: "56rem",
-  //   border: ".08rem solid black",
-  //   paddingLeft: "0.5rem",
-  //   backgroundColor: "#c5c6c7",
-  //   paddingTop: "7rem"
-  // };
-
-  // const gridStyle = {
-  //   height: "65rem",
-  //   marginLeft: "auto",
-  //   marginRight: "auto",
-  // };
-
-  // const appStyle = {
-  //   backgroundColor: "none",
-  //   height: "65rem",
-  // };
-
   if (!user) {
-
     return <Navigate to="/" replace />;
   }
 
@@ -125,28 +58,23 @@ const Home = ({ user }) => {
               </Link>
             </div>
 
-            
-
-
             <div className="row home">
-            <Link to="/incident">
-              <div className="home-div">
-                <i className="big clipboard icon"></i>
-                <br />
-                Incident form
-              </div>
+              <Link to="/incident">
+                <div className="home-div">
+                  <i className="big clipboard icon"></i>
+                  <br />
+                  Incident form
+                </div>
               </Link>
             </div>
 
-  
-
             <div className="row home">
               <Link to="/accident">
-              <div className="home-div">
-                <i className="big first aid icon"></i>
-                <br />
-                 Accident form
-              </div>
+                <div className="home-div">
+                  <i className="big first aid icon"></i>
+                  <br />
+                  Accident form
+                </div>
               </Link>
             </div>
 
@@ -160,11 +88,11 @@ const Home = ({ user }) => {
 
             <div className="row home">
               <Link to="/formdata">
-              <div className="home-div">
-                <i className="big database icon"></i>
-                <br />
-                Completed forms
-              </div>
+                <div className="home-div">
+                  <i className="big database icon"></i>
+                  <br />
+                  Completed forms
+                </div>
               </Link>
             </div>
           </div>
@@ -173,27 +101,22 @@ const Home = ({ user }) => {
         {/*second column on homepage*/}
         <div className="ten wide column">
           <div className="two column row">
-            
-            
-
             <div className="row details">
-
-            <div className="row username">Hello, {name}</div>
-            <br/>
+              <div className="row username">Hello, {name}</div>
+              <br />
               PAY NUMBER: <br />
               {payNum} <br />
               <div className="row username">
                 NAME:
                 <br /> {name} {surname}
               </div>
-
               <div classname="row signout">
-              <Signout />
+                <Signout />
               </div>
-            </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   );
 };

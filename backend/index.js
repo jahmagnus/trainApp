@@ -21,7 +21,7 @@ import IncidentForm from "./IncidentFormObject.js";
 import AccidentForm from "./AccidentFormObject.js";
 
 //payslip schema
-import Payslip from "./Payslip.js"
+import Payslip from "./Payslip.js";
 
 dotenv.config();
 const app = express();
@@ -160,7 +160,6 @@ app.post("/createAccidentForm", async (req, res) => {
   try {
     //connect to database at defined URI
     await mongoose.connect(uri);
-   
 
     const newAccident = new AccidentForm({
       username: req.body.username,
@@ -259,34 +258,30 @@ app.get("/formData", async (request, response) => {
     });
 });
 
-
-
-//endpoint to send payslip data to database. 
+//endpoint to send payslip data to database.
 app.post("/payslipcreator", async (req, res) => {
-  try{
-    await mongoose.connect(uri)
+  try {
+    await mongoose.connect(uri);
     console.log("mongoose connected, create a payslip");
-    console.log(await req.body)
 
     const newPayslip = new Payslip({
-    user: req.body.user,
-    date: req.body.date,
-    netPay: req.body.netPay,
-    basicPay: req.body.basicPay,
-    totalPayment: req.body.totalPayment,
-    incomeTax: req.body.incomeTax,
-    nationalInsurance: req.body.nationalInsurance,
-    pension: req.body.pension,
-    totalDeductions: req.body.totalDeductions
+      user: req.body.user,
+      date: req.body.date,
+      netPay: req.body.netPay,
+      basicPay: req.body.basicPay,
+      totalPayment: req.body.totalPayment,
+      incomeTax: req.body.incomeTax,
+      nationalInsurance: req.body.nationalInsurance,
+      pension: req.body.pension,
+      totalDeductions: req.body.totalDeductions,
     });
 
-    
     await newPayslip.save();
     console.log("payslip generated");
+  } catch (err) {
+    console.log(err, "failed to generate payslip");
   }
-  catch(err){
-    console.log(err, 'failed to generate payslip')
-  }
+});
 
-  console.log(req.body)
-})
+
+//endpoint to get payslip data from database
