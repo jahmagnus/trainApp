@@ -259,13 +259,13 @@ app.get("/formData", async (request, response) => {
     });
 });
 
-app.post("/payslipcreator", async (res, req) => {
+app.post("/payslipcreator", async (req, res) => {
   try{
     await mongoose.connect(uri)
     console.log("mongoose connected, create a payslip");
-
+    console.log(await req.body.user)
     const newPayslip = new Payslip({
-    user: req.body.user,
+   user: req.body.username,
     date: req.body.date,
     netPay: req.body.netpay,
     basicPay: req.body.basicpay,
@@ -275,6 +275,8 @@ app.post("/payslipcreator", async (res, req) => {
     pension: req.body.pension,
     totalDeductions: req.body.totaldeductions
     });
+
+    
     await newPayslip.save();
     console.log("payslip generated");
   }

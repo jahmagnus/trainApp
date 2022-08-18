@@ -67,13 +67,24 @@ const SetPayslip = ({ user }) => {
             onChange={(e) => {SetBasicPay(e.target.value)}}
           />
         </div>
+
+        <div className="field">
+          <label>Total Payment</label>
+          <input
+            type="text"
+            name="basicPay"
+            placeholder="basic pay"
+            onChange={(e) => {setTotalPayments(e.target.value)}}
+          />
+        </div>
+
         <div className="field">
           <label>Income Tax</label>
           <input
             type="text"
             name="incomeTax"
             placeholder="income tax"
-            onChange={(e) => {setTotalPayments(e.target.value)}}
+            onChange={(e) => {setIncomeTax(e.target.value)}}
           />
         </div>
         <div className="field">
