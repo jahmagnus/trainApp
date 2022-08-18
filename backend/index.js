@@ -259,6 +259,9 @@ app.get("/formData", async (request, response) => {
     });
 });
 
+
+
+//endpoint to send payslip data to database. 
 app.post("/payslipcreator", async (req, res) => {
   try{
     await mongoose.connect(uri)
