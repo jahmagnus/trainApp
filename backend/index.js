@@ -263,17 +263,18 @@ app.post("/payslipcreator", async (req, res) => {
   try{
     await mongoose.connect(uri)
     console.log("mongoose connected, create a payslip");
-    console.log(await req.body.user)
+    console.log(await req.body)
+
     const newPayslip = new Payslip({
-   user: req.body.username,
+    user: req.body.user,
     date: req.body.date,
-    netPay: req.body.netpay,
-    basicPay: req.body.basicpay,
+    netPay: req.body.netPay,
+    basicPay: req.body.basicPay,
     totalPayment: req.body.totalPayment,
     incomeTax: req.body.incomeTax,
     nationalInsurance: req.body.nationalInsurance,
     pension: req.body.pension,
-    totalDeductions: req.body.totaldeductions
+    totalDeductions: req.body.totalDeductions
     });
 
     
