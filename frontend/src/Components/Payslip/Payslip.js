@@ -15,9 +15,6 @@ const Payslip = ( {user} ) => {
     return <Navigate to="/" replace />;
   }
 
-  const homeButtonStyle ={
-    marginRight: "5rem"
-  }
 
   return (
     <div className="ui centered grid">
