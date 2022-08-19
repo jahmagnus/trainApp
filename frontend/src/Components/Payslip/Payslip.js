@@ -48,6 +48,8 @@ const Payslip = ({ user }) => {
       //for the moment, console log the results of the request
       console.log('full object', res.data);
 
+      //create variable containing the filtered results based on the year selected by the user
+      //ie. the user selects 2018 and will only be shown payslips for the year 2018
       const filteredSlip = filterYear(res.data);
       console.log('filtered object', filteredSlip);
     });
