@@ -10,6 +10,7 @@ import IncidentForm from "./Components/Forms/IncidentForm/IncidentForm";
 import AccidentForm from "./Components/Forms/AccidentForm/AccidentForm";
 import FormData from "./Components/FormData/FormData";
 import SetPayslip from "./Components/SetPayslip";
+import Payslips from "./Components/Payslip/Payslip"
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -30,7 +31,7 @@ const App = () => {
   return (
     <Routes>
       {/* Public pages*/}
-      <Route path="/" element={<Login handleUser={handleUser} />} />
+      <Route path="/" element={<Login handleUser={handleUser} />} />  
 
       {/* Private pages */}
 
@@ -42,6 +43,7 @@ const App = () => {
       <Route exact path="/incident" element={<IncidentForm user={user} />} />
       <Route exact path="/Accident" element={<AccidentForm user={user} />} />
       <Route exact path="/FormData" element={<FormData user={user} />} />
+      <Route exact path="/payslips" element={<Payslips user={user} />} />
 
       {/** Catch */}
       <Route path="*" element={"Page does not exist"} />

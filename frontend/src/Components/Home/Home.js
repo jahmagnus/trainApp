@@ -79,11 +79,13 @@ const Home = ({ user }) => {
             </div>
 
             <div className="row home">
+              <Link to="/payslips">
               <div className="home-div">
                 <i className=" big money bill alternate icon"></i>
                 <br />
                 Payslips
               </div>
+              </Link>
             </div>
 
             <div className="row home">

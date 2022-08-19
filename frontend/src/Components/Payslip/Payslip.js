@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+
+import Dropdown from "./Dropdown";
 
 const Payslip = () => {
   return (
-    <div>Payslip</div>
-  )
-}
+    <div className="ui centered grid">
+        <div className="container">
+      <Dropdown />
+      </div>
+    </div>
+  );
+};
 
-export default Payslip
+export default Payslip;
