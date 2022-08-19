@@ -2,6 +2,7 @@ import React from "react";
 
 const Dropdown = () => {
 
+    //years for the dropdown menu to be populated with. 
     const years = [
         {label: "2022", value: "2022"},
         {label: "2021", value: "2021"},
@@ -13,6 +14,7 @@ const Dropdown = () => {
   return (
     <select>
       <option value="">Select year</option>
+      {/* map the values from the 'years' array of objects to the dropdown */}
       {years.map((year) => 
         <option value={year.value}> {year.label}</option>
       )}
