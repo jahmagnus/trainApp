@@ -297,12 +297,13 @@ app.get("/payslipData", async (req, res) => {
   //assign database to query
   const db = client.db("TrainData");
 
-   //search collection within database and return all docs.
-   db.collection("payslips")
-   .find({ username: currentUser })
-   .toArray((err, result) => {
-     if (err) throw err;
-
-     res.send(result);
-   });
+  //search collection within database and return all docs.
+  db.collection("payslips")
+    .find({ username: currentUser })
+    .toArray((err, result) => {
+      if (err){ 
+        throw err
+      };
+      res.send(result);
+    });
 });

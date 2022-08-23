@@ -6,6 +6,7 @@ import Home from "../Escape/EscapeHome";
 
 const Payslip = ({ user }) => {
   const [currentYear, setCurrentYear] = useState("");
+  const [payslips, setPayslips] = useState([]);
 
   useEffect(() => {
     getPayslips();
@@ -45,13 +46,14 @@ const Payslip = ({ user }) => {
       method: "GET",
       url: "http://localhost:3000/payslipData",
     }).then((res) => {
-      //for the moment, console log the results of the request
-      console.log('full object', res.data);
-
+      
       //create variable containing the filtered results based on the year selected by the user
       //ie. the user selects 2018 and will only be shown payslips for the year 2018
       const filteredSlip = filterYear(res.data);
-      console.log('filtered object', filteredSlip);
+      //set payslips to the current payslips in a year that has been selected from the 
+      ///dropdown by the user
+      setPayslips(filteredSlip);
+      console.log("state", payslips);
     });
   };
 
