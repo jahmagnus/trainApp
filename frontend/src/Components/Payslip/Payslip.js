@@ -3,14 +3,28 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 
 import Home from "../Escape/EscapeHome";
+import TableList from "./TableList";
 
 const Payslip = ({ user }) => {
   const [currentYear, setCurrentYear] = useState("");
-  const [payslips, setPayslips] = useState([]);
+  const [payslipObject, setPayslipObject] = useState([]);
+  const [filteredPayslip, setFilteredPayslip] = useState([]);
+  const [payTable, setPayTable] = useState([]);
 
+  //get all payslips for current user
   useEffect(() => {
     getPayslips();
+  }, []);
+
+  //filter payslips by year selected by user.
+  useEffect(() => {
+    setFilteredPayslip(filterYear(payslipObject));
   }, [currentYear]);
+
+  //when filteredpayslip has updated, create and render the table
+  useEffect(() => {
+    createTable();
+  }, [filteredPayslip]);
 
   //check to see if there is a user in local storage
   const storageData = localStorage.getItem("user");
@@ -29,13 +43,14 @@ const Payslip = ({ user }) => {
     { label: "2018", value: "2018" },
   ];
 
-  //helper to only return date relevant objects from payslips based on the current 
+  //helper to only return date relevant objects from payslips based on the current
   //date selected by the user
   //parameter = the full response object from the database
   const filterYear = (payObject) => {
     const newObject = payObject.filter((el) =>
       el.date.includes(currentYear, 0)
     );
+    console.log(newObject);
     return newObject;
   };
 
@@ -46,23 +61,38 @@ const Payslip = ({ user }) => {
       method: "GET",
       url: "http://localhost:3000/payslipData",
     }).then((res) => {
-      
-      //create variable containing the filtered results based on the year selected by the user
-      //ie. the user selects 2018 and will only be shown payslips for the year 2018
-      const filteredSlip = filterYear(res.data);
-      //set payslips to the current payslips in a year that has been selected from the 
-      ///dropdown by the user
-      setPayslips(filteredSlip);
-      console.log("state", payslips);
+      setPayslipObject(res.data);
     });
   };
 
+  //create the table of payslips using the TableList component
+  const createTable = () => {
+    setPayTable(
+      filteredPayslip.map((el) => {
+        return <TableList date={el.date} netPay={el.netPay} />;
+      })
+    );
+  };
+
+  const dropdownStyle={
+    marginTop: "2rem",
+    marginBottom: "2rem",
+    height: "3rem", 
+    width: "10rem",
+    textAlign: "center",
+  
+  }
+
+  const divStyle = {
+    textAlign: "center"
+  }
+
   return (
     <div className="ui centered grid">
-      <div className="container">
+      <div className="fifteen wide column column-container">
         <Home />
-        <div>
-          <select onChange={(e) => setCurrentYear(e.target.value)}>
+        <div style={divStyle}>
+          <select onChange={(e) => setCurrentYear(e.target.value)} style={dropdownStyle}>
             <option value="">Select year</option>
             {/* map the values from the 'years' array of objects to the dropdown */}
             {years.map((year) => (
@@ -73,6 +103,7 @@ const Payslip = ({ user }) => {
             ))}
           </select>
         </div>
+        {payTable}
       </div>
     </div>
   );

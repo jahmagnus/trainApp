@@ -285,25 +285,35 @@ app.get("/formData", async (request, response) => {
 
 //endpoint to get payslip data from database
 app.get("/payslipData", async (req, res) => {
+
   //query string defiend early as URI, did again here for clarity within this function
   const queryString = `mongodb+srv://${DBusername}:${pwd}@train-data.jizrg.mongodb.net/?retryWrites=true&w=majority`;
 
-  //create new mongo client with the query string as the arguement
+ // create new mongo client with the query string as the arguement
   const client = new MongoClient(queryString);
 
-  //connect to database asynchronously
-  await client.connect();
+ // connect to database asynchronously
+  try {
+    await client.connect();
+  } catch (error) {
+    console.log(error);
+  }
 
   //assign database to query
   const db = client.db("TrainData");
 
   //search collection within database and return all docs.
   db.collection("payslips")
-    .find({ username: currentUser })
+    .find({ user: currentUser })
     .toArray((err, result) => {
-      if (err){ 
-        throw err
-      };
+      if (err) throw err;
       res.send(result);
+      console.log("results: ", result);
     });
+
+
+
+  
+
+
 });
