@@ -4,12 +4,24 @@ import { Navigate } from "react-router-dom";
 
 import Home from "../Escape/EscapeHome";
 import TableList from "./TableList";
+import IndividualPayslip from "./IndividualPayslip";
 
 const Payslip = ({ user }) => {
   const [currentYear, setCurrentYear] = useState("");
+
+  //all payslips that exist for a user
   const [payslipObject, setPayslipObject] = useState([]);
+
+  //all payslips that have been filtered and returned by the year selected by user
   const [filteredPayslip, setFilteredPayslip] = useState([]);
+
   const [payTable, setPayTable] = useState([]);
+
+  //data for an individual payslip when user clicks the view button
+  const [individualPayslipData, setIndividualPayslipData] = useState();
+
+  //current clicked payslip ID
+  const [payslipID, setPayslipID] = useState("");
 
   //get all payslips for current user
   useEffect(() => {
@@ -69,30 +81,39 @@ const Payslip = ({ user }) => {
   const createTable = () => {
     setPayTable(
       filteredPayslip.map((el) => {
-        return <TableList date={el.date} netPay={el.netPay} />;
+        return (
+          <TableList
+            date={el.date}
+            netPay={el.netPay}
+            _id={el._id}
+            payslips={filteredPayslip}
+          />
+        );
       })
     );
   };
 
-  const dropdownStyle={
+  const dropdownStyle = {
     marginTop: "2rem",
     marginBottom: "2rem",
-    height: "3rem", 
+    height: "3rem",
     width: "10rem",
     textAlign: "center",
-  
-  }
+  };
 
   const divStyle = {
-    textAlign: "center"
-  }
+    textAlign: "center",
+  };
 
   return (
     <div className="ui centered grid">
       <div className="fifteen wide column column-container">
         <Home />
         <div style={divStyle}>
-          <select onChange={(e) => setCurrentYear(e.target.value)} style={dropdownStyle}>
+          <select
+            onChange={(e) => setCurrentYear(e.target.value)}
+            style={dropdownStyle}
+          >
             <option value="">Select year</option>
             {/* map the values from the 'years' array of objects to the dropdown */}
             {years.map((year) => (
