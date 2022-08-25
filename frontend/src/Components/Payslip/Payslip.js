@@ -6,6 +6,7 @@ import Home from "../Escape/EscapeHome";
 import TableList from "./TableList";
 import IndividualPayslip from "./IndividualPayslip";
 
+
 const Payslip = ({ user }) => {
   const [currentYear, setCurrentYear] = useState("");
 
@@ -17,11 +18,9 @@ const Payslip = ({ user }) => {
 
   const [payTable, setPayTable] = useState([]);
 
-  //data for an individual payslip when user clicks the view button
-  const [individualPayslipData, setIndividualPayslipData] = useState();
+  
+  
 
-  //current clicked payslip ID
-  const [payslipID, setPayslipID] = useState("");
 
   //get all payslips for current user
   useEffect(() => {
@@ -31,6 +30,7 @@ const Payslip = ({ user }) => {
   //filter payslips by year selected by user.
   useEffect(() => {
     setFilteredPayslip(filterYear(payslipObject));
+    
   }, [currentYear]);
 
   //when filteredpayslip has updated, create and render the table
@@ -87,6 +87,7 @@ const Payslip = ({ user }) => {
             netPay={el.netPay}
             _id={el._id}
             payslips={filteredPayslip}
+            year={currentYear}
           />
         );
       })
@@ -109,6 +110,7 @@ const Payslip = ({ user }) => {
     <div className="ui centered grid">
       <div className="fifteen wide column column-container">
         <Home />
+        
         <div style={divStyle}>
           <select
             onChange={(e) => setCurrentYear(e.target.value)}

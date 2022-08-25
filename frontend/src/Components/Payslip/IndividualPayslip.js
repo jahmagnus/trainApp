@@ -1,7 +1,8 @@
 import React from 'react'
 
-const IndividualPayslip = ({basicPay, incomeTax, nationalInsurance, totalDeductions, totalPayment, pension}) => {
+const IndividualPayslip = ({basicPay, incomeTax, nationalInsurance, totalDeductions, totalPayment, pension, hidden}) => {
   return (
+    <div hidden={hidden}>
     <table className="ui inverted table">
         <tbody>
           <tr>
@@ -14,6 +15,7 @@ const IndividualPayslip = ({basicPay, incomeTax, nationalInsurance, totalDeducti
           </tr>
         </tbody>
       </table>
+      </div>
   )
 }
 
