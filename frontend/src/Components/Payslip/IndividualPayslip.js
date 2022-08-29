@@ -6,12 +6,12 @@ const IndividualPayslip = ({basicPay, incomeTax, nationalInsurance, totalDeducti
     <table className="ui inverted table">
         <tbody>
           <tr>
-            <td>basic Pay: £{basicPay}</td>
+            <td>Basic Pay: £{basicPay}</td>
             <td>Income Tax: £{incomeTax}</td>
             <td>NI: £{nationalInsurance}</td>
             <td>Total Deductions: £{totalDeductions}</td>
             <td>Total Payment: £{totalPayment}</td>
-            <td>Pension: {pension}</td>
+            <td>Pension: £{pension}</td>
           </tr>
         </tbody>
       </table>

@@ -20,6 +20,13 @@ const TableList = ({ date, netPay, _id, payslips, year }) => {
     borderColor: "white",
   };
 
+
+  const buttonStyle ={
+    marginBottom: ".75rem",
+    marginTop: ".75rem",
+    width: "7rem"
+  }
+
   useEffect(() => {
     // console.log("payslip data in use effect", payslipData);
     createIndividualPayslip();
@@ -81,12 +88,11 @@ const TableList = ({ date, netPay, _id, payslips, year }) => {
           <tr>
             <td>Net Pay: £{netPay}</td>
             <td>Date: {date}</td>
-            <td>id: {_id}</td>
           </tr>
         </tbody>
       </table>
-      <button className="ui primary button" onClick={getPayslipData}>
-        View {_id}
+      <button className="ui primary button" onClick={getPayslipData} style={buttonStyle}>
+        View
       </button>
 
       {individual}
